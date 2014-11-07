@@ -1,0 +1,194 @@
+% THIS IS SIGPROC-SP.TEX - VERSION 3.1
+% WORKS WITH V3.2SP OF ACM_PROC_ARTICLE-SP.CLS
+% APRIL 2009
+%
+% It is an example file showing how to use the 'acm_proc_article-sp.cls' V3.2SP
+% LaTeX2e document class file for Conference Proceedings submissions.
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V3.2SP) *DOES NOT* produce:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) Page numbering
+% ---------------------------------------------------------------------------------------------------------------
+% It is an example which *does* use the .bib file (from which the .bbl file
+% is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission,
+% you need to 'insert'  your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% Questions regarding SIGS should be sent to
+% Adrienne Griscti ---> griscti@acm.org
+%
+% Questions/suggestions regarding the guidelines, .tex and .cls files, etc. to
+% Gerald Murray ---> murray@hq.acm.org
+%
+% For tracking purposes - this is V3.1SP - APRIL 2009
+
+\documentclass{acm_proc_article-sp}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\title{Mobile JavaScript Library Minimization}
+\subtitle{Milestone one}
+%
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{3} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+William Jernigan\\
+       \affaddr{Oregon State University}\\
+       \affaddr{Corvallis, OR 97331}\\
+       \email{wdcjernigan@gmail.com}
+% 2nd. author
+\alignauthor
+William Leslie\\
+       \affaddr{Oregon State University}\\
+       \affaddr{Corvallis, OR 97331}\\
+       \email{lesliew@onid.oregonstate.edu}
+% 3rd. author
+\and
+\alignauthor Francis Vo\\
+       \affaddr{Oregon State University}\\
+       \affaddr{Corvallis, OR 97331}\\
+       \email{vof@onid.oregonstate.edu}
+}
+% There's nothing stopping you putting the seventh, eighth, etc.
+% author on the opening page (as the 'third row') but we ask,
+% for aesthetic reasons that you place these 'additional authors'
+% in the \additional authors block, viz.
+% \additionalauthors{Additional authors: John Smith (The Th{\o}rv{\"a}ld Group,
+% email: {\texttt{jsmith@affiliation.org}}) and Julius P.~Kumquat
+% (The Kumquat Consortium, email: {\texttt{jpkumquat@consortium.net}}).}
+% \date{30 July 1999}
+% Just remember to make sure that the TOTAL number of authors
+% is the number that will appear on the first page PLUS the
+% number that will appear in the \additionalauthors section.
+
+\maketitle
+% \begin{abstract}
+% Abstract here...
+% \end{abstract}
+
+% A category with the (minimum) three required fields
+% \category{H.4}{Information Systems Applications}{Miscellaneous}
+%A category including the fourth, optional field follows...
+% \category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+
+% \terms{Theory}
+
+% \keywords{ACM proceedings, \LaTeX, text tagging} % NOT required for Proceedings
+
+\section{Research overview}
+Mobile devices load entire JavaScript libraries when users browse the web. This can make the mobile device slow or unresponsive if the library is large and/or if the mobile device’s resources are limited. If a website is slow or unresponsive on a mobile device, users may look for another website to use or download an app instead of using the mobile browser. Traditional guidelines were made to improve load times and usability of JavaScript websites. JavaScript libraries are often minified to create smaller files allowing for faster download times for the files. Hybrid apps are mobile apps that use JavaScript where the files are saved on the device. This means that download times are not an issue and therefore file size is less of an issue for performance. 80\% of web page loading time is attributed to loading page resources and only 20\% is from back-end computations \cite{souders2008high}. Hybrid applications do not have to load source from a server and therefore do not have that concern. We plan to show that the traditional guidelines of minifying result in an insignificant improvement. Then we will suggest new guidelines that will work better for hybrid apps.
+
+
+\section{Technical Challenges}
+
+In order to show that the traditional web page guidelines do not apply to hybrid applications, we must use the Google Closure Compiler, KJSCompiler, or something similar to create a version of the hybrid application which is minified. Then we must test its speed with something like PageSpeed Insights or mobileOK before and after minification with the expectation that there will be miniscule improvements. We can use IBM Worklight to simulate the hybrid applications on a laptop or desktop computer. Below is a discussion of the current challenges with each required technology.
+
+
+\subsection{Google Closure Compiler}
+Google Closure Compiler is a great tool, but there are problems when compiling a large number of js files. JavaScript apps that didn’t plan on using the closure compiler might have a hard time with the compiler. The closure compiler only compiles JavaScript code, and therefore the user would need to change HTML scripts and other files to work with the newly compiled files. Also as part of a website, there might be multiple pages that use the same library of files. It would be nice to have file dependencies to help create better compiled files. We found some possible solutions, Google Closure Library and KJScompiler.
+
+
+\subsection{KJScompiler}
+It is a wrapper around Google Closure Compiler that allows annotations with information about dependencies to be used. KJSCompiler compiles the JavaScript files in the order that the dependencies dictate. This allows for the correct ordering of declarations when compiling over multiple files. The downside is that you need to have dependence information in each file, and hard to know the dependence of a system you don’t know. 
+
+\subsection{PageSpeed Insights}
+PageSpeed Insights is a Chrome extension that analyzes problems with JavaScript websites. This is helpful to see which traditional guidelines are used. We will be able to see the improvements with JavaScript websites, but since it is a Chrome extension, it cannot be used to directly measure the performance on mobile devices. But we can simulate these hybrid apps with IBM Worklight as described below.
+
+\subsection{IBM Worklight}
+Worklight is an extension to Eclipse which helps with developing mobile applications, including mobile web apps, hybrid apps, and native apps. We can use Worklight to simulate running a hybrid app on a laptop/desktop, then use PageSpeed Insights to measure the app instead of modifying PageSpeed Insights to work on a mobile device. We will have to load all of these applications in Eclipse on a local IBM Application Server, then argue that this configuration is representative of what happens on a phone.
+
+
+
+\section{Proposed Process}
+
+\subsection{Ineffective traditional guidelines}
+First, we will use Google Closure Compiler to turn a hybrid app into a minified hybrid app. The closure compiler uses traditional guidelines for optimizing mobile web apps. Then we will test both the normal and minified versions of the hybrid apps. Our hypothesis is that the performance of normal and minified versions will be very similar. The traditional guidelines are used to create an optimized javascript files that are transferred over the internet to the user device. Unlike mobile web apps, hybrid apps have the JavaScript files on the device on execution. This means that file size and other minification guidelines might not affect performance as much as web apps. 
+
+\subsection{New Guidelines}
+Secondly, after proving that traditional guidelines are ineffective, we will test and validate that new guidelines are more effective for hybrid apps. Aharon will have some suggestions for new guidelines.
+
+\section{Related Works}
+
+\subsection{Digua: Minifier and Obfuscator for Web Resources\cite{ciminiandigua} }
+Authors Alex Ciminian and Ciprian Dobre discuss their minifier tool Digua.  Digua is a minifier which works for CSS, HTML, and JavaScript.  It will find correlations between these different languages to further reduce the size of these files.  The paper states that 80\% of web page loading time is attributed to loading page resources and only 20\% is from back-end computations and the reduced file size will result in much increased web page responsiveness.  This does not apply to hybrid mobile apps.  This is because the web code for the application is already stored in the device.  The method presented in the paper would only apply to applications which need to be downloaded every time the website is hit. 
+
+
+
+\subsection{Semi-Automatic Rename Refactoring for JavaScript\cite{feldthaus2013semi}}
+Authors Asger Feldthaus and Anders Moller discuss a method for renaming functions using a combination of static analysis and programmer input.  While this does not apply directly to our project, it does bring up issues involved with renaming in JavaScript.  For instance, similarly named features of the code may be renamed when they should not be.  This will lead to a lot of errors in the code.  This is a limitation to minification methods as well, since, in order to maintain functionality, certain features such as functions cannot be renamed.
+
+\subsection{Modern JavaScript Project Optimizers\cite{zolotareva2014modern} }
+The authors of this paper discuss the state of the art of JavaScript optimizers.  Tools discussed included JSMin, YUI Compressor, UglifierJS, Google Closure Compiler, and KJSCompiler and their respective benefits and drawbacks.  For instance, KJSCompiler is an extension to Google Closure Compiler where the users can annotate dependencies between files.  This is a useful tool to research, due to the fact that it may further reduce the size of JavaScript files.
+
+\subsection{Characterizing and Detecting Performance Bugs for Smartphone Applications\cite{liu2014characterizing} }
+This paper begins by presenting common patterns among performance bugs among popular, large scale Android applications. Then, the presents PerfChecker, a static analysis tool that looks for those performance bugs (20 of which were fixed by developers). This paper focuses on bugs relating to a native application’s local code and potentially very specific causes for those bugs, such as activating multiple features in a specific sequence. So, the guidelines presented here do not directly address hybrid mobile applications, although the approach or results could in some cases be adapted for hybrids. There is little mention of web language bugs.
+
+\subsection{High Performance Web Sites\cite{souders2008high}}
+The paper discussed the Importance of Frontend Performance. It also list best practices and shows why they are important. 
+
+\begin{enumerate}
+	\item Make fewer HTTP requests
+	\item Use a content delivery network
+	\item Add an Expires header
+	\item Gzip components
+	\item Put stylesheets at the top
+	\item Put scripts at the bottom
+	\item Avoid CSS expressions
+	\item Make JavaScript and CSS external
+	\item Reduce DNS lookups
+	\item Minify JavaScript
+	\item Avoid redirects
+	\item Remove duplicate scripts
+	\item Confi gure ETags
+	\item Make Ajax cacheable
+\end{enumerate}
+
+
+\bibliographystyle{plain}
+\bibliography{sigproc}
+
+
+\end{document}
