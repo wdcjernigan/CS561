@@ -131,23 +131,19 @@ A hybrid application designer, John, makes an app.  He gets complaints that the 
 %For the next iteration, add a section about the technical challenges (i.e., what are the hard problems, why is this research non trivial). For example, you could talk about measuring accurately the runtime performance, dependencies, the dynamic nature of JS etc.
 Several challenges make this research a technical challenge. First, using traditional techniques on hybrid apps and determining if speed ups have occurred requires using minifiers and profiling on a large corpus of applications. This means the applications must be retrieved, processed, and judged for improvements with a process we design. Second, we must determine new guidelines to use for hybrid applications that could potentially improve performance. Literature currently does not provide many recommendations for this type of application, as will be explained in the related work section. **DO WE DO THIS? Third, we must use similar techniques in the first step, testing the guidelines we propose by processing the applications and measuring performance, then reporting which guidelines make a difference.
 
+\subsection{d}
+Automatically running Google CC on many applications requires making the HTML files refer to the new compiled versions of the JavaScript  ** Will J needs to update
 
 \section{Proposed Solution}
-In order to show that the traditional web page guidelines do not apply to hybrid applications, we will first use the Google Closure Compiler to create a version of the hybrid application which is minified. Then we will test its speed with Android Device Monitor with the expectation that there will be miniscule improvements. We can use IBM Worklight to simulate the hybrid applications on a laptop or desktop computer. Below is a discussion of the current challenges with each required technology.
+In order to show that the traditional web page guidelines do not apply to hybrid applications, we will first use the Google Closure Compiler to create a version of the hybrid application which is minified. Then we will test its speed with Android Device Monitor with the expectation that there will be miniscule improvements. Below is a discussion of the current challenges with each required technology.
 
 
 \subsection{Google Closure Compiler}
-Google Closure Compiler is a great tool, but there are problems when compiling a large number of js files. JavaScript apps that didn’t plan on using the closure compiler might have a hard time with the compiler. The closure compiler only compiles JavaScript code, and therefore the user would need to change HTML scripts and other files to work with the newly compiled files. Also as part of a website, there might be multiple pages that use the same library of files. It would be nice to have file dependencies to help create better compiled files. We found some possible solutions, Google Closure Library and KJScompiler.
+Google Closure Compiler is a great tool, but there are problems when compiling a large number of js files. JavaScript apps that didn’t plan on using the closure compiler might have a hard time with the compiler. The closure compiler only compiles JavaScript code, and therefore the user would need to change HTML scripts and other files to work with the newly compiled files. Also as part of a website, there might be multiple pages that use the same library of files. It would be nice to have file dependencies to help create better compiled files. We will overcome this issue 
 
 
 \subsection{KJScompiler}
 It is a wrapper around Google Closure Compiler that allows annotations with information about dependencies to be used. KJSCompiler compiles the JavaScript files in the order that the dependencies dictate. This allows for the correct ordering of declarations when compiling over multiple files. The downside is that you need to have dependence information in each file, and hard to know the dependence of a system you don’t know. 
-
-\subsection{PageSpeed Insights}
-PageSpeed Insights is a Chrome extension that analyzes problems with JavaScript websites. This is helpful to see which traditional guidelines are used. We will be able to see the improvements with JavaScript websites, but since it is a Chrome extension, it cannot be used to directly measure the performance on mobile devices. But we can simulate these hybrid apps with IBM Worklight as described below.
-
-\subsection{IBM Worklight}
-Worklight is an extension to Eclipse which helps with developing mobile applications, including mobile web apps, hybrid apps, and native apps. We can use Worklight to simulate running a hybrid app on a laptop/desktop, then use PageSpeed Insights to measure the app instead of modifying PageSpeed Insights to work on a mobile device. We will have to load all of these applications in Eclipse on a local IBM Application Server, then argue that this configuration is representative of what happens on a phone.
 
 
 \subsection{Ineffective traditional guidelines}
