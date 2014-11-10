@@ -119,12 +119,23 @@ William Leslie\\
 % \keywords{ACM proceedings, \LaTeX, text tagging} % NOT required for Proceedings
 
 \section{Research overview}
-Mobile devices load entire JavaScript libraries when users browse the web. This can make the mobile device slow or unresponsive if the library is large and/or if the mobile device’s resources are limited. If a website is slow or unresponsive on a mobile device, users may look for another website to use or download an app instead of using the mobile browser. Traditional guidelines were made to improve load times and usability of JavaScript websites. JavaScript libraries are often minified to create smaller files allowing for faster download times for the files. Hybrid apps are mobile apps that use JavaScript where the files are saved on the device. This means that download times are not an issue and therefore file size is less of an issue for performance. 80\% of web page loading time is attributed to loading page resources and only 20\% is from back-end computations \cite{souders2008high}. Hybrid applications do not have to load source from a server and therefore do not have that concern. We plan to show that the traditional guidelines of minifying result in an insignificant improvement. Then we will suggest new guidelines that will work better for hybrid apps.
+Mobile devices load entire JavaScript libraries when users browse the web. This can make the mobile device slow or unresponsive if the library is large and/or if the mobile device’s resources are limited, which may lead users to look for another website to use or download an app instead of using the mobile browser. Traditional guidelines were made to improve load times and usability of these websites. JavaScript libraries are often minified to create smaller files allowing for faster download times for the files. 80\% of web page loading time is attributed to loading page resources and only 20\% is from back-end computations \cite{souders2008high}, so loading is a large concern for websites. Another approach to counter download times is hybrid applications; these store most of the JavaScript files on the device to avoid delays due to server communication. This means that the traditional guidelines for websites do not apply to hybrid applications.  To provide new guidelines, we propose the following research questions:
 
+RQ1: Do guidelines for the loading of websites on mobile devices apply to hybrid applications?
+RQ2: If not, what new guidelines can be provided to improve the performance of hybrid applications?
+
+\section{Motivating Example}
+John's hybrid application is slow, but it could be fast if Jim, the hybrid app designer, did what we said he should!!!
+Pictures!!!
+Motivation!!!
 
 \section{Technical Challenges}
+%For the next iteration, add a section about the technical challenges (i.e., what are the hard problems, why is this research non trivial). For example, you could talk about measuring accurately the runtime performance, dependencies, the dynamic nature of JS etc.
+Several challenges make this research a technical challenge. First, using traditional techniques on hybrid apps and determining if speed ups have occurred requires using minifiers and profiling on a large corpus of applications. This means the applications must be retrieved, processed, and judged for improvements with a process we design. Second, we must determine new guidelines to use for hybrid applications that could potentially improve performance. Literature currently does not provide many recommendations for this type of application, as will be explained in the related work section. **DO WE DO THIS? Third, we must use similar techniques in the first step, testing the guidelines we propose by processing the applications and measuring performance, then reporting which guidelines make a difference.
 
-In order to show that the traditional web page guidelines do not apply to hybrid applications, we must use the Google Closure Compiler, KJSCompiler, or something similar to create a version of the hybrid application which is minified. Then we must test its speed with something like PageSpeed Insights or mobileOK before and after minification with the expectation that there will be miniscule improvements. We can use IBM Worklight to simulate the hybrid applications on a laptop or desktop computer. Below is a discussion of the current challenges with each required technology.
+
+\section{Proposed Solution}
+In order to show that the traditional web page guidelines do not apply to hybrid applications, we will first use the Google Closure Compiler to create a version of the hybrid application which is minified. Then we will test its speed with Android Device Monitor with the expectation that there will be miniscule improvements. We can use IBM Worklight to simulate the hybrid applications on a laptop or desktop computer. Below is a discussion of the current challenges with each required technology.
 
 
 \subsection{Google Closure Compiler}
@@ -140,9 +151,6 @@ PageSpeed Insights is a Chrome extension that analyzes problems with JavaScript 
 \subsection{IBM Worklight}
 Worklight is an extension to Eclipse which helps with developing mobile applications, including mobile web apps, hybrid apps, and native apps. We can use Worklight to simulate running a hybrid app on a laptop/desktop, then use PageSpeed Insights to measure the app instead of modifying PageSpeed Insights to work on a mobile device. We will have to load all of these applications in Eclipse on a local IBM Application Server, then argue that this configuration is representative of what happens on a phone.
 
-
-
-\section{Proposed Process}
 
 \subsection{Ineffective traditional guidelines}
 First, we will use Google Closure Compiler to turn a hybrid app into a minified hybrid app. The closure compiler uses traditional guidelines for optimizing mobile web apps. Then we will test both the normal and minified versions of the hybrid apps. Our hypothesis is that the performance of normal and minified versions will be very similar. The traditional guidelines are used to create an optimized javascript files that are transferred over the internet to the user device. Unlike mobile web apps, hybrid apps have the JavaScript files on the device on execution. This means that file size and other minification guidelines might not affect performance as much as web apps. 
