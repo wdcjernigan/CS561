@@ -141,19 +141,19 @@ This software minifies John's JavaScript files and removes unused lines of code 
 He reasons that a smaller file would be quicker to parse than a large file.
 He uses this tool on all of his JavaScript files and pushes out the update.
 He continues to get complaints that the application is slow.
-Upon closer inspection he finds that Google Closure Compiler does not remove entire functions, even though many of them go unused.  
+Upon closer inspection, John finds that Google Closure Compiler does not remove entire functions, even though some of them go unused.  
 
 \section{Technical Challenges}
 %For the next iteration, add a section about the technical challenges (i.e., what are the hard problems, why is this research non trivial). For example, you could talk about measuring accurately the runtime performance, dependencies, the dynamic nature of JS etc.
-Several factors make this research a technically challenging.
+Several factors make this research technically challenging.
 First, using traditional techniques on hybrid apps and determining if speed ups have occurred requires minifying and profiling on a large corpus of applications.
 This means the applications must be retrieved, processed, and judged for improvements with a process we design.
 Second, we must determine new guidelines to use for hybrid applications that could potentially improve performance.
-Current literature does not provide many recommendations for this type of application, as will be explained in the related work section.
+Current literature does not provide many recommendations for this type of application, although PhoneGap developers do make some recommendations based on experience.
 Third, we must use similar techniques as in the first step, where we test the guidelines we propose by processing the applications and measuring their performance.  We will then report which guidelines make a difference.
 
 \subsection{Answering RQ1}
-% Automatically running Google CC on many applications requires making the HTML files refer to the new compiled versions of the JavaScript  ** Will J needs to update
+% Automatically running Google CC on many applications requires making the HTML files refer to the new compiled versions of the JavaScript
 To determine the (lack of) gains when using the Google Closure Compiler on a hybrid application, a nontrivial problem makes the process challenging.
 First, if we run the Closure Compiler on all of an application's JavaScript files at once, it combines them into one JavaScript file (which fits a recommendation at https://codedrop.com.au/blog/phonegap-performance-tips). 
 Then we must change the references in all the HTML files to include just this newly compiled JavaScript file instead of including all the old files.
@@ -165,15 +165,16 @@ In order to show that the traditional web page guidelines do not apply to hybrid
 Then we will test its speed with Android Device Monitor with the expectation that there will be miniscule improvements.
 Below is a discussion of the current challenges with each required technology.
 
+\subsection{Retrieving applications}
+First, we will build a corpus of applications to test our process. 
+We target PhoneGap applications, but need to determine which apps are open source. 
+Doing this manually requires searching for the applications in repositories hosted at sites like Github or Google Code.
+Determining that the correct application has been found potentially requires human intelligence (or is hard to automate) because one or more factors may confirm that the correct application has been found, including author name, images of the application, release dates, etc.
+Automating this process appears to be potentially possible, but using a simple automated process and just using the applications we can get is likely the best approach.
 
 \subsection{Google Closure Compiler}
-Google Closure Compiler is a great tool, but there are problems when compiling a large number of js files. 
-JavaScript apps that didn’t plan on using the closure compiler might have a hard time with the compiler. 
-The closure compiler only compiles JavaScript code, and therefore the user would need to change HTML scripts and other files to work with the newly compiled files. 
-Also, as part of a website there might be multiple pages that use the same library of files. 
-It would be nice to have file dependencies to help create better compiled files. 
-We will overcome this issue 
-
+After obtaining the applications, we will measure performance (loading speed, etc.) before and after modifying the application with the Google Closure Compiler. 
+Using this tool creates the challenges described in section Answering RQ1, including requiring modification of all HTML files to refer to the compiled JavaScript file(s), or compiling one JavaScript file at a time, reducing the Closure Compiler's effectiveness. 
 
 \subsection{KJSCompiler}
 KJSCompiler is a wrapper for Google Closure Compiler that allows the user to provide annotations with information about dependencies to be used.
@@ -181,6 +182,7 @@ When KJSCompiler is run, it compiles the JavaScript files in the order that the 
 This allows for the correct ordering of function and value declarations when compiling over multiple files.
 The downside to this software is that the user needs to have dependence information in each file. 
 This is worsened if the user does not understand the dependence structure of the target system very well. 
+Using the KJSCompiler in our case would require automating the determination of dependencies between files of an arbitrary file structure, which may be too complex considering the limited gains to be had.
 
 
 \subsection{Ineffective traditional guidelines}
