@@ -152,8 +152,13 @@ Second, we must determine new guidelines to use for hybrid applications that cou
 Literature currently does not provide many recommendations for this type of application, as will be explained in the related work section.
 **DO WE DO THIS? Third, we must use similar techniques in the first step, testing the guidelines we propose by processing the applications and measuring performance, then reporting which guidelines make a difference.
 
-\subsection{d}
-Automatically running Google CC on many applications requires making the HTML files refer to the new compiled versions of the JavaScript  ** Will J needs to update
+\subsection{Answering RQ1}
+% Automatically running Google CC on many applications requires making the HTML files refer to the new compiled versions of the JavaScript  ** Will J needs to update
+To determine the (lack of) gains when using the Google Closure Compiler on a hybrid application, a nontrivial problem makes the process challenging.
+First, if we run the Closure Compiler on all of an application's JavaScript files at once, it combines them into one JavaScript file (which fits a recommendation at https://codedrop.com.au/blog/phonegap-performance-tips). 
+Then we must change the references in all the HTML files to include just this newly compiled JavaScript file instead of including all the old files.
+If we run the Closure Compiler on each of the application's JavaScript files separately, the HTML modification is not required, but then the Closure Compiler cannot make gains in combining sections of code from across files, reducing its effectiveness. 
+So, it may be necessary to either try both approaches or find the best way to modify the HTML so the Closure Compiler is given an honest shot at making a difference.
 
 \section{Proposed Solution}
 In order to show that the traditional web page guidelines do not apply to hybrid applications, we will first use the Google Closure Compiler to create a version of the hybrid application which is minified.
