@@ -220,7 +220,7 @@ We also did some research and found some performance techniques used by Phonegap
 \section{Related Works}
 
 \subsection{Digua: Minifier and Obfuscator for Web Resources\cite{ciminiandigua} }
-Authors Alex Ciminian and Ciprian Dobre discuss their minifier tool Digua. 
+Ciminian and Dobre discuss their minifier tool Digua in \cite{ciminiandigua}. 
 Digua is a minifier which works for CSS, HTML, and JavaScript.  
 It will find correlations between these different languages to further reduce the size of these files.
 The paper states that 80\% of web page loading time is attributed to loading page resources and only 20\% is from back-end computations and the reduced file size will result in much increased web page responsiveness.
@@ -231,24 +231,27 @@ The method presented in the paper would only apply to applications which need to
 
 
 \subsection{Semi-Automatic Rename Refactoring for JavaScript\cite{feldthaus2013semi}}
-Authors Asger Feldthaus and Anders Moller discuss a method for renaming functions using a combination of static analysis and programmer input.
+% cut this one?
+Feldthaus and Moller discuss a method for renaming functions using a combination of static analysis and programmer input in \cite{feldthaus2013semi}.
 While this does not apply directly to our project, it does bring up issues involved with renaming in JavaScript.
 For instance, similarly named features of the code may be renamed when they should not be.
 This will lead to a lot of errors in the code.
 This is a limitation to minification methods as well, since, in order to maintain functionality, certain features such as functions cannot be renamed.
 
 \subsection{Modern JavaScript Project Optimizers\cite{zolotareva2014modern} }
-The authors of this paper discuss the state of the art of JavaScript optimizers.
+Zolotareva et. al. in \cite{zolotareva2014modern} discuss the state of the art of JavaScript optimizers.
 Tools discussed included JSMin, YUI Compressor, UglifierJS, Google Closure Compiler, and KJSCompiler and their respective benefits and drawbacks.
 For instance, KJSCompiler is an extension to Google Closure Compiler where the users can annotate dependencies between files.
 This is a useful tool to research, due to the fact that it may further reduce the size of JavaScript files and combine them into a single library.
+These tools could all fit in our process to determine if old guidelines do not create improvements for hybrid applications.
+With regard to scale of work for the term, we are currently considering just the Google Closure compiler.
 
 \subsection{Characterizing and Detecting Performance Bugs for Smartphone Applications\cite{liu2014characterizing} }
 This paper begins by presenting common patterns among performance bugs among popular, large scale Android applications.
 Then, the presents PerfChecker, a static analysis tool that looks for those performance bugs (20 of which were fixed by developers).
 This paper focuses on bugs relating to a native application’s local code and potentially very specific causes for those bugs, such as activating multiple features in a specific sequence.
 So, the guidelines presented here do not directly address hybrid mobile applications, although the approach or results could in some cases be adapted for hybrids.
-There is little mention of web language bugs.
+For instance, the general recommendation of recycling resources on a page instead of creating memory bloat by adding and deleting constantly can be derived from the memory bloat bug type in this paper.
 
 \subsection{High Performance Web Sites\cite{souders2008high}}
 The paper discussed the importance of front-end performance.
