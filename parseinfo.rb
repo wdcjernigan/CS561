@@ -38,7 +38,7 @@ apps.each {|devName, appsNames|
 				puts "\t"+"\thttps://github.com/"+repo
 				count[1]+=1
 			else
-				puts "\t"+"\t"+repo
+				# puts "\t"+"\t"+repo
 				count[2]+=1
 			end
 		}

@@ -1,0 +1,559 @@
+dpkpnm
+	Sametalu
+		*** https://github.com/dpkpnm/sametalu ***
+Saxsos Inc
+	Online Math Games
+Logic Sculptures
+	Mobile Words
+Aline Ebone
+	Unit Converter
+Sweet Sugar
+	Sweet Sugar
+		https://github.com/elektronaut/sugar
+		https://github.com/sebastien/sugar
+		https://github.com/montylounge/django-sugar
+		https://github.com/dexterbt1/cuisine_sweet
+		https://github.com/thetron/mongoid-enum
+		https://github.com/daemonl/go_sweetpl
+		https://github.com/phlipper/sugar-rails
+		https://github.com/mkhl/bash.sugar
+		https://github.com/ernbrn/sugar
+		https://github.com/mndrix/sweet
+Lori Azerrad
+	W8
+C-DUB Enterprises
+	Workout Challenge
+Happylife
+	Vampire Hunt
+zuHapps
+	Quotes of Che
+FLYACTS GmbH
+	Meet Magento
+Hiraqui
+	One Second Language
+Dito Endero Nakresna
+	Wisata Bogor
+Launchcard SpA
+	Launchcard
+Peter
+	PinYin Converter 
+Mohammad Qasim
+	1984
+AVLView
+	AVLView
+		https://github.com/dkhalife/AVLViewer
+Oxylane
+	Decathlon
+3H Games
+	Smash Pig
+Simone Rescio
+	Spell
+e-LET Kft
+	Sütipédia
+Apps Chopper
+	Password Shelter
+sweet sugar
+	Photo Sketch
+Shake It - Creative Software Solutions
+	Cloud Guide App
+Thrillcall
+	Thrillcall
+		*** https://github.com/thrillcall/thrillcall-api ***
+		https://github.com/jonathanleone/thrillcall-api
+		https://github.com/tomkit/thrillcall-exercise
+boostermedia
+	Cabinet Particular
+AwdLabs Est.
+	Filterbox
+Timetoolay
+	Circle Jump
+Konstantin Glazkov
+	Death Math
+sarah
+	Turtle Quest
+Jack He
+	Chune
+S2dio
+	Hitlist
+r3app, Inc.
+	Convertr : Units and Currency
+Aidan Jalali
+	Point Me There
+poulpi
+	Apéro?
+Calculator.net
+	Calculator Converter
+Stfalcon.com
+	Nizam
+Jeff Ellis
+	Weather Woman
+Aesthetic Development
+	solvesAll
+Technoduce
+	Grouper 
+Combustion Innovation
+	PUSH-Press Until Something Happens
+codelooksgood
+	colors - the game
+Creamos S&S
+	Conductores
+Mei Ji
+	Mei Ji
+		https://github.com/hc0519/JNM
+		https://github.com/zhaopeidi/meixiegou
+		https://github.com/qinfanpeng/mei_jing
+		https://github.com/ralbatr/MeiJia
+		https://github.com/QQHARRY/MeiJia
+		https://github.com/zhaozhengyan/JieMeiTao
+		https://github.com/zsgit/JieMeiTaoBao
+Code 'N' Pixels
+	Tappy
+Kakatsi Tedi 
+	Mytodolist
+CircleRide
+	CircleRide
+		https://github.com/developerdm/CircleRide_Static
+		https://github.com/developerdm/CircleRide_PHP
+AppsChopper
+	Real Life Calculator
+SPOT mobile ltd.
+	SPOT PRO
+SPOT Mobile ltd.
+	SPOT
+Apex Software
+	Student Companion
+Quemagalletas
+	Buñol App
+Imangi Studios
+	Temple Run 2
+IT Majlis of DawateIslami
+	Prayer Times
+Creative App Media
+	FreeBees
+huseyin celik
+	One Hundred
+Blake Plumb
+	2048 Fantasy
+		*** https://github.com/plumbblake/plumbblake.github.io ***
+SilkRoute/Entertainment
+	Entertainment
+Orange Marques dos Santos
+	Tetraminos
+		*** https://github.com/orangemarques/tetraminos ***
+Southside Interactive SAS
+	Nomoney
+Tech Charisma
+	Track My Payments
+DC Apps AS
+	Chess Tournament™
+The Business Game 
+	The Bullwhip game
+Chirag Leuva
+	Back To School
+S&S Technologies Solutions Corp.
+	LBS Mobile Application
+my own two hands
+	Drop Down
+Petter
+	Funny Number
+Innovocell
+	Crazy Patterns
+Henry Blackman
+	Chester
+webmobi
+	MYTEE
+Aricwithana
+	DOMLauncher
+		*** https://github.com/Aricwithana/DOMLauncher ***
+		*** https://github.com/Aricwithana/DOMLauncher2 ***
+vRad Games
+	Bible Verses
+Flink Labs
+	Playground Finder
+Ksoft
+	Private Diary
+RMG Software
+	Discover
+Survey Data Solutions
+	SurveyMe
+Tom Hromnik
+	Drink counter
+CarstenW
+	Pro Time Keeper
+Joao Pescada
+	Temppo
+SocialGym Inc
+	SocialGym
+Movencorp, Inc.
+	Moven
+r3app
+	iWeather
+Celcium UG
+	Wikiz
+BijoyTechnology
+	Apps Khoj
+Arne Lüllmann & Fabio Genoese GbR
+	Rises
+Aritz Peñalver
+	Decisions Now!
+TopTeam.ir
+	Body Block
+Elixel Ltd.
+	Qualia
+Oleksandr Zhuk
+	Phonegap CSS3 Demo
+		*** https://github.com/zhuk-aa/phonegap-css3-demo ***
+Kingsley Mitchell
+	Kpro App
+KNIApps
+	HIIT - Training Timer
+Crownie
+	Build Your Calculator
+AM SOFT
+	Bitconverter
+Kunets Artem
+	Colored Notes
+Cero y Uno
+	Granada Mobile Day
+Complitech Solutions Pvt. Ltd.
+	Easy Effects
+WNYC
+	WNYC
+		https://github.com/divisionbyzero/wnycms
+		*** https://github.com/wnyc/Timeline ***
+		https://github.com/veltman/fourscore
+		https://github.com/jkeefe/Custom-Viewer-for-DocumentCloud
+		https://github.com/flemwad/WNYCivicApp
+		*** https://github.com/wnyc/sensors ***
+		https://github.com/ezagroba/wnyc-books
+		*** https://github.com/wnyc/wnyc_dns ***
+		https://github.com/lilahrap/wnyc-form
+		*** https://github.com/wnyc/roku ***
+TegTech
+	Calculator
+Md Nasir Uddin Morol
+	Social Media Marketing
+Eugenio Mendoza Robaina
+	Splity
+University at Albany
+	UAlbany
+Locappy
+	Locappy
+		https://github.com/HaganTech/Locappy2
+Echidna
+	MRP
+Fco. Javier Martín Carrasco
+	Complementos Tabú
+Salient Solutions
+	Mobilite
+Kamesh Tagore
+	BeeTube
+BRC Mobile
+	My Diary - Secret Diary
+Andrew Campbell
+	Know The 92
+Markus Karjalainen
+	Pop the Balloons
+Klemen Ivsek
+	Tic Tac Tic
+Dienteazul
+	Perú de Moda
+Sunil Kumar
+	ShopMap
+BdR Games
+	Arrow Slider
+Squadra Technologies
+	Windows Active Directory Login
+Lets Nurture
+	 Expense Manager
+Creative-X Solutions
+	VAT Calculator
+Lost in Code
+	Cute Addict
+Jumangee
+	Heart of Ice
+PhoneGap with jQuery Mobile
+	PhoneGap with jQuery Mobile
+		https://github.com/davidrs/phonegap-template
+		https://github.com/hemantajax/phonegap
+		https://github.com/alejo8591/mobile_basic_course_ninjacodetv
+		https://github.com/briankj/phonegap_hello_world
+		https://github.com/oscar-anton/GapNote
+		https://github.com/gojay/phonegap-jquery-mobile
+		https://github.com/dinguangx/JQueryMobile
+		https://github.com/renandsiqueira/application-jquery-mobile
+		https://github.com/shanabus/jquerymobiletest
+		https://github.com/lssinc/phonegap-mobile-demo
+Mino
+	Mino
+		https://github.com/XiaoMi/minos
+		https://github.com/TeamCohen/MinorThird
+		https://github.com/minotiiku/mino
+		https://github.com/MinoruTeramura/Mino
+		https://github.com/Sammino/mino
+		https://github.com/Cliby/MIno
+		https://github.com/cupdir/MINO
+		https://github.com/egagnon/mino
+		https://github.com/hanakin/mino
+		https://github.com/uross/mino
+https://meraki.cisco.com/
+	Meraki
+HASS hub (Pvt) Ltd.
+	 eBook Reader and Downloader
+MoeJoe, LLC
+	Watch Where?
+othmane laklalech
+	best paper
+Pomelo Design Inc. / Bulls-I-Toy Inc.
+	ScanIt
+Pomelo Design Inc. / Prondo, LLC
+	PowerPitch
+Pomelo Design Inc. / PamConsult GmbH
+	PamFax
+42loops
+	Zanimo.js editor
+Sunny Appz
+	Love Quotes and Pictures
+eTobb, Inc.
+	eTobb
+PappCo
+	Operation: Numbers
+bhima apps
+	Fancy Text For Chat
+Shaun Russell
+	Noon Pacific
+Punos Mobile Ltd
+	Meeting Assistant ®
+Factor
+	Gosh
+Muxam
+	Forgiveness
+Kristian Polso
+	Funny MEmes
+Wizzindo
+	Gem Breaker
+Jonathan Ferguson 
+	Fooddrop
+Pollet Alexandre
+	7 Minutes Workout
+YoYo Button
+	YoYo Button
+		https://github.com/tellafriend/phonegap-rewardwallet
+Natural Solutions
+	M-EOL 
+		*** https://github.com/NaturalSolutions/MEOL ***
+Urucas
+	Cineros
+		*** https://github.com/Urucas/cineros ***
+		*** https://github.com/Urucas/cineros-firefoxos ***
+JewonAgency
+	Confession
+Samer Albahra
+	Sprinklers
+slayeraeb studio
+	LoL Champ
+Zample.me
+	Zample
+Oscar de Dios
+	Note Board
+OnSpec
+	OnSpec
+		https://github.com/dtamai/onSpec
+AlphaMind Tech
+	Multiplication Tables & Quiz
+goFLUENT Group SA
+	goFLUENT
+happy
+	Ke Tang
+bitbof
+	Webchemy
+		*** https://github.com/bitbof/webchemy ***
+Jack Zakaria
+	CourseTalk
+Spotware
+	Spotware cTrader
+		https://github.com/redrhino/cAlgo.Base
+George Kung
+	Open House USA
+Worlds Widest Web
+	yosi
+Smart-mind Network LLC
+	Smart Browser
+Siddhartha Ramesh
+	TIC TAC TECH
+EdgeElement
+	Triform
+Spoon Publishing
+	Samhall
+Philippe Bousquet
+	drkSlide
+Mind Dots Software Systems Pvt Ltd
+	MindPro
+Mohammed Kashmiry
+	Pagee
+Bastaware
+	Stock portfolio
+Vincenzo Tilotta
+	WebLive
+eMob
+	InstaGeo
+Fergal Condron
+	Live Gaelic
+Moposa
+	Moposa
+		https://github.com/paulaweir/moposaTest
+		https://github.com/paulaweir/eventovateTest
+hippopunk / EuroAirport
+	EuroAirport
+Sapientiam Studio
+	Image Express
+Girl Geek Sydney
+	She Hacks
+		https://github.com/GeorgiCodes/sheHacksApp
+Kuona
+	Kuona
+		https://github.com/nicolas17/kuona
+		*** https://github.com/kuona/kuona ***
+		*** https://github.com/kuona/kuona.github.io ***
+		https://github.com/GITenberg/Rolf-salollaEr--n-partiopojan-Kuonab-intiaanin-ja-Skookum-koiran-seikkailut_45453
+Get The Radical
+	Swipeed
+Bhuvanalakshmi
+	Friendship Forever
+bartolomeo sorrentino
+	cordova-poc
+Dynamic Upgrade
+	Lunch Time Timer
+DC Apps
+	Chess Tournament™
+Astute Software
+	Print My Contacts
+Philip Cesar B. Garay
+	Versiculo
+IMV Academy
+	Project Management - PMP
+Gresilab
+	YouTim
+Karen
+	Online Dietitian
+Clear Books plc
+	Clear Books
+Disanweb
+	Precio de gasolinas
+vtecrm ltd
+	VTECRM
+CakeMail
+	CakeMail
+		https://github.com/Wolli32/CakeMail
+		https://github.com/gseguinbourgeois/cakemail
+		https://github.com/guiltry/api-cakemail
+		https://github.com/vlamanna/CakeMail-Careers
+		*** https://github.com/cakemail/cakemail.github.io ***
+		https://github.com/wp-plugins/cakemail-subscription-form
+		https://github.com/alexandredes/cakemail-technical-test
+		https://github.com/mrdj07/cake_demo_api
+		https://github.com/joemingna/Presentation-CakeMail
+		*** https://github.com/cakemail/Wrapper-API-NodeJS ***
+Drew Dahlman
+	GifMe
+Olga Turbina
+	Picorg
+Addasoft
+	Mobile MusicDB
+Snippet Pages
+	Sample
+Immanitas Entertainment
+	KICK THE BALL
+Roodeo SARL for Goot SAS
+	Goot
+Leviy.com
+	Leviy
+Carlos Tosta
+	SmartCalc
+Solutek Soluciones Integrales S.A.S
+	Bites
+Dr Appenheimer
+	Japxlate
+		*** https://github.com/drappenheimer/japxlate-android ***
+Carlos A. Rivera M.
+	BadJ
+Dynarte Technologies
+	Snatch
+CMD Enterprises
+	RPi Hardware Guide
+reality bytes neue medien gmbh
+	InfoType
+HASS hub (Pvt) Limited
+	Math 4 Kids
+Kris Erickson 
+	Recipe Folder
+French Institute / Cellules
+	Albert Camus
+VitebMobileApps
+	Parental Access
+falldeaf
+	Psychic Squid
+Fraynework Limited
+	Lectio Divina
+Leednetz
+	Explore NIgeria
+toolwiz
+	Toolwiz Cleaner
+		*** https://github.com/toolwiz123/toolwiz-cleaner ***
+George Kung / LetsPoll.com
+	LetsPoll
+Ian Jennings
+	Mote.io
+		*** https://github.com/ianjennings/mote.io-extension ***
+		*** https://github.com/ianjennings/mote.io-youtube ***
+		*** https://github.com/ianjennings/mote.io-leapmotion ***
+Alin Voinea
+	stiam.ro
+Manos Koufakis
+	Find The Movie
+BookCrossing App
+	BookCrossing App
+		https://github.com/treeangular/BookCrossingAppWeb
+Nudge, LLC
+	Nudge
+Christian Grobmeier
+	Time & Bill
+Alheka Technology AB
+	Seven Time
+AirHelp
+	AirHelp
+		https://github.com/arpit/openpyro-airhelpers
+Useappility
+	Periodic Table
+Ququplay
+	Literaki
+Good World Games
+	Guess Charades
+Diogo Carleto
+	SList
+Tamara Gabriel, Doodlebox Media
+	Password Gen
+Artsource
+	Gurney Residence
+Darshan Rane
+	Chasing Lights
+JockSpin
+	JockSpin
+		https://github.com/wp-plugins/jockspin-sports-headlines
+Yan
+	Mobogenie
+Eric Burnley
+	Genesis Church
+Marius Fink (github.com/marfnk)
+	Mobile Sensor Web
+Neeraj Kumar
+	Outside
+Gregory Bober
+	Tangorin
+Bob enein
+	Wild Bob
+guzzMobile
+	Daily Memo
+24
+68
+1431
