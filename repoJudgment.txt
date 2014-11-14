@@ -6,7 +6,11 @@ https://github.com/orangemarques/tetraminos
 SOME JS https://github.com/Aricwithana/DOMLauncher2
 https://github.com/wnyc/Timeline
 https://github.com/veltman/fourscore
-
+https://github.com/NaturalSolutions/MEOL
+https://github.com/bitbof/webchemy
+SOME JS https://github.com/kuona/kuona
+PHONEGAP https://github.com/drappenheimer/japxlate-android
+https://github.com/ianjennings/mote.io-leapmotion
 ==============================================================================
 END YES
 ==============================================================================
@@ -30,6 +34,13 @@ HTML ONLY https://github.com/jkeefe/Custom-Viewer-for-DocumentCloud
 JAVA https://github.com/flemwad/WNYCivicApp
 ONLY 131 LINES JS NO https://github.com/ezagroba/wnyc-books
 HTML ONLY https://github.com/lilahrap/wnyc-form
+https://github.com/kuona/kuona.github.io
+SMALL https://github.com/cakemail/cakemail.github.io
+SMALL, MAYBE IF WE ARE SHORT https://github.com/cakemail/Wrapper-API-NodeJS
+https://github.com/toolwiz123/toolwiz-cleaner
+JS FROM THIRD PARTIES? https://github.com/ianjennings/mote.io-extension
+SMALL? 356 LOC JS https://github.com/ianjennings/mote.io-youtube
+
 ==============================================================================
 END NO
 ==============================================================================
