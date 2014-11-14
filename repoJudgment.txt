@@ -1,0 +1,35 @@
+==============================================================================
+YES:
+==============================================================================
+https://github.com/plumbblake/plumbblake.github.io
+https://github.com/orangemarques/tetraminos
+SOME JS https://github.com/Aricwithana/DOMLauncher2
+https://github.com/wnyc/Timeline
+https://github.com/veltman/fourscore
+
+==============================================================================
+END YES
+==============================================================================
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+==============================================================================
+NO:
+==============================================================================
+EMPTY https://github.com/dpkpnm/sametalu
+RUBY ONLY https://github.com/thrillcall/thrillcall-api
+OLD, NO https://github.com/Aricwithana/DOMLauncher
+DEMO, PROBS NOT https://github.com/zhuk-aa/phonegap-css3-demo
+RUBY, NO https://github.com/divisionbyzero/wnycms
+OTHER LANGS, NO https://github.com/wnyc/sensors
+NO https://github.com/wnyc/wnyc_dns
+NO https://github.com/wnyc/roku
+HTML ONLY https://github.com/jkeefe/Custom-Viewer-for-DocumentCloud
+JAVA https://github.com/flemwad/WNYCivicApp
+ONLY 131 LINES JS NO https://github.com/ezagroba/wnyc-books
+HTML ONLY https://github.com/lilahrap/wnyc-form
+==============================================================================
+END NO
+==============================================================================
