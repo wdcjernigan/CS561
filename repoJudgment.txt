@@ -1,16 +1,12 @@
 ==============================================================================
 YES:
 ==============================================================================
-https://github.com/plumbblake/plumbblake.github.io
-https://github.com/orangemarques/tetraminos
-SOME JS https://github.com/Aricwithana/DOMLauncher2
-https://github.com/wnyc/Timeline
-https://github.com/veltman/fourscore
-https://github.com/NaturalSolutions/MEOL
-https://github.com/bitbof/webchemy
-SOME JS https://github.com/kuona/kuona
-PHONEGAP https://github.com/drappenheimer/japxlate-android
-https://github.com/ianjennings/mote.io-leapmotion
+PHONEGAP: https://github.com/orangemarques/tetraminos
+PHONEGAP (Apache Cordova): https://github.com/Aricwithana/DOMLauncher2
+PHONEGAP: https://github.com/drappenheimer/japxlate-android
+PHONEGAP: https://github.com/jcesarmobile/Gijon-Vinos-y-Tapas
+PHONEGAP, NO CONFIG.XML: https://github.com/wikimedia/WikipediaMobile
+
 ==============================================================================
 END YES
 ==============================================================================
@@ -22,6 +18,41 @@ END YES
 ==============================================================================
 NO:
 ==============================================================================
+NO CONFIG.XML https://github.com/plumbblake/plumbblake.github.io
+NO CONFIG.XML https://github.com/wnyc/Timeline
+NO CONFIG.XML https://github.com/veltman/fourscore
+NO CONFIG.XML https://github.com/NaturalSolutions/MEOL
+NO CONFIG.XML https://github.com/bitbof/webchemy
+
+NO CONFIG.XML
+NO CONFIG.XML
+NO CONFIG.XML
+NO CONFIG.XML
+NO CONFIG.XML
+NO CONFIG.XML
+NO CONFIG.XML
+
+not phonegap https://github.com/sebastien/sugar
+not phonegap https://github.com/phlipper/sugar-rails
+not phonegap https://github.com/ernbrn/sugar
+not phonegap https://github.com/developerdm/CircleRide_Static
+not phonegap 
+not phonegap 
+not phonegap 
+not phonegap 
+not phonegap 
+not phonegap 
+not phonegap 
+not phonegap 
+anything from PhoneGap with jQuery Mobile looks like a template or demo
+    No config.xml but it is called a phonegap app, might be a template
+        https://github.com/hemantajax/phonegap
+        https://github.com/alejo8591/mobile_basic_course_ninjacodetv
+PHONEGAP DEMO APP, SO MAYBE NO: https://github.com/briankj/phonegap_hello_world
+TEMPLATE FOR PHONEGAP https://github.com/davidrs/phonegap-template
+
+LEAPMOTION? https://github.com/ianjennings/mote.io-leapmotion
+MOSTLY JAVA, NO https://github.com/kuona/kuona
 EMPTY https://github.com/dpkpnm/sametalu
 RUBY ONLY https://github.com/thrillcall/thrillcall-api
 OLD, NO https://github.com/Aricwithana/DOMLauncher
@@ -32,11 +63,11 @@ NO https://github.com/wnyc/wnyc_dns
 NO https://github.com/wnyc/roku
 HTML ONLY https://github.com/jkeefe/Custom-Viewer-for-DocumentCloud
 JAVA https://github.com/flemwad/WNYCivicApp
-ONLY 131 LINES JS NO https://github.com/ezagroba/wnyc-books
+NOT PHONEGAP https://github.com/ezagroba/wnyc-books
 HTML ONLY https://github.com/lilahrap/wnyc-form
 https://github.com/kuona/kuona.github.io
-SMALL https://github.com/cakemail/cakemail.github.io
-SMALL, MAYBE IF WE ARE SHORT https://github.com/cakemail/Wrapper-API-NodeJS
+NOT PHONEGAP https://github.com/cakemail/cakemail.github.io
+NOT PHONEGAP https://github.com/cakemail/Wrapper-API-NodeJS
 https://github.com/toolwiz123/toolwiz-cleaner
 JS FROM THIRD PARTIES? https://github.com/ianjennings/mote.io-extension
 SMALL? 356 LOC JS https://github.com/ianjennings/mote.io-youtube
