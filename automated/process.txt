@@ -1,0 +1,2 @@
+cp -rf normal/tetraminos compiled
+
