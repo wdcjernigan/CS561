@@ -32,7 +32,7 @@ Dir.chdir(indexLocation){
 	doc = Nokogiri::XML(f)
 	str = ""
 	doc.css("script").each do |node|
-		if node["src"] != "cordova.js" then
+		if node.key?("src") && node["src"] != "cordova.js" && node["src"] != "phonegap.js"  then
 			str += node["src"] + " "
 			node.remove
 		end
