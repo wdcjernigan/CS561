@@ -447,12 +447,12 @@ CakeMail
 	-	https://github.com/Wolli32/CakeMail
 	-	https://github.com/gseguinbourgeois/cakemail
 	-	https://github.com/guiltry/api-cakemail
-	+	https://github.com/vlamanna/CakeMail-Careers
+	-	https://github.com/vlamanna/CakeMail-Careers
 	+	*** https://github.com/cakemail/cakemail.github.io ***
-	+	https://github.com/wp-plugins/cakemail-subscription-form
+	-	https://github.com/wp-plugins/cakemail-subscription-form
 	-	https://github.com/alexandredes/cakemail-technical-test
 	-	https://github.com/mrdj07/cake_demo_api
-	+	https://github.com/joemingna/Presentation-CakeMail
+	-	https://github.com/joemingna/Presentation-CakeMail
 	+	*** https://github.com/cakemail/Wrapper-API-NodeJS ***
 Drew Dahlman
 	GifMe
@@ -513,7 +513,7 @@ Manos Koufakis
 	Find The Movie
 BookCrossing App
 	BookCrossing App
-	+	https://github.com/treeangular/BookCrossingAppWeb
+	-	https://github.com/treeangular/BookCrossingAppWeb
 Nudge, LLC
 	Nudge
 Christian Grobmeier
