@@ -42,8 +42,10 @@ Dir.chdir(indexLocation){
 	%x[java -jar ~/Closure/compiler.jar --js_output_file=out.js #{str}]
 	s = Nokogiri::XML::Node.new "script", doc
 	s["src"] = "out.js"
+	s["type"] = "text/javascript"
 	s2 = Nokogiri::XML::Node.new "script", doc
 	s2["src"] = "out.js"
+	s2["type"] = "text/javascript"
 
 	doc.css("head")[0].add_child(s)
 	doc.css("body")[0].add_child(s2)
