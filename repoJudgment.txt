@@ -6,6 +6,9 @@ PHONEGAP (Apache Cordova): https://github.com/Aricwithana/DOMLauncher2
 PHONEGAP: https://github.com/drappenheimer/japxlate-android
 PHONEGAP: https://github.com/jcesarmobile/Gijon-Vinos-y-Tapas
 PHONEGAP, NO CONFIG.XML: https://github.com/wikimedia/WikipediaMobile
+PHONEGAP, NO CONFIG.XML OR INDEX.HTML: https://github.com/tellafriend/phonegap-rewardwallet
+PHONEGAP, NO CONFIG.XML: https://github.com/paulaweir/moposaTest
+PHONEGAP, NO CONFIG.XML: https://github.com/GeorgiCodes/sheHacksApp
 
 ==============================================================================
 END YES
@@ -24,26 +27,14 @@ NO CONFIG.XML https://github.com/veltman/fourscore
 NO CONFIG.XML https://github.com/NaturalSolutions/MEOL
 NO CONFIG.XML https://github.com/bitbof/webchemy
 
-NO CONFIG.XML
-NO CONFIG.XML
-NO CONFIG.XML
-NO CONFIG.XML
-NO CONFIG.XML
-NO CONFIG.XML
-NO CONFIG.XML
-
 not phonegap https://github.com/sebastien/sugar
 not phonegap https://github.com/phlipper/sugar-rails
 not phonegap https://github.com/ernbrn/sugar
 not phonegap https://github.com/developerdm/CircleRide_Static
-not phonegap 
-not phonegap 
-not phonegap 
-not phonegap 
-not phonegap 
-not phonegap 
-not phonegap 
-not phonegap 
+
+NOPE https://github.com/treeangular/BookCrossingAppWeb
+NOPE https://github.com/arpit/openpyro-airhelpers
+cakemail = no
 anything from PhoneGap with jQuery Mobile looks like a template or demo
     No config.xml but it is called a phonegap app, might be a template
         https://github.com/hemantajax/phonegap
