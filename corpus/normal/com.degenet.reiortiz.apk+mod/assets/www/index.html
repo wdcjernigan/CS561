@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+     
+    <script src="scripts/cordova-2.0.0.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="scripts/jQueryMobile/jquery.mobile-1.1.1.css" />	
+    <link rel="stylesheet" href="scripts/code.photoswipe-3.0.4/3.0.4/photoswipe.css" />
+	<script src="scripts/jQuery/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="scripts/jQueryMobile/jquery.mobile-1.1.1.js" type="text/javascript"></script>
+	<!-- photo swipe -->
+    <script src="scripts/code.photoswipe-3.0.4/3.0.4/lib/klass.min.js" type="text/javascript"></script>
+    <script src="scripts/code.photoswipe-3.0.4/3.0.4/code.photoswipe.jquery-3.0.4.min.js" type="text/javascript"></script> 
+	<!-- http://dev.jtsage.com/jQM-SimpleDialog/demos2/popup.html -->
+    <link rel="stylesheet" type="text/css" href="scripts/simpledialog2/jquery.mobile.simpledialog.css" /> 
+	<script type="text/javascript" src="scripts/simpledialog2/jquery.mobile.simpledialog2.js"></script>
+		
+	<!-- *** remote includes *** -->
+	<link rel="stylesheet" href="http://artistamovil.com/preview/css/main.css" />
+	<link rel="stylesheet" href="http://artistamovil.com/preview/games/puzzlegame/css/puzzle-game.css" /> 		 
+    <script src="http://artistamovil.com/preview/scripts/artistamovil.js?1" type="text/javascript"></script> 
+        
+    <script type="text/javascript">
+    	
+    	// ******** ARTIST USERNAME ********* 
+    	//
+    	document.artist = 'reiortiz';    	
+    	//
+    	// **********************************
+    	document.dataUrl = 'http://artistamovil.com/apps/?a=' + document.artist + '&d=';
+    	/*
+		document.adIsTest = false;		
+		document.adSiteIdTest = '4028cba631d63df10131e1d3191d00cb';
+		document.adSiteId = '4028cbff38989ad10138a5e5684b03dc';		
+		document.siteId = (document.adIsTest)?document.adSiteIdTest:document.adSiteId;		
+		*/
+		
+		//window.alert = function(){return null;}; // disable alerts
+		  		 
+		// Wait for PhoneGap to load
+        //
+        document.addEventListener("deviceready", onDeviceReady, false);
+		
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+			document.addEventListener("resume", onResume, false);
+			$('#loadingSpinner').show();
+			if(!checkConnection()) return;
+            DataLoader.loadData(document.dataUrl);
+			document.addEventListener("menubutton", displayMenu, false);
+            
+        }
+        
+        $(document).on('pagechange', function () {  
+        	var $adContainer = $(this).find('.ad-container');
+        	if($adContainer.length > 0) {
+        		$adContainer.append($('#mainAd'));
+        	}			
+        });        
+        
+        function onResume() {			
+			if(!checkConnection()) return;
+			if(typeof DataLoader == "undefined") {
+				$.ajax({
+					url:"http://artistamovil.com/preview/css/main.css",
+					success:function(data){
+						 //$("<style></style>").appendTo("head").html(data);
+						 $.ajax({
+							url:"http://artistamovil.com/preview/games/puzzlegame/css/puzzle-game.css",
+							success:function(data){
+								 //$("<style></style>").appendTo("head").html(data);
+								 $.getScript('http://artistamovil.com/preview/scripts/artistamovil.js', function() { loadData(); });
+							}
+						});
+					}
+				});
+			} else {
+				loadData();
+			}
+        }
+		
+		function loadData() {
+			if(DataLoader.resuming) return;
+            DataLoader.resuming = true;
+            if(!DataLoader.loaded) DataLoader.loadData(document.dataUrl);
+		}
+		
+		function checkConnection() {		
+			if (!navigator.onLine) {
+				navigator.notification.confirm(
+				   'Necesita acceso al Internet.',  // message
+				   function (btn) {					   
+					   return false;
+				   },
+				   'Alerta',
+				   'Ok'
+				   );
+			} else {
+				return true;
+			}
+		}
+
+        $(document).ready(function () {            
+			if(document.location.href.indexOf('workspace') > -1) {				
+				DataLoader.loadData(document.dataUrl);
+            }
+        });
+        
+        
+        
+	</script>
+	
+	
+</head>
+<body  style="background-color: #000;">
+
+	<div id="loadingSpinner" class="spinner">
+        <div>
+            <img src="images/loading.gif" />
+        </div>
+  	</div>
+  	<div id="hiddenAdContainer" style="display: none;">
+  		<div id="mainAd" class="ad-slot">
+			<div id="amAd"></div>
+		</div>
+  	</div>
+    <!-------------- Inicio -------------->
+	<section id="home"  data-role="page">	
+		<header data-role="header" data-position="fixed" data-tap-toggle="false">			
+			<div><span class="artistname"></span></div>          
+		</header>
+		<div id="homeContent" data-role="content" style="height: 100%; -webkit-background-size: cover; -moz-background-size: cover;	-o-background-size: cover;	background-size: cover; background-repeat: no-repeat; background-position: 50% 1px;">		
+			<ul id="lsMore">                
+            </ul>
+		</div>		
+		<div data-role="footer" data-position="fixed" data-id='mainFooter'>	
+        	<div id="dvHomeMusicPlayer">
+            	<a id="playMain" href="#" class="player-button" onclick="AudioPlayer.playAudio();"><img src="images/play.png" /></a>
+                <a id="stopMain" href="#" class="player-button" onclick="AudioPlayer.stopAudio();"><img src="images/pause.png" /></a>
+                <a id="playNextMain" href="#" class="player-button" onclick="AudioPlayer.playNext();"><img src="images/next.png" /></a>
+                <div id="songNameMain"></div>
+            </div>	
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#music" data-icon="custom-music" data-transition="slide">M&uacute;sica</a></li>					
+                    <li><a href="#news" data-icon="custom-news" data-transition="slide">Noticias</a></li>
+                    <li><a href="#photos" data-icon="custom-photos" data-transition="slide">Fotos</a></li>
+                    <li><a href="#videos" data-icon="custom-videos" data-transition="slide">Videos</a></li>
+					<li><a href="javascript: displayMore();" data-icon="custom-more">M&aacute;s</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+	</section>
+    
+    <!-------------- Music -------------->
+	<section id="music" data-role="page">
+		<header data-role="header" data-position="fixed" data-tap-toggle="false">
+			<a href="#home" data-icon="home" data-direction="reverse" data-transition="slide">Inicio</a>
+			<h1>M&uacute;sica</h1>            
+		</header>
+		<div data-role="content" style="">			
+            <ul id="lsSongs" data-role="listview" data-split-theme="d" data-split-icon="custom-shopping-cart">
+            </ul>
+		</div>
+        <div data-role="footer" data-position="fixed" data-id='mainFooter'>
+        	<div class="ad-container">				
+			</div>		
+			<div id="dvMusicPlayer">
+            	<a id="play" href="#" class="player-button" onclick="AudioPlayer.playAudio();"><img src="images/play.png" /></a>
+                <a id="stop" href="#" class="player-button" onclick="AudioPlayer.stopAudio();"><img src="images/pause.png" /></a>
+                <a id="playNext"href="#" class="player-button" onclick="AudioPlayer.playNext();"><img src="images/next.png" /></a>
+                                
+                <div id="songName"></div>
+                <p id="audio_position" style="display: inline;"></p>
+        	</div>
+		</div><!-- /footer -->
+	</section>
+    
+    <!-------------- News -------------->
+	<section id="news" data-role="page">
+		<header data-role="header"  data-position="fixed">
+        	<a href="#home" data-icon="home" data-direction="reverse" data-transition="slide">Inicio</a>
+			<h1>Noticias</h1>            	
+		</header>
+		<div data-role="content">
+        	<ul id="lsNews" data-role="listview" >            
+            </ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-id='mainFooter'>		
+			
+		</div><!-- /footer -->
+	</section>	 
+	<section id="newsDetail" data-role="page"  data-position="fixed">
+		<header data-role="header"  data-position="fixed">
+        	<a href="#news" data-icon="back" data-direction="reverse" data-transition="slide">Volver</a>
+			<h1>Noticias</h1>
+		</header>
+		<div data-role="content">
+        	<div id="newsDetailContent"></div>
+            <a id="newsDetailMore" href="#" data-role="button" data-mini="true" data-icon="custom-more">Ver M&aacute;s</a>
+		</div>
+		<div data-role="footer" data-position="fixed" data-id='mainFooter'>
+        	<div class="ad-container">				
+			</div>
+		</div><!-- /footer -->
+	</section>	
+ 
+    
+    <!-------------- Photos -------------->
+	<section id="photos" data-role="page" class="gallery-page" >
+		<header data-role="header"  data-position="fixed">
+        	<a href="#home" data-icon="home" data-direction="reverse" data-transition="slide" rel="external">Inicio</a>
+			<h1>Fotos</h1>
+		</header>
+		<div id="photosContent" data-role="content" style="text-align: center; line-height: 1; background-color: #000;">
+        	<ul id="Gallery" class="gallery"></ul>
+		</div>		
+	</section>
+
+    <!-------------- Videos -------------->
+	<section id="videos" data-role="page">
+		<header data-role="header"  data-position="fixed">
+        	<a href="#home" data-icon="home" data-direction="reverse" data-transition="slide">Inicio</a>
+			<h1>V&iacute;deos</h1>
+		</header>
+		<div data-role="content">
+            <ul id="lsVideos" data-role="listview" data-split-icon="gear" data-split-theme="d">
+                
+            </ul>
+		</div>		
+	</section>
+	
+    <!-------------- Contact ------------->
+    <section id="contact" data-role="page"  data-position="fixed" style="-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;	background-size: cover; background-repeat: no-repeat; background-position: 50% 1px;">
+		<header data-role="header"  data-position="fixed">
+        	<a href="#home" data-icon="home" data-direction="reverse" data-transition="slide" rel="external">Inicio</a>
+			<h1>Contacto</h1>
+		</header>
+		<div data-role="content">
+            <ul id="ulContact" data-role="listview" data-inset="true" style="opacity: .8;">
+                <li>    
+                    <img src="images/manager.png" /><span class="contact-label">Manejador</span><div id="manager"  class="contact-field"></div>
+                </li>                                
+                <li>                    
+                    <img src="images/phone.png" /><span class="contact-label">Tel&eacute;fono</span> <div id="phone" class="contact-field"></div>
+                </li>
+                <li>    
+                    <img src="images/email.png" /><span class="contact-label">Email</span> <div id="email"  class="contact-field"></div>
+                </li>
+                <li>
+                    <img src="images/label.png" /><span class="contact-label">Casa Disquera</span><div id="label"  class="contact-field"></div>
+                </li>                    
+            </ul>
+            <div class="credits">
+            	<a href="http://www.artistamovil.com" target="_top"><img src="images/credits.png" style="border: 0px;" /></a>
+            </div>
+		</div>
+	</section>	
+	
+	<!-------------- Game ------------->
+    <section id="game" data-role="page"  data-position="fixed">    	
+		<header data-role="header"  data-position="fixed">
+        	<a href="#home" data-rel="" data-icon="back" data-direction="reverse" data-transition="slide" rel="external">Regresar</a>
+			<h1>Juego</h1>
+		</header>		
+		<div id="game-content" data-role="content" >
+			<div id="puzzle-container">
+				<div><!-- DO NOT REMOVE THIS DIV. A BUG MISTERIOUSLY APPEARS IF REMOVED. WEIRD. --></div>
+	            <div class="puzzle">
+					<img id="puzzle-img" src="" />				 
+				</div>
+			</div>
+			<div id="puzzle-timer-container" stype="margin-top: 15px;">
+				<span id="puzzle-timer">
+					&nbsp;
+				</span>
+				<a href="#" id="btStartGame" data-role="button" data-inline="true">
+					Comenzar
+				</a>
+				<a href="#" id="btGetNewGameImage" data-role="button" data-inline="true" data-icon="refresh" data-iconpos="notext">
+					&nbsp;
+				</a>				
+			</div>
+			<div id="highscore">
+				<ul id="ulHighscore" >
+					<li style="">Los mejores 10 <hr></li>				
+				</ul>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-id='mainFooter'>
+        	<div class="ad-container">				
+			</div>
+		</div><!-- /footer -->
+	</section>
+	
+	<!-------------- Wall ------------->
+    <section id="wall" data-role="page"  data-position="fixed">
+		<header data-role="header"  data-position="fixed">
+        	<a href="#home" data-icon="home" data-direction="reverse" data-transition="slide" rel="external">Inicio</a>
+			<h1>Muro</h1>			
+			<a href="#" id="refreshWallBtn" data-icon="refresh">Refrescar</a>
+		</header>
+		<div data-role="content">	
+			<div class="ad-container" style="position: relative; margin-top: -5px;">				
+			</div>		
+            <div id="lsWall">
+            </div>
+			<div data-role="footer" data-position="fixed" data-id='mainFooter'>					
+	        	<div id="newWallPostFields">
+					<input id="tbNewWallPostName" name="tbNewWallPostName" placeholder="Nombre o apodo" maxlength="15" />
+					<input id="tbNewWallPostMessage" name="tbNewWallPostMessage" placeholder="Mensaje" maxlength="150" />
+					<!-- <textarea id="tbNewWallPostMessage" name="tbNewWallPostMessage" cols="40" rows="2"  maxlength="150"  placeholder="Mensaje" style="margin-top: 10px;"></textarea> -->
+					<input id="btPostWallMessage" type="button" value="Postear" />
+				</div>
+				<div data-role="navbar" data-iconpos="top">
+					<ul>
+						<li><a href="#" id="btWritePost" data-icon="add">Escribir</a></li>
+					</ul>	
+				</div>
+			</div><!-- /footer -->
+		</div>		
+	</section>	
+	
+</body>
+</html>

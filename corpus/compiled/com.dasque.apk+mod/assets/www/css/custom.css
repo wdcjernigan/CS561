@@ -1,0 +1,114 @@
+.ui-page
+{
+    background: #FFF;
+}
+
+.ui-btn { min-width: 130px;}
+
+
+.center-wrapper
+{
+    text-align: center;
+}
+
+.center-wrapper *
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h2 a
+{
+    text-decoration: none;
+
+    color: #333333;
+}
+
+.ui-title, .ui-btn-text
+{
+    font-weight: normal;
+}
+
+h2
+{
+    font-weight: normal;
+}
+
+.buy_on_amazon
+{
+    background-color: orange;
+}
+
+.ui-collapsible-heading-toggle
+{
+    background-color: #DFD;
+}
+
+.ui-content
+{
+    padding-top: 0px;
+}
+
+.about_text
+{
+    font-size: 70%;
+}
+
+
+h3
+{
+    font-size: .7em;
+}
+
+h2
+{
+    margin-bottom: .2em;
+    line-height: .95;
+}
+
+.product_price
+{
+    color: #900;
+    font-weight: 700;
+    margin-top: 0em;
+    margin-bottom: 0.1em;
+}
+
+
+.spacer
+{
+    min-height: 2em;
+
+}
+
+.ad_block
+{
+ /* border:5px solid red; */;
+}
+
+.deals_intro
+{
+    display: none;
+}
+.swSprite { display: -moz-inline-box; display: inline-block; margin: 0;padding: 0; position: relative; overflow: hidden; vertical-align: middle; background: url(http://kdotd.s3-website-us-east-1.amazonaws.com/sprite-site-wide._V146303782_.png) no-repeat; }
+.swSprite span { position: absolute; left: -9999px; }
+.s_starBrandBigFull  { background-position: -280px -261px; width: 32px;height: 30px; }
+.s_starBrandBigHalf  { background-position: -244px -261px; width: 32px;height: 30px; }
+.s_starBrandBigEmpty { background-position: -211px -261px; width: 32px;height: 30px; }
+.s_starBrandSmallFull  { background-position: -52px -299px; width: 16px;height: 15px; }
+.s_starBrandSmallHalf  { background-position: -68px -299px; width: 16px;height: 15px; }
+.s_starBrandSmallEmpty { background-position: -84px -299px; width: 16px;height: 15px; }
+.s_starSmallFull  { background-position: -30px 0px; width: 13px;height: 13px; }
+.s_starSmallHalf  { background-position: -82px -20px; width: 13px;height: 13px; }
+.s_starSmallEmpty { background-position: -95px 0px; width: 13px;height: 13px; }
+.s_star_0_0 { background-position: -95px 0px; width: 65px;height: 13px; }
+.s_star_0_5 { background-position: -82px -20px; width: 65px;height: 13px; }
+.s_star_1_0 { background-position: -82px 0px; width: 65px;height: 13px; }
+.s_star_1_5 { background-position: -69px -20px; width: 65px;height: 13px; }
+.s_star_2_0 { background-position: -69px 0px; width: 65px;height: 13px; }
+.s_star_2_5 { background-position: -56px -20px; width: 65px;height: 13px; }
+.s_star_3_0 { background-position: -56px 0px; width: 65px;height: 13px; }
+.s_star_3_5 { background-position: -43px -20px; width: 65px;height: 13px; }
+.s_star_4_0 { background-position: -43px 0px; width: 65px;height: 13px; }
+.s_star_4_5 { background-position: -30px -20px; width: 65px;height: 13px; }
+.s_star_5_0 { background-position: -30px 0px; width: 65px;height: 13px; }

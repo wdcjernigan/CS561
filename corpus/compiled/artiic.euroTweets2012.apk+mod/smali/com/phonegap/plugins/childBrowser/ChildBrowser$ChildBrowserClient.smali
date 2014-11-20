@@ -1,0 +1,169 @@
+.class public Lcom/phonegap/plugins/childBrowser/ChildBrowser$ChildBrowserClient;
+.super Landroid/webkit/WebViewClient;
+.source "ChildBrowser.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/phonegap/plugins/childBrowser/ChildBrowser;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = "ChildBrowserClient"
+.end annotation
+
+
+# instance fields
+.field edittext:Landroid/widget/EditText;
+
+.field final synthetic this$0:Lcom/phonegap/plugins/childBrowser/ChildBrowser;
+
+
+# direct methods
+.method public constructor <init>(Lcom/phonegap/plugins/childBrowser/ChildBrowser;Landroid/widget/EditText;)V
+    .locals 0
+    .parameter
+    .parameter "mEditText"
+
+    .prologue
+    .line 368
+    iput-object p1, p0, Lcom/phonegap/plugins/childBrowser/ChildBrowser$ChildBrowserClient;->this$0:Lcom/phonegap/plugins/childBrowser/ChildBrowser;
+
+    invoke-direct {p0}, Landroid/webkit/WebViewClient;-><init>()V
+
+    .line 369
+    iput-object p2, p0, Lcom/phonegap/plugins/childBrowser/ChildBrowser$ChildBrowserClient;->edittext:Landroid/widget/EditText;
+
+    .line 370
+    return-void
+.end method
+
+
+# virtual methods
+.method public onPageStarted(Landroid/webkit/WebView;Ljava/lang/String;Landroid/graphics/Bitmap;)V
+    .locals 5
+    .parameter "view"
+    .parameter "url"
+    .parameter "favicon"
+
+    .prologue
+    .line 380
+    invoke-super {p0, p1, p2, p3}, Landroid/webkit/WebViewClient;->onPageStarted(Landroid/webkit/WebView;Ljava/lang/String;Landroid/graphics/Bitmap;)V
+
+    .line 382
+    const-string v3, "http:"
+
+    invoke-virtual {p2, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    const-string v3, "https:"
+
+    invoke-virtual {p2, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_2
+
+    .line 383
+    :cond_0
+    move-object v1, p2
+
+    .line 388
+    .local v1, newloc:Ljava/lang/String;
+    :goto_0
+    iget-object v3, p0, Lcom/phonegap/plugins/childBrowser/ChildBrowser$ChildBrowserClient;->edittext:Landroid/widget/EditText;
+
+    invoke-virtual {v3}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
+
+    move-result-object v3
+
+    invoke-interface {v3}, Landroid/text/Editable;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_1
+
+    .line 389
+    iget-object v3, p0, Lcom/phonegap/plugins/childBrowser/ChildBrowser$ChildBrowserClient;->edittext:Landroid/widget/EditText;
+
+    invoke-virtual {v3, v1}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
+
+    .line 393
+    :cond_1
+    :try_start_0
+    new-instance v2, Lorg/json/JSONObject;
+
+    invoke-direct {v2}, Lorg/json/JSONObject;-><init>()V
+
+    .line 394
+    .local v2, obj:Lorg/json/JSONObject;
+    const-string v3, "type"
+
+    invoke-static {}, Lcom/phonegap/plugins/childBrowser/ChildBrowser;->access$1()I
+
+    move-result v4
+
+    invoke-virtual {v2, v3, v4}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+
+    .line 395
+    const-string v3, "location"
+
+    invoke-virtual {v2, v3, p2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 397
+    iget-object v3, p0, Lcom/phonegap/plugins/childBrowser/ChildBrowser$ChildBrowserClient;->this$0:Lcom/phonegap/plugins/childBrowser/ChildBrowser;
+
+    const/4 v4, 0x1
+
+    #calls: Lcom/phonegap/plugins/childBrowser/ChildBrowser;->sendUpdate(Lorg/json/JSONObject;Z)V
+    invoke-static {v3, v2, v4}, Lcom/phonegap/plugins/childBrowser/ChildBrowser;->access$2(Lcom/phonegap/plugins/childBrowser/ChildBrowser;Lorg/json/JSONObject;Z)V
+    :try_end_0
+    .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 401
+    .end local v2           #obj:Lorg/json/JSONObject;
+    :goto_1
+    return-void
+
+    .line 385
+    .end local v1           #newloc:Ljava/lang/String;
+    :cond_2
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    const-string v4, "http://"
+
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .restart local v1       #newloc:Ljava/lang/String;
+    goto :goto_0
+
+    .line 398
+    :catch_0
+    move-exception v0
+
+    .line 399
+    .local v0, e:Lorg/json/JSONException;
+    const-string v3, "ChildBrowser"
+
+    const-string v4, "This should never happen"
+
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_1
+.end method

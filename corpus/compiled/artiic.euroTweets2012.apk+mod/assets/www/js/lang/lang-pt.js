@@ -1,0 +1,43 @@
+var i18n = {
+ "Noticias": "Not&iacute;cias",
+ "Clasificación": "Classifica&ccedil;&atilde;o",
+ "Cuartos": "Quartos-final",
+ "Semifinal": "Meia-final",
+ "Final": "Final",
+ "EQUIPO": "EQUIPE",
+ "Calendario": "Calend&aacute;rio",
+ "Grupos": "Grupos",
+ "Fase Final": "Fase final",
+ "Mi selección": "Minha sele&ccedil;&atilde;o",
+ "Partidos en vivo": "Jogos em directo",
+ "Partidos en vivo!": "Jogos em directo",
+ "Notificaciones": "Notifica&ccedil;&otilde;es",
+ "Selecciones" : "Sele&ccedil;&otilde;es",
+ "¿De qué selecciones deseas recibir alertas?": "Que equipas deseja receber alertas?",
+ "Polonia" : "Pol&ocirc;nia",
+ "Rusia" : "R&uacute;ssia",
+ "Grecia" : "Gr&eacute;cia",
+ "Rep. Checa" : "Rep. Checa",
+ "Alemania" : "Alemanha",
+ "Holanda" : "Holanda",
+ "Portugal" : "Portugal",
+ "Dinamarca" : "Dinamarca",
+ "España" : "Espanha",
+ "Croacia" : "Cro&aacute;cia",
+ "Irlanda" : "Irlanda",
+ "Italia" : "It&aacute;lia",
+ "Ucrania" : "Ucr&acirc;nia",
+ "Francia" : "Fran&ccedil;a",
+ "Inglaterra" : "Inglaterra",
+ "Suecia" : "Su&eacute;cia",
+ "PJ": "J",
+ "PG": "V",
+ "PE": "E",
+ "PP": "D",
+ "Detalle": "Detalhe",
+ "Goleadores" : "Marcadores"
+ };
+
+var dayarray = new Array("Sexta-feira","S&aacute;bado","Domingo","Segunda-feira","Ter&ccedil;a-feira","Quarta-feira","Quinta-feira");
+var dayarray7 = new Array("Quinta-feira","Sexta-feira","S&aacute;bado","Domingo","Segunda-feira","Ter�a-feira","Quarta-feira");
+var montharray = new Array("Janeiro","Fevereiro","Mar�o","Primaveras","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");

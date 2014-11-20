@@ -1,0 +1,50 @@
+#block-ui
+{
+	position: absolute;
+    top: 0px;
+    left: 0px;  
+    width: 100%;
+    height: 100%;
+    z-index: 9; 
+}
+
+.fondo 
+{
+	background:url(app/img/background.png);
+	background-repeat:repeat-y; 
+}
+
+.volver
+{
+	background:url(app/img/left-24.png); 
+	width: 24px;
+	height: 24px;
+	border: 0 solid #000;
+}
+.recargar
+{
+	background:url(app/img/reload-24.png); 
+	width: 24px;
+	height: 24px;
+	border: none;
+}
+.favorito
+{
+	background:url(app/img/selected-favorite-24.png); 
+	width: 24px;
+	height: 24px;
+	display: none;
+	border: 0 solid #000;
+}
+.nofavorito
+{
+	background:url(app/img/unselected-favorite-24.png); 
+	width: 24px;
+	height: 24px;
+	display: none;
+	border: 0 solid #000;
+}
+.eventoPartido
+{
+	padding-top: 6px;	
+}

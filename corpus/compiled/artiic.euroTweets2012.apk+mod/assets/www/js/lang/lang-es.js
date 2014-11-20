@@ -1,0 +1,43 @@
+var i18n = {
+ "Noticias": "Noticias",
+ "Clasificación": "Clasificación",
+ "Cuartos": "Cuartos",
+ "Semifinal": "Semifinal",
+ "Final": "Final",
+ "EQUIPO": "EQUIPO",
+ "Calendario": "Calendario",
+ "Grupos": "Grupos",
+ "Fase Final": "Fase Final",
+ "Mi selección": "Mi selección",
+ "Partidos en vivo": "Partidos en vivo",
+ "Partidos en vivo!": "Partidos en vivo!",
+ "Notificaciones": "Notificaciones",
+ "Selecciones" : "Selecciones",
+ "¿De qué selecciones deseas recibir alertas?": "¿De qué selecciones deseas recibir alertas?",
+ "Polonia" : "Polonia",
+ "Rusia" : "Rusia",
+ "Grecia" : "Grecia",
+ "Rep. Checa" : "Rep. Checa",
+ "Alemania" : "Alemania",
+ "Holanda" : "Holanda",
+ "Portugal" : "Portugal",
+ "Dinamarca" : "Dinamarca",
+ "España" : "España",
+ "Croacia" : "Croacia",
+ "Irlanda" : "Irlanda", 
+ "Italia" : "Italia",
+ "Ucrania" : "Ucrania",
+ "Francia" : "Francia",
+ "Inglaterra" : "Inglaterra",
+ "Suecia" : "Suecia",
+ "PJ": "PJ",
+ "PG": "PG",
+ "PE": "PE",
+ "PP": "PP",
+ "Detalle": "Detalle",
+ "Goleadores" : "Goleadores"
+ };
+
+var dayarray = new Array("Viernes","Sabado","Domingo","Lunes","Martes","Miercoles","Jueves");
+var dayarray7 = new Array("Jueves","Viernes","Sabado","Domingo","Lunes","Martes","Miercoles");
+var montharray = new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");

@@ -1,0 +1,16 @@
+.ui-li-desc {
+	white-space: normal;
+}
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+	padding-left: 60px;
+}
+.ui-li-thumb, .ui-listview .ui-li-icon {
+	left: 5px;
+	top: 5px;
+}
+.ui-corner-tl {
+    border-top-left-radius: 0;
+}
+.listTwitterMarginTop {
+	margin-top: 5px;
+}

@@ -1,0 +1,360 @@
+<html>
+	<head>
+		<title>Reth Online</title>
+		<meta http-equiv="CONTENT-TYPE" content="charset=utf-8">
+		<link rel="STYLESHEET" href="default.css">
+		<script src="PhoneGap/Cordova-1.5.0.js"></script>
+		<script src="PhoneGap/ChildBrowser.js"></script>
+		
+		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWTBVup_NU7gh6W56q_uIQZM4DKaQemak&sensor=false"></script>
+		
+		<script src="lib/appsim.js"></script>
+		<script src="lib/addins/iScroll.js"></script>
+		<script src="lib/addins/maps.js"></script>
+		<script src="lib/addins/slideShow.js"></script>
+		<script src="lib/addins/customDate.js"></script>
+		<script src="lib/addins/slideShowPlus.js"></script>
+		<script src="lib/addins/slideShowPlusVertical.js"></script>
+		<script src="default.js"></script>
+		
+		<script>
+			var entDetailsFlow     = null;
+			var catListFlow        = null;
+			var catDetailsFlow     = null;
+			var catInfoListFlow    = null;
+			var entInfoDetailsFlow = null;
+			var bookDetailsFlow    = null;
+			
+			
+			/* Accent Selection */
+			var acc = as.fetchParams()['acc'];
+			(acc !== undefined) ? wbp.setAccent(acc.split('#')[0]) : wbp.setAccent(as.GetAccent().split('-')[0]);
+			wbp.correctAccent();
+			/* End of Accent Selection */
+			
+			
+			/* Map Variables */
+			var
+			map,
+			infowindow;
+			
+			var
+			markup    = [],
+			markers   = [],
+			positions = [];
+			/* End of Map Variables */
+			
+			
+			as.init(function()
+			{
+				//window.ontouchmove = function(e) { e.preventDefault(); };
+				
+				wbp.returnWeather();
+				wbp.initNavbar();
+				wbp.chooseAccent();
+				
+				//alert(as.GetHei(as.$('#wrapHome')));
+				
+				switch(as.GetHei(as.$('#wrapHome')))
+				{
+				case 517:
+				case 533:
+				case 800:
+					as.SetTransform(as.$('#slideshowLandscape'), 'translate(-101px, 106px) rotate(90DEG) scale(1.14)');
+					break;
+					
+				case 553:
+				case 569:
+				case 854:
+					as.SetTransform(as.$('#slideshowLandscape'), 'translate(-111px, 125px) rotate(90DEG) scale(1.20)');
+					break;
+					
+				case 411:
+				case 427:
+				case 320:
+					as.$('#slideShowFrames').style.marginRight = 60;
+					break;
+				}
+				
+				var actualHei = as.GetHei(as.$('#wrapHome'))-100;
+				
+				as.SetHei(as.$('#wrapHome'), actualHei);
+				as.SetHei(as.$('#wrapCatDetails'), actualHei);
+				as.SetHei(as.$('#wrapCatList'), actualHei);
+				as.SetHei(as.$('#wrapEntDetails'), actualHei);
+				as.SetHei(as.$('#wrapBookDetails'), actualHei);
+				as.SetHei(as.$('#wrapBookRequest'), actualHei);
+				as.SetHei(as.$('#wrapInfo'), actualHei);
+				as.SetHei(as.$('#wrapCatInfoList'), actualHei);
+				as.SetHei(as.$('#wrapEntInfoDetails'), actualHei);
+				as.SetHei(as.$('#wrapOffers'), actualHei);
+				as.SetHei(as.$('#wrapTour'), actualHei);
+				as.SetHei(as.$('#wrapSearch'), actualHei-40);
+			},
+			['assets/icon.PNG', true, 'assets/splash.JPG', 'black-translucent']);
+		</script>
+	</head>
+	<BODY>
+		<div id="toolbarShadow">
+			<!--<div id="slideRefresh">
+				<b>Release to refresh...</b><br/>
+				<span STYLE="color:#aaa">Last Updated: March 24, 2012 2:13 PM</span>
+			</div>-->
+		</div>
+		
+		<div id="toolbar">
+			<div id="brand">
+				<IMG id="loader" src="assets/loader.GIF"/>
+				<div id="brandLetters"></div>
+				<div id="brandBack" onclick="wbp.backButton()"></div>
+			</div>
+			<div id="header">
+				<span id="headTitle">RETHYMNO</span><br/><div id="subTitle">ONLINE</div>
+				<select id="headAccent" ONCHANGE="window.location.href = 'index-'+this.value.split('-')[0]+'.html'">
+					<option value='el'>EL</option>
+					<option value='en'>EN</option>
+					<option value='ru'>RU</option>
+					<option value='zh'>ZH</option>
+					<!-- <option value='el'>EL-Ελληνικά</option>
+					<option value='en'>EN-English</option>
+					<option value='ru'>RU-Русский</option>
+					<option value='zh'>ZH-繁體中文</option> -->
+				</select>
+				<span id="headWeather"></span>
+			</div>
+		</div>
+		
+		<div id="navbar">
+		</div>
+		
+		<div id="slidesLandscape" STYLE="DISPLAY:none;z-index:10;position:absolute;width:100%;HEIGHT:100%;OPACITY:0;-webkit-transition:OPACITY .5s linear;overflow:hidden">
+			<div id="slideshowLandscape" STYLE="-webkit-transform:translate(-80px, 80px) rotate(90DEG)">
+			</div>
+		</div>
+		<script>
+			as.$('#slidesLandscape').ontouchstart = function(e)
+			{
+				e.preventDefault();
+			};
+			as.slideShowPlusVertical('#slideshowLandscape');
+			as.$('#slideshowLandscape').innerHTML+='<div STYLE="z-index:25;position:absolute;color:#ddd;BACKGROUND:RGBA(0, 0, 0, .5);font-size:14px;font-WEIGHT:bold;width:100%;HEIGHT:30px"><div STYLE="float:left;line-HEIGHT:30px;MARGIN-left:10px" onclick="wbp.unrotateSlideShow()">Back</div><div STYLE="width:100px;MARGIN:0 auto"><div id="slideShowBullet1" STYLE="BACKGROUND:#ddd"></div><div id="slideShowBullet2"></div><div id="slideShowBullet3"></div><div id="slideShowBullet4"></div><div id="slideShowBullet5"></div></div><div id="slideShowFrames" STYLE="float:RIGHT;line-HEIGHT:30px;MARGIN-RIGHT:10px"><span id="slideShowCurrentPic">1</span>/<span id="slideShowTotalPic">5</span></div></div>';
+		</script>
+		
+		<div id="appsim">
+			<!-- #blank -->
+			<div id="blank">
+				<div class="toolbarGap"></div>
+				<div STYLE="BACKGROUND:#fff;width:320px;HEIGHT:1000px">
+				</div>
+			</div>
+			<!-- End of #blank -->
+			
+			
+			
+			<!-- #home -->
+			<div id="home">
+				<div class="toolbarGap"></div>
+				<div id="wrapHome">
+					<div id="scrHome">
+						<div id="homeLoading">Loading ...</div>	
+					</div>
+				</div>
+			</div>
+			<script>
+				wbp.homeContent();
+			</script>
+			<!-- End of #home -->
+			
+			
+			
+			<!-- #catDetails -->
+			<div id="catDetails">
+				<div class="toolbarGap"></div>
+				<div id="wrapCatDetails">
+					<div id="scrCatDetails">
+					</div>
+				</div>
+				<div id="hideCatDetails1" STYLE="DISPLAY:none"></div>
+				<div id="hideCatDetails2" STYLE="DISPLAY:none"></div>
+			</div>
+			<!-- End of #catDetails -->
+			
+			
+			
+			<!-- #catList -->
+			<div id="catList">
+				<div class="toolbarGap"></div>
+				<div id="wrapCatList">
+					<div id="scrCatList">
+					</div>
+				</div>
+				<div id="hideCatList1" STYLE="DISPLAY:none"></div>
+				<div id="hideCatList2" STYLE="DISPLAY:none"></div>
+			</div>
+			<!-- End of #catList -->
+			
+			
+			
+			<!-- #entDetails -->
+			<div id="entDetails">
+				<div class="toolbarGap"></div>
+				<div id="wrapEntDetails">
+					<div id="scrEntDetails">
+					</div>
+				</div>
+				<div id="hideEntDetails1" STYLE="DISPLAY:none"></div>
+				<div id="hideEntDetails2" STYLE="DISPLAY:none"></div>
+			</div>
+			<!-- End of #entDetails -->
+			
+			
+			
+			<!-- #bookDetails -->
+			<div id="bookDetails">
+				<div class="toolbarGap"></div>
+				<div id="wrapBookDetails">
+					<div id="scrBookDetails">
+					</div>
+				</div>
+				<div id="hideBookDetails1" STYLE="DISPLAY:none"></div>
+				<div id="hideBookDetails2" STYLE="DISPLAY:none"></div>
+			</div>
+			<!-- End of #bookDetails -->
+			
+			
+			
+			<!-- #bookRequest -->
+			<div id="bookRequest">
+				<div class="toolbarGap"></div>
+				<div id="wrapBookRequest">
+					<div id="scrBookRequest">
+					</div>
+				</div>
+				<div id="hideBookRequest1" STYLE="DISPLAY:none"></div>
+				<div id="hideBookRequest2" STYLE="DISPLAY:none"></div>
+			</div>
+			<!-- End of #bookRequest -->
+			
+			
+			
+			<!-- #info -->
+			<div id="info">
+				<div class="toolbarGap"></div>
+				<div id="wrapInfo">
+					<div id="scrInfo">
+					</div>
+				</div>
+			</div>
+			<script>
+				wbp.infoContent();
+			</script>
+			<!-- End of #info -->
+			
+			
+			
+			<!-- #catInfoList -->
+			<div id="catInfoList">
+				<div class="toolbarGap"></div>
+				<div id="wrapCatInfoList">
+					<div id="scrCatInfoList">
+					</div>
+				</div>
+				<div id="hideCatInfoList1" STYLE="DISPLAY:none"></div>
+				<div id="hideCatInfoList2" STYLE="DISPLAY:none"></div>
+			</div>
+			<!-- End of #catInfoList -->
+			
+			
+			
+			<!-- #entInfoDetails -->
+			<div id="entInfoDetails">
+				<div class="toolbarGap"></div>
+				<div id="wrapEntInfoDetails">
+					<div id="scrEntInfoDetails">
+					</div>
+				</div>
+				<div id="hideEntInfoDetails1" STYLE="DISPLAY:none"></div>
+				<div id="hideEntInfoDetails2" STYLE="DISPLAY:none"></div>
+			</div>
+			<!-- End of #entInfoDetails -->
+			
+			
+			
+			<!-- #map -->
+			<div id="map">
+				<div class="toolbarGap"></div>
+				<div STYLE="BACKGROUND:#fff">
+					<select id="mapSections" ONCHANGE="wbp.updateMapSections(this.value)" STYLE="color:#444;font-size:14px;font-WEIGHT:bold;width:320px;HEIGHT:25px;MARGIN-top:7px">
+						<option id="selectAccomodation"></option>
+						<option id="selectRestaurants"></option>
+						<option id="selectBarCafe"></option>
+						<option id="selectShopping"></option>
+						<option id="selectFacilities"></option>
+						<option id="selectActivities"></option>
+						<option id="selectTransportation"></option>
+						<option id="selectTourism"></option>
+					</select>
+					<div id="mapCanvas" STYLE="width:320px;HEIGHT:375px"></div>
+				</div>
+				<script>
+					wbp.showMap();
+				</script>
+			</div>
+			<!-- End of #map -->
+			
+			
+			
+			<!-- #search -->
+			<div id="search">
+				<div class="toolbarGap"></div>
+				<div id="searchBox">
+					<div id="searchBar">
+						<IMG src="assets/navbar/3.PNG" STYLE="float:left;width:18px;MARGIN-top:4px"/>
+						<input id="searchField" onblur="wbp.updateSearch(this.value)"/>
+						<IMG id="searchX" src="assets/x.PNG" onclick="if (as.available()) { as.$('#searchField').value = ''; }"/>
+					</div>
+					<div STYLE="float:RIGHT;color:#fff;BACKGROUND:-webkit-Gradient(linear, 0 0, 0 100%, from(#999), to(#444));font-size:16px;font-WEIGHT:bold;text-ALIGN:center;text-shadow:RGBA(0, 0, 0, .7) 0 -1px 1px;width:40px;HEIGHT:100%;line-HEIGHT:31px;-webkit-border-radius:5px">GO</div>
+				</div>
+				<div STYLE="HEIGHT:40px"></div>
+				<div id="wrapSearch">
+					<div id="scrSearch">
+						<div STYLE="HEIGHT:380px"></div>
+					</div>
+				</div>
+				<div id="hideSearch1" STYLE="DISPLAY:none"></div>
+				<div id="hideSearch2" STYLE="DISPLAY:none"></div>
+			</div>
+			<!-- End of #search -->
+			
+			
+			
+			<!-- #offers -->
+			<div id="offers">
+				<div class="toolbarGap"></div>
+				<div id="wrapOffers">
+					<div id="scrOffers">
+					</div>
+				</div>
+			</div>
+			<script>
+				wbp.offersContent();
+			</script>
+			<!-- End of #offers -->
+			
+			
+			
+			<!-- #tour -->
+			<div id="tour">
+				<div class="toolbarGap"></div>
+				<div id="wrapTour">
+					<div id="scrTour">
+					</div>
+				</div>
+			</div>
+			<script>
+				wbp.tourContent();
+			</script>
+			<!-- End of #tour -->
+		</div>
+	</BODY>
+</html>

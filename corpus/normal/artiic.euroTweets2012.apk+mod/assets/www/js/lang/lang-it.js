@@ -1,0 +1,43 @@
+var i18n = {
+ "Noticias": "Notizie",
+ "Clasificación": "Classificazione",
+ "Cuartos": "Quarti di finale",
+ "Semifinal": "Semifinale",
+ "Final": "Finale",
+ "EQUIPO": "SQUADRA",
+ "Calendario": "Calendario",
+ "Grupos": "Gruppi",
+ "Fase Final": "Fase finale",
+ "Mi selección": "La mia selezione",
+ "Partidos en vivo": "Partite in diretta",
+ "Partidos en vivo!": "Partite in diretta",
+ "Notificaciones": "Notifiche",
+ "Selecciones" : "Selezioni",
+ "¿De qué selecciones deseas recibir alertas?": "Quali squadre desidera ricevere gli avvisi?",
+ "Polonia" : "Polonia",
+ "Rusia" : "Russia",
+ "Grecia" : "Grecia",
+ "Rep. Checa" : "Rep. Ceca",
+ "Alemania" : "Germania",
+ "Holanda" : "Olanda",
+ "Portugal" : "Portogallo",
+ "Dinamarca" : "Danimarca",
+ "España" : "Spagna",
+ "Croacia" : "Croazia",
+ "Irlanda" : "Irlanda", 
+ "Italia" : "Italia",
+ "Ucrania" : "Ucraina",
+ "Francia" : "France",
+ "Inglaterra" : "Inghilterra",
+ "Suecia" : "Svezia",
+ "PJ": "G",
+ "PG": "V",
+ "PE": "N",
+ "PP": "P",
+ "Detalle": "Dettaglio",
+ "Goleadores" : "Marcatori"
+ };
+
+var dayarray = new Array("Venerd&igrave;", "Sabato", "Domenica", "Lunedi", "Marted&igrave;", "Mercoled&igrave;", "Giovedi");
+var dayarray7  = new Array ("Giovedi", "Venerd&igrave;", "Sabato", "Domenica", "Lunedi", "Marted&igrave;", "Mercoled&igrave;");
+var montharray = new Array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");

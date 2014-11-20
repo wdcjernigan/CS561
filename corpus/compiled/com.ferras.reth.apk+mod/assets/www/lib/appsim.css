@@ -1,0 +1,58 @@
+*
+{
+	//-webkit-touch-callout: none;
+	//-webkit-tap-HIGHLIGHT-color: RGBA(0, 0, 0, 0);
+}
+BODY
+{
+	//-webkit-user-select: none;
+	//cursor: crosshair;
+	MARGIN: 0;
+}
+div#appsim, div#appsim > div
+{
+	position: absolute;
+	width: 320px;
+	HEIGHT: 100%;
+	left: 0;
+	overflow: hidden;
+}
+div#appsim > div:not(#home)
+{
+	left: 10000px;
+}
+
+
+
+.slide-in,
+.slide-out,
+.slide-rev-in,
+.slide-rev-out
+{
+	-webkit-animation-duration: .4s;
+	-webkit-transition-TIMING-function: ease-in-out;
+}
+@-webkit-KEYFRAMES slide-in
+{
+	from { -webkit-transform: translateX(100%) }
+	  to { -webkit-transform: translateX(0) }
+}
+@-webkit-KEYFRAMES slide-out
+{
+	from { -webkit-transform: translateX(0) }
+	  to { -webkit-transform: translateX(-100%) }
+}
+@-webkit-KEYFRAMES slide-rev-in
+{
+	from { -webkit-transform: translateX(-100%) }
+	  to { -webkit-transform: translateX(0) }
+}
+@-webkit-KEYFRAMES slide-rev-out
+{
+	from { -webkit-transform: translateX(0) }
+	  to { -webkit-transform: translateX(100%) }
+}
+.slide-in      { -webkit-animation-name: slide-in }
+.slide-out     { -webkit-animation-name: slide-out }
+.slide-rev-in  { -webkit-animation-name: slide-rev-in }
+.slide-rev-out { -webkit-animation-name: slide-rev-out }

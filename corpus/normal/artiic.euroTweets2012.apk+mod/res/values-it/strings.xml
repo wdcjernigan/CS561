@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, ArtiicGoalsActivity!</string>
+    <string name="app_name">EuroTweets 2012</string>
+    <string name="gol">Goal</string>
+    <string name="act">"Aggiornamento dell'applicazione EuroTweets 2012"</string>
+    <string name="act_detail">Già disponibile la nuova versione di EuroTweets 2012</string>
+    <string name="idioma">it</string>
+    <string name="Polonia">Polonia</string>
+    <string name="Rusia">Russia</string>
+    <string name="Grecia">Grecia</string>
+    <string name="RepCheca">Rep. Ceca</string>
+    <string name="Alemania">Germania</string>
+    <string name="Holanda">Olanda</string>
+    <string name="Portugal">Portogallo</string>
+    <string name="Dinamarca">Danimarca</string>
+    <string name="Espana">Spagna</string>
+    <string name="Croacia">Croazia</string>
+    <string name="Irlanda">Irlanda</string>
+    <string name="Italia">Italy</string>
+    <string name="Ucrania">Ucraina</string>
+    <string name="Francia">France</string>
+    <string name="Inglaterra">Inghilterra</string>
+    <string name="Suecia">Svezia</string>
+</resources>

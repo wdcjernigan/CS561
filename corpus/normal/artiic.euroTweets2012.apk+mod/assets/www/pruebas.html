@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Artiic Partidos App</title>
+	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" href="docs/assets/css/jqm-docs.css" />
+	<link rel="stylesheet" href="docs/assets/css/artiic.css" />
+	<link rel="stylesheet" href="index.css" /> 
+	<link rel="stylesheet" href="style.css" />
+	
+		<script type="text/javascript" src="jquery.mobile/jquery-1.6.4.min"></script>
+	<script type="text/javascript" src="jquery.mobile/jquery.mobile-1.0.1.js"></script>
+		<script type="text/javascript" src="js/carousel.js"></script>
+		<script language="javascript">
+			
+		</script>
+		<link rel="stylesheet" href="carousel.css" />
+ 
+  	 <script language="javascript">
+ 	var Url = location.href;
+ 	Url = Url.replace(/.*\?(.*?)/,"$1");
+ 	Variables = Url.split ("&");
+ 	for (i = 0; i < Variables.length; i++){ 
+ 		Separ = Variables[i].split("="); 
+ 		eval ('var '+Separ[0]+'="'+Separ[1]+'"'); 
+ 	} 
+ 	var idJornada = jornada;
+ 	alert(jornada);
+
+</script> 
+
+
+  </head>
+  <body >
+   <div data-role="page" id="main_page" class="fondo">
+<div data-role="content" >
+<div id="content" style="height:100%;width:300px;">
+<div style="height:100%;width:300px;">
+<!-- start carousel widget html -->
+<div style="height:350px;width:300px;">
+<div id="carousel" class="carousel">
+<div id="carousel_scrollpane" class="carousel-content">
+<div id="carousel_content" class="carousel-content-scroller"> </div>
+</div>
+<div id="carousel_nav" class="carousel-nav">
+<div id="carousel_mid" class="carousel-mid"></div>
+</div>
+</div>
+</div><!-- end carousel widget html -->
+<!-- template used for the carousel items -->
+<div id="carousel_template" style="display:none">
+<div class="carousel-item">
+<div id="carousel_item_@{id}" >
+<div style="float:left;width:100%"><img src="@{image}" /></div>
+</div>
+</div>
+</div>
+<script>
+var equipos = [];
+			equipos[0] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+				equipos[1] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+				equipos[2] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+				equipos[3] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+				equipos[4] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+				equipos[5] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+				equipos[6] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+				equipos[7] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+				equipos[8] = {
+					nombre: "Barpa",
+					twitter: "Barpa",
+					activo: true					
+				};
+var carousel = new $.widgets.Carousel( {
+uuid : "carousel",
+args : { "scrollInterval" : 200,"itemWidth":75,"itemHeight":78, "showNav": false
+},
+value : [
+{ "title" : "",
+"image" : "img/escudos/64x/rayo.png"
+},
+{ "title" : "",
+"image" : "img/escudos/64x/villarreal.png"
+},
+{ "title" : "",
+"image" : "img/escudos/64x/valencia.png"
+},
+{ "title" : "",
+"image" : "img/escudos/64x/zaragoza.png"
+},
+{ "title" : "",
+"image" : "img/escudos/64x/sevilla.png"
+},
+{ "title" : "",
+"image" : "img/escudos/64x/barcelona.png"
+},
+{ "title" : "",
+"image" : "img/escudos/64x/betis.png"
+},
+{ "title" : "",
+"image" : "img/escudos/64x/malaga.png"
+}
+]
+});
+</script>
+<!-- end item template -->
+</div> <!-- content -->
+</div>
+        </div>
+  
+    	
+  </body>
+</html>

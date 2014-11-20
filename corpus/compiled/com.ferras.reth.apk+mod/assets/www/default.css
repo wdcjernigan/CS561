@@ -1,0 +1,408 @@
+BODY
+{
+	color: #333;
+	BACKGROUND: #e7e7e7;
+	font: normal 13px 'Arial';
+}
+.indent
+{
+	-webkit-box-SIZING: border-box;
+	PADDING: 10px;
+}
+#toolbar
+{
+	z-index: 5;
+	position: absolute;
+	BACKGROUND: #fff;
+	width: 320px;
+	HEIGHT: 65px;
+	-webkit-box-SIZING: border-box;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+}
+.toolbarGAP
+{
+	HEIGHT: 58px;
+}
+#toolbarShadow
+{
+	z-index: 0;
+	position: absolute;
+	width: 320px;
+	HEIGHT: 65px;
+	-webkit-box-shadow: RGBA(0, 0, 0, .3) 0 0 4px;
+}
+#slideRefresh
+{
+	position: relative;
+	color: #444;
+	font-size: 13px;
+	width: 320px;
+	HEIGHT: 50px;
+	top: 85px;
+	-webkit-box-SIZING: border-box;
+	PADDING: 0 0 0 10px;
+}
+#brand
+{
+	z-index: 1;
+	position: absolute;
+	color: #fff;
+	BACKGROUND: -webkit-Gradient(linear, 0 0, 0 100%, color-stop(0, #f4792b), color-stop(.95, #e35225), color-stop(.95, #eb4d26), color-stop(1, #ce4926));
+	font-size: 27px;
+	width: 39px;
+	HEIGHT: 42px;
+	top: 10px;
+	left: 10px;
+	-webkit-border-radius: 7px;
+}
+#brandLetters
+{
+	position: absolute;
+	BACKGROUND: url('assets/brand.PNG') no-repeat;
+	BACKGROUND-size: 25px 30px;
+	width: 25px;
+	HEIGHT: 30px;
+	top: 6px;
+	left: 7px;
+}
+#brandBack
+{
+	DISPLAY: none;
+	position: absolute;
+	BACKGROUND: url('assets/back.PNG') no-repeat 48% 50%;
+	-webkit-BACKGROUND-size: 32% 32%;
+	width: 39px;
+	HEIGHT: 42px;
+}
+#loader
+{
+	DISPLAY: none;
+	position: absolute;
+	width: 28px;
+	top: 7px;
+	left: 5px;
+}
+#header
+{
+	position: absolute;
+	width: 210px;
+	HEIGHT: 42px;
+	line-HEIGHT: 23px;
+	top: 10px;
+	left: 55px;
+}
+#headTitle
+{
+	color: #777;
+	font-size: 27px;
+	font-WEIGHT: bold;
+}
+#subTitle
+{
+	color: #bbb;
+	font-size: 19px;
+	width: 240px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#headAccent
+{
+	position: absolute;
+	color: #f4772a;
+	font-size: 27px;
+	font-WEIGHT: bold;
+	top: -5px;
+	RIGHT: -48px;
+	-webkit-appearance: button;
+	border: 0;
+	PADDING: 0;
+}
+#headWeather
+{
+	DISPLAY: block;
+	position: absolute;
+	color: #888;
+	font-size: 15px;
+	font-WEIGHT: normal;
+	text-ALIGN: RIGHT;
+	line-HEIGHT: 15px;
+	top: 24px;
+	RIGHT: -45px;
+}
+#homeLoading
+{
+	background:white; 
+	height:100%; 
+	line-height:360px; 
+	font-size:18px; 
+	color:#bbb;
+	text-align:center;
+}
+
+#navbar
+{
+	z-index: 5;
+	position: absolute;
+	BACKGROUND: -webkit-Gradient(linear, 0 0, 0 100%, from(#ddd), to(#eee));
+	width: 320px;
+	HEIGHT: 48px;
+	bottom: 0;
+}
+.navbtn, .navbtnActive
+{
+	float: left;
+	color: #777;
+	font-size: 11px;
+	text-ALIGN: center;
+	width: 64px;
+	HEIGHT: 48px;
+	-webkit-box-SIZING: border-box;
+	border-left: 1px solid #ddd;
+	border-RIGHT: 1px solid #ddd;
+}
+.navbtnActive
+{
+	color: #444;
+	BACKGROUND: -webkit-Gradient(linear, 0 0, 0 100%, color-stop(0, #f4792b), color-stop(.08, #f4792b), color-stop(.08, #fff), color-stop(1, #fff));
+	border-left: 1px solid #fff;
+	border-RIGHT: 1px solid #fff;
+}
+.navThumb, .navThumbActive
+{
+	BACKGROUND: #999;
+	-webkit-BACKGROUND-size: 100% 100%;
+	width: 20px;
+	HEIGHT: 20px;
+	MARGIN: 7px auto 2px auto;
+}
+.navThumbActive
+{
+	BACKGROUND: #444;
+}
+#searchBox
+{
+	z-index: 20;
+	position: absolute;
+	BACKGROUND: -webkit-Gradient(linear, 0 0, 0 100%, from(#eee), to(#bbb));
+	width: 320px;
+	HEIGHT: 40px;
+	-webkit-box-SIZING: border-box;
+	PADDING: 5px 10px;
+	MARGIN-top: 8px;
+}
+#searchBar
+{
+	float: left;
+	width: 250px;
+	BACKGROUND: #fff;
+	-webkit-border-radius: 15px;
+	-webkit-box-SIZING: border-box;
+	-webkit-box-shadow: inset RGBA(0, 0, 0, .5) 0 1px 2px;
+	PADDING: 2px 8px;
+}
+#searchField
+{
+	float: left;
+	color: #777;
+	BACKGROUND-IMAGE: url('');
+	font-size: 17px;
+	width: 190px;
+	HEIGHT: 25px;
+	border: none;
+}
+#searchX
+{
+	float: RIGHT;
+	width: 20px;
+	MARGIN-top: 4px;
+}
+#searchX:active
+{
+	OPACITY: .5;
+}
+#slideShowBullet1,
+#slideShowBullet2,
+#slideShowBullet3,
+#slideShowBullet4,
+#slideShowBullet5
+{
+	float: left;
+	BACKGROUND: #777;
+	width: 7px;
+	HEIGHT: 7px;
+	-webkit-border-radius: 5px;
+	MARGIN: 12px 3px 0 0;
+}
+.infoSection
+{
+	position: relative;
+	color: #777;
+	font-WEIGHT: bold;
+	HEIGHT: 37px;
+	line-HEIGHT: 37px;
+}
+.infoButton
+{
+	float: RIGHT;
+	color: #fff;
+	BACKGROUND: #888;
+	text-ALIGN: center;
+	width: 60px;
+	HEIGHT: 20px;
+	line-HEIGHT: 21px;
+	-webkit-border-radius: 3px;
+	MARGIN-top: 8px;
+}
+.infoSection.bookField
+{
+}
+.infoSection.bookField .fieldTitle
+{
+	color: #f4772a;
+	font-WEIGHT: bold;
+	MARGIN: 0;
+}
+.infoSection.bookField .fieldTitle span
+{
+	color: #888;
+	font-WEIGHT: normal;
+}
+.infoSection.bookField .infoButton
+{
+	position: absolute;
+	BACKGROUND: #f4772a;
+	top: 0;
+	RIGHT: 0;
+}
+
+.formRequest
+{
+	MARGIN-top: 10px;
+}
+.formRequest label
+{
+	DISPLAY: block;
+	color: #888;
+}
+.formRequest input
+{
+	color: #888;
+	font-size: 16px;
+	width: 100%;
+	-webkit-box-SIZING: border-box;
+	-webkit-border-radius: 4px;
+	border: 1px solid #ccc;
+	PADDING: 2px 3px;
+	MARGIN-bottom: 10px;
+}
+.dateField
+{
+	position:relative;
+	background:#f4772a; 
+	color:white; 
+	padding:0px 5px; 
+	line-height:25px;
+	height:25px;
+	margin-bottom:10px;
+}
+
+.showDayPlus 
+{
+	position:absolute; 
+	display:block; 
+	width:25px; 
+	height:25px; 
+	top:0;
+	right:0;
+	background:#444; 
+	background-size:100% 100%;
+}
+.showDayPlus span
+{
+	display:block; 
+	width:17px; 
+	height:17px; 
+	margin:4px;
+	background:url(assets/plusIcon.PNG) no-repeat; 
+	background-size:17px 17px;
+	-webkit-box-SIZING: border-box;
+}
+
+.dayStr 
+{
+	font-weight:bold;
+	color:#444;
+}
+
+.discount
+{
+	position: absolute;
+	top: 0px;
+	right: 1px;
+	font-size:12px;
+	color:#F4772A;
+}
+
+.content
+{
+	clear:both;
+	text-align:justify;
+	color:#777;
+	margin:10px 0 30px 0;
+}
+.content p
+{
+	text-align:justify !important;
+	color:#777 !important;
+}
+
+#wrapHome,
+#wrapCatDetails,
+#wrapCatList,
+#wrapEntDetails,
+#wrapBookDetails,
+#wrapBookRequest,
+#wrapInfo,
+#wrapCatInfoList,
+#wrapEntInfoDetails,
+#wrapOffers,
+#wrapTour
+{
+	HEIGHT: 100%; //380px;
+}
+#wrapSearch
+{
+	HEIGHT: 100%; //340px;
+}
+#scrHome,
+#scrCatDetails,
+#scrCatList,
+#scrEntDetails,
+#scrBookDetails,
+#scrBookRequest,
+#scrSearch,
+#scrInfo,
+#scrCatInfoList,
+#scrEntInfoDetails,
+#scrOffers,
+#scrTour
+{
+	BACKGROUND: #fff;
+	-webkit-box-shadow: RGBA(0, 0, 0, .3) 0 0 4px;
+	-webkit-border-top-left-radius: 7px;
+	-webkit-border-top-right-radius: 7px;
+	-webkit-box-SIZING: border-box;
+	PADDING: 17px 10px 5px 10px;
+}
+.noRecords
+{
+	color:#bbb;
+	font-size:20px;
+	font-WEIGHT:bold;
+	text-ALIGN:center;
+	width:300px;
+	HEIGHT:100%;
+	line-HEIGHT:380px
+}
