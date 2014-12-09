@@ -24,7 +24,7 @@
 
 
 	</head>
-  <body onload="init();" class="ui-body-b">
+  <body onload="init();console.log(window.performance.timing.loadEventStart-window.performance.timing.navigationStart);" class="ui-body-b">
     <div data-role="page" data-theme="b" id="entrada">
     <div data-role="content">
     <div id="btsair" style="display:none;"><a href="javascript:sairSplash();" data-role="button" data-theme="c" data-icon="delete">Sair</a></div>

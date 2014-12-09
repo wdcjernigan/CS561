@@ -16,7 +16,7 @@ p img{ padding:9px;}
 
 </style>
 </head>
-<body>
+<body onload="console.log(window.performance.timing.loadEventStart-window.performance.timing.navigationStart)" >
 <div data-role="page" id="page1" data-theme="a">
   <div data-role="header" data-position="fixed"> 
     <h1><img src="icon_small.png" /> 7 Ancient Wonders of the World</h1>

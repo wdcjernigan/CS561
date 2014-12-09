@@ -27,7 +27,7 @@ if( typeof(console) !== 'undefined' ){
 <script ="text/javascript" charset="utf-8" src="js/base.js"></script>
 <script ="text/javascript" charset="utf-8" src="js/salecalc.js"></script>
 </head>
-<body class="ui-mobile-viewport">
+<body  onload="console.log(window.performance.timing.loadEventStart-window.performance.timing.navigationStart)" class="ui-mobile-viewport">
 <!-- index -->
 <div data-role="page" id="index" data-theme="d">
 <div data-role="header">

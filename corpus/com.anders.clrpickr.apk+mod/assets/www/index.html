@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="scripts/jquery.touchSwipe.css"/>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
-<body>
+<body onload="console.log(window.performance.timing.loadEventStart-window.performance.timing.navigationStart)" >
 <div id="spinwrap"><div id="spinner"></div></div>
 <nav> <a href="#Home">clrpickr</a> <a href="#About">about</a> <a href="#Output">output</a><em></em> </nav>
     <div rel="settings" id="settings">

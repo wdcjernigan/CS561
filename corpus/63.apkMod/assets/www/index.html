@@ -32,7 +32,7 @@
 	<script type="text/javascript" charset="utf-8" src="js/initdb.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/custom.js"></script>
 </head>
-<body>
+<body onload="console.log(window.performance.timing.loadEventStart-window.performance.timing.navigationStart)" >
 	<div id="fb-root"></div>
 	<div data-role="page" id="home1">
          <div data-role="header" data-position="fixed">

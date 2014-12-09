@@ -18,7 +18,7 @@
 		<script src="js/jquery.mobile-1.0.1.min.js"></script>
 		<script src="js/javascript.js"></script>
 	</head>
-	<body>
+	<body onload="console.log(window.performance.timing.loadEventStart-window.performance.timing.navigationStart)" >
 		<div data-role="page" data-theme="a" id="home">
 			<div data-role="header" data-position="inline">
 				<h1>Welkom</h1>

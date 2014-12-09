@@ -20,7 +20,7 @@
          <!--only Android -->
          <script src="scripts/datePickerPlugin.js"></script>        
     </head>
-    <body>        
+    <body onload="console.log(window.performance.timing.loadEventStart-window.performance.timing.navigationStart)" >        
         <!--PAGE 1 -->
         <div data-role="view"  data-layout="mobile-tabstrip" id="tabstrip-home" data-title="Ready Set Holiday!" data-show="dataShow" >                                   
             <header data-role="header">
