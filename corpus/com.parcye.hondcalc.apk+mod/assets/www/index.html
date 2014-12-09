@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Hondenvoeding Calculator</title>
+
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<link rel="apple-touch-startup-image" href="images/startup.png" />
+		<link rel="apple-touch-icon" href="images/apple-icon.png" />  
+
+		<link rel="stylesheet" href="themes/filoZoika.min.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.0.1.min.css" />
+		<script src="js/jquery-1.6.4.min.js"></script>
+		<script src="js/jquery.mobile-1.0.1.min.js"></script>
+		<script src="js/javascript.js"></script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="a" id="home">
+			<div data-role="header" data-position="inline">
+				<h1>Welkom</h1>
+			</div>
+			<div data-role="content" data-theme="a">
+				<img src="images/app-logo-300.png" />
+				<h2>Bereken eenvoudig hoeveel voeding je hond nodig heeft.</h2>
+			</div>
+			<div data-role="footer" data-id="footer" data-position="fixed" data-theme="a">
+				<div data-role="navbar" data-iconpos="bottom">
+					<ul>
+						<li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+						<li><a href="#berekenen" data-role="button" data-icon="grid">Berekenen</a></li>
+						<li><a href="#info" data-role="button" data-icon="info">Info</a></li>
+					</ul>
+				</div>
+ 			</div>
+		</div>
+
+		<div data-role="page" data-theme="a" id="berekenen">
+			<div data-role="header" data-position="inline">
+				<h1>Berekenen</h1>
+			</div>
+			<div data-role="content" data-theme="a">
+				<h2>Voeding berekenen</h2>
+				<div data-role="fieldcontain">
+					<label for="gewicht">Gewicht in KG:</label>
+				 	<input type="range" name="gewicht" id="gewicht" value="0" min="0" max="100"  />
+				</div>
+				<div data-role="fieldcontain">
+				    <fieldset data-role="controlgroup">
+				    	<legend>Geslacht:</legend>
+				         	<input type="radio" name="geslacht" id="radio-choice-1" value="reu" checked="checked" />
+				         	<label for="radio-choice-1">Reu</label>
+	
+				         	<input type="radio" name="geslacht" id="radio-choice-2" value="teef"  />
+				         	<label for="radio-choice-2">Teef</label>
+				    </fieldset>
+				</div>
+				<div data-role="fieldcontain">
+					<label for="volwassen">Volwassen:</label>
+					<select name="volwassen" id="volwassen" data-role="slider">
+						<option value="ja">Ja</option>
+						<option value="nee">Nee</option>
+					</select>
+				</div>
+				<div data-role="fieldcontain">
+				    <fieldset data-role="controlgroup" data-type="horizontal">
+				     	<legend>Vochtgehalte %:</legend>
+				         	<input type="radio" name="vochtgehalte" id="radio-choice-c" value="8" />
+				         	<label for="radio-choice-c">8</label>
+				         	<input type="radio" name="vochtgehalte" id="radio-choice-d" value="9" checked="checked" />
+				         	<label for="radio-choice-d">9</label>
+				         	<input type="radio" name="vochtgehalte" id="radio-choice-e" value="10" />
+				         	<label for="radio-choice-e">10</label>
+				    </fieldset>
+				</div>
+				<div data-role="fieldcontain">
+					<label for="eiwitten">Eiwitten %:</label>
+				 	<input type="range" name="eiwitten" id="eiwitten" value="0" min="0" max="100"  />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="vetten">Vetten %:</label>
+				 	<input type="range" name="vetten" id="vetten" value="0" min="0" max="100"  />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="vezels">Vezels (Celstof) %:</label>
+				 	<input type="range" name="vezels" id="vezels" value="0" min="0" max="100"  />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="mineralen">Mineralen (Ashes) %:</label>
+				 	<input type="range" name="mineralen" id="mineralen" value="0" min="0" max="100"  />
+				</div>
+				<div class="ui-body ui-body-b">
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"><a href="#resultaten" data-role="button" data-icon="grid">Berekenen</a></div>
+						<div class="ui-block-b"><a href="#info" data-role="button" data-icon="info">Toelichting</a></div>
+					</fieldset>
+				</div>
+			</div>
+			<div data-role="footer" data-id="footer" data-position="fixed" data-theme="a">
+				<div data-role="navbar" data-iconpos="bottom">
+					<ul>
+						<li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+						<li><a href="#berekenen" data-role="button" data-icon="grid">Berekenen</a></li>
+						<li><a href="#info" data-role="button" data-icon="info">Info</a></li>
+					</ul>
+				</div>
+ 			</div>
+		</div>
+		
+		<div data-role="page" data-theme="a" id="info">
+			<div data-role="header" data-position="inline">
+				<h1>Info over de App</h1>
+			</div>
+			<div data-role="content" data-theme="a">
+				<h2>Informatie</h2>
+				<p>We hebben geprobeerd de meeste vragen hier al te beantwoorden; mocht je nog vragen hebben, neem gerust contact met ons op.</p>
+		
+				<div data-role="collapsible-set" data-content-theme="a">
+					<div data-role="collapsible" data-theme="a" data-content-theme="a">
+						<h3>De berekeningen</h3>
+						<p>De ingegeven percentages vertegenwoordigen een aantal gram per kilo, afhankelijk van het soort ingredient staat een gram gelijk aan een bepaald aantal kCal. De kCal verschilt tussen 4 en 9 kCal per gram.</p>
+					</div>
+					<div data-role="collapsible" data-theme="a" data-content-theme="a">
+						<h3>Waar vind ik de waardes</h3>
+						<p>De waardes staan 9 van de 10 keer op de verpakking; staat het niet op de verpakking kun je oprecht afvragen of het wel een goede brok is. Naast de gevraagded gegevens, zal er meer bij staan, maar deze worden tot koolhydraten gerekend.</p>
+					</div>
+					<div data-role="collapsible" data-theme="a" data-content-theme="a">
+						<h3>Hoe correct zijn de resultaten?</h3>
+						<p>De resultaten zijn bij benadering; beweeg een hond meer, zou deze meer moeten eten dan een hond die minder beweegt.</p>
+					</div>
+					<div data-role="collapsible" data-theme="a" data-content-theme="a">
+						<h3>Over filoZoika</h3>
+						<p>filoZoika is een klein pension aan huis, met opvang voor honden, konijnen, vogels en andere knaagdieren. Daarnaast heeft filoZoika een honden uitlaatservice en dierenoppas aan huis voor oa. oppassen op katten.</p>
+						<p>filoZoika werkt in Eindhoven omgeving en sinds najaar 2012 ook in Helmond omgeving.</p>
+					</div>
+					<div data-role="collapsible" data-theme="a" data-content-theme="a">
+						<h3>Contact</h3>
+						<p>Vragen? Opmerkingen? Je kunt ons bereiken op <a href="http://www.hondenvoedingadvies.nl" title="Hondenvoedingadvies">www.hondenvoedingadvies.nl</a></p>
+					</div>
+
+				</div>
+			</div>
+			<div data-role="footer" data-id="footer" data-position="fixed" data-theme="a">
+				<div data-role="navbar" data-iconpos="bottom">
+					<ul>
+						<li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+						<li><a href="#berekenen" data-role="button" data-icon="grid">Berekenen</a></li>
+						<li><a href="#info" data-role="button" data-icon="info">Info</a></li>
+					</ul>
+				</div>
+ 			</div>
+		</div>
+
+		<div data-role="page" data-theme="a" id="resultaten">
+			<div data-role="header" data-position="inline">
+				<h1>Hoeveel brokken?</h1>
+			</div>
+			<div data-role="content" data-theme="a">
+				<h2>Hoeveel gram brokken?</h2>
+				<p>Let op, dit is bij benadering met een algemene formule. Vaak staan er al goede richtlijnen op een verpakking.</p>
+		
+				<div data-role="collapsible-set" data-content-theme="a">
+					<div data-role="collapsible" data-theme="a" data-content-theme="a" data-collapsed="false">
+						<h3>Het resultaat <span id="txt_brokken"></span> gram</h3>
+						<p>Een <span id="txt_hond"></span> verbruikt in een 'normale' sitautie <span id="txt_verbruik"></span> KCal per dag.</p>
+						<p>Een kilo brokken heeft voedingswaarde van <span id="txt_kcalkg"></span> KCal</p>
+						<p><small>Er kunnen geen rechten worden ontleend aan deze berekeningen. Het zijn indicaties.</small></p>
+					</div>
+					<div data-role="collapsible" data-theme="a" data-content-theme="a">
+						<h3>Samenstelling van de brokken</h3>
+						<p><span id="txt_prcn_eiwit"></span>% van de energie komt uit de eiwitten.<br />
+						<span id="txt_prcn_vet"></span>% van de energie komt uit de vetten.<br />
+						<span id="txt_prcn_rest"></span>% van de energie komt uit de koolhydraten.</p>
+					</div>
+				</div>
+			</div>
+			<div data-role="footer" data-id="footer" data-position="fixed" data-theme="a">
+				<div data-role="navbar" data-iconpos="bottom">
+					<ul>
+						<li><a href="#home" data-role="button" data-icon="home">Home</a></li>
+						<li><a href="#berekenen" data-role="button" data-icon="grid">Berekenen</a></li>
+						<li><a href="#info" data-role="button" data-icon="info">Info</a></li>
+					</ul>
+				</div>
+ 			</div>
+		</div>
+
+	</body>
+</html>
+ 

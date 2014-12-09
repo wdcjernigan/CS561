@@ -1,0 +1,11 @@
+version: 1.5.1
+apkFileName: br.com.rommel.point.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '8'
+packageInfo:
+  cur_package: br.com.rommel.point
+  orig_package: br.com.rommel.point

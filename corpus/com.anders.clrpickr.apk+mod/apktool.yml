@@ -1,0 +1,11 @@
+version: 1.5.1
+apkFileName: com.anders.clrpickr.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '5'
+packageInfo:
+  cur_package: com.anders.clrpickr
+  orig_package: com.anders.clrpickr

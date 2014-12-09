@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1">
+    <title>Point</title>
+      <link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.0.1.min.css" type="text/css"/>
+	  <link rel="stylesheet" href="pgandjqm-style-override.css" type="text/css"/>
+	  <link rel="stylesheet" href="mapapp.css" type="text/css">
+	  <link rel="stylesheet" href="bubbles.css" type="text/css">
+	  
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery-1.7.1.min"></script>
+	  <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="statusbarnotification.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="share.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery.centralize.min.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery.quicksearch.js"></script>
+	  <script type="text/javascript">
+        $(document).bind("mobileinit", function(){
+            $.extend($.mobile, {
+                loadingMessage: "Carregando...",
+				pageLoadErrorMessage: 'Erro ao carregar'
+            });
+            $.mobile.allowCrossDomainPages = true;
+        });
+      </script>
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery.mobile-1.0.1.min.js"></script>
+	  
+	  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&language=pt-br"></script>
+	  <script type="text/javascript" src="jquery.ui.map/jquery.ui.map.min.js"></script>
+	  <script type="text/javascript" src="jquery.ui.map/jquery.ui.map.services.min.js"></script>
+	  <script type="text/javascript" charset="iso-8859-1" src="mapapp.complete.js"></script>
+	  
+	  <script type="text/javascript" charset="iso-8859-1" src="home.js"></script>
+	</head>
+  <body onload="init();" class="ui-body-b">
+    <div data-role="page" data-theme="b" id="home">
+  	<div data-role="header" data-theme="b">
+  		<a href="javascript:sairHome();" data-icon="delete" data-iconpos="notext">Sair do Local</a>
+    	<h1><img src="img/logo_home.png" /></h1> 
+    	<a href="#config" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Config</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<ul data-role="listview" data-theme="c" data-inset="true" data-count-theme="e" id="listMenu">
+		<li data-role="list-divider" id="accuracy"></li>
+		<li><a href="#pointers">Pointers</a></li>
+		<li><a href="javascript:abrirMapa();">Mapa</a></li>
+		<li><a href="#listaMsg">Mensagens <span id="count_msg"></span></a></li>
+		<li><a href="#mural">Mural</a></li>
+		<li><a href="#favoritos">Favoritos</a></li>
+		<li><a href="#gostei">Gostei</a></li>
+		<li><a href="#gostou">Gostou de você <span id="count_gostou"></span></a></li>
+		<li><a href="#correspondido">Afinidade <span id="count_afim"></span></a></li>
+		<li data-theme="b"><a href="javascript:compartilhar();">Compartilhe</a></li>
+		<li data-theme="b"><a href="#sobre">Dicas</a></li>
+		<li data-role="list-divider"></li>
+	</ul>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="pointers">
+  	<div data-role="header" data-theme="b">
+  		<a href="#home" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Pointers</h1> 
+    	<a href="javascript:carregarPointers();" data-icon="refresh" data-iconpos="notext" class="ui-btn-right">Atualizar</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<select id="filtrarPointers" data-native-menu="false" data-theme="c" style="outline:none;">
+		<option value="Todos">Todos</option>
+		<option value="M">Homens</option>
+		<option value="F">Mulheres</option>
+	</select>
+	<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="info" data-filter="true" data-filter-placeholder="Pesquisar Pointers..." id="pointersOnline">
+		<li data-role="list-divider">Carregando...</li>
+	</ul>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" data-fullscreen="true" id="page-map">
+    <div data-role="content" id="map-content">
+		<div id="map_canvas"></div>
+    </div>
+    <div id="tags-control">
+		<select id="tags" data-native-menu="false" data-theme="c" style="outline:none;">
+		<option value="Todos">Todos</option>
+		<option value="M">Homens</option>
+		<option value="F">Mulheres</option>
+		</select>
+	</div>
+    <div data-role="footer" data-theme="b" data-position="fixed">
+	<div data-role="navbar">
+	<ul>
+    	<li><a href="#home">Voltar</a></li>
+    	<li><a href="javascript:atualizarMapa();">Atualizar</a></li>
+	</ul>
+	</div>
+	</div>
+    </div>
+    <div data-role="page" data-theme="b" id="listaMsg">
+  	<div data-role="header" data-theme="b">
+  		<a href="#home" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Mensagem</h1> 
+    	<a href="#config" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Config</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarMsgOn">
+	</ul>
+	<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarMsgOff">
+	</ul>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="mural">
+  	<div data-role="header" data-theme="b">
+  		<a href="#home" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Mural</h1> 
+    	<a href="javascript:carregarMsgMural();" data-icon="refresh" data-iconpos="notext" class="ui-btn-right">Atualizar</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<table border="0" width="100%" class="ui-body-d ui-corner-all ui-shadow" style="padding-left:10px;"><tr><td><input type="text" name="msgMural" id="msgMural" value="" /></td><td width="50"><a href="#" id="btEnviarMsgMural" data-role="button" data-icon="forward" data-theme="b">Enviar</a></td></tr></table><BR />
+	<div id="chatMural">
+	</div>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="msgUser">
+  	<div data-role="header" data-theme="b">
+  		<a href="javascript:sairPageMsg();" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1 id="nmMsg">Mensagem</h1> 
+    	<a href="#" id="btPerfilMsgUser" data-icon="info" data-iconpos="notext" class="ui-btn-right">Perfil</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<table border="0" width="100%" class="ui-body-d ui-corner-all ui-shadow" style="padding-left:10px;"><tr><td><input type="text" name="msg" id="msg" value="" /></td><td width="50"><a href="#" id="btEnviarMsg" data-role="button" data-icon="forward" data-theme="b">Enviar</a></td></tr></table><BR />
+	<div id="chat">
+	</div>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="favoritos">
+  	<div data-role="header" data-theme="b">
+  		<a href="#home" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Favoritos</h1> 
+    	<a href="#config" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Config</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+		<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarFavOn">
+		</ul>
+		<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarFavOff">
+		</ul>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="gostei">
+  	<div data-role="header" data-theme="b">
+  		<a href="#home" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Gostei</h1> 
+    	<a href="#config" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Config</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+		<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarGosteiOn">
+		</ul>
+		<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarGosteiOff">
+		</ul>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="gostou">
+  	<div data-role="header" data-theme="b">
+  		<a href="#home" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Gostou de Você</h1> 
+    	<a href="#config" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Config</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+		<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarGostouOn">
+		</ul>
+		<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarGostouOff">
+		</ul>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="correspondido">
+  	<div data-role="header" data-theme="b">
+  		<a href="#home" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Afninidade</h1> 
+    	<a href="#config" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Config</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+		<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarAfimOn">
+		</ul>
+		<ul data-role="listview" data-theme="d" data-inset="true" data-split-icon="delete" data-count-theme="e" id="lstListarAfimOff">
+		</ul>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="sobre">
+  	<div data-role="header" data-theme="b">
+  		<a href="#home" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Dicas</h1> 
+	</div>
+    <div data-role="content">
+	<p align="center">
+		<center><table border="0"><tr><td width="35"><img src="img/logo_48.png" /></td><td><img src="img/nome.png" /></td></tr></table></center>
+		<br/>
+		<div class="ui-body-d ui-corner-all ui-shadow ui-content texto">
+		<h3><b>Pessoas realmente perto de você!</b></h3>
+		Point é uma Rede Social baseada na Geolocalização.<br /><br /><br />
+		© 2012 Rommel WEB<br /><br />
+		<a target="_blank" href="http://www.rommel.com.br/point">www.rommel.com.br/point</a><br /><br />
+		Versão 1.5
+		</div>
+	</p>
+	<div data-role="collapsible-set">
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Geolocalização</h3>
+			<p>Para melhor precisão da sua geolocalização, esteja em local aberto ou utilize uma rede Wifi.</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Pointers</h3>
+			<p>São pessoas que utilizam o Point. Quem estiver online dentro da sua área de alcance, é exibido na lista.<br/><br/>
+			Para alterar a área de alcance, vá em configurações e edite o valor da área em metros.<br/><br/>
+			Pode variar de acordo com a precisão do GPS.</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Mapa</h3>
+			<p>Mostra Pointers online e sua geolocalização atual, dentro da sua área de alcance.<br/><br/>
+			Por segurança, ninguém é identificado no Mapa. Se mesmo assim, não quiser aparecer no mapa, é só alterar para "visível não", em configurações.<br/><br/>
+			Pode variar de acordo com a precisão do GPS.</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Mensagens</h3>
+			<p>Lista os Pointers com quem trocou mensagens. Para ler ou enviar mensagens, basta clicar no Pointer. Para remover da lista, clica no (x).<br/><br/>
+			Se quiser enviar na conversa, um mapa com sua geolocalização atual, digite #location durante a conversa. Para enviar um mapa do tipo satélite, envie #locationsat.<br/><br/>
+			Nenhuma mensagem pode ser removida.<br/><br/>
+			Para visualizar o perfil do Pointer, clica no (i).</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Perfil</h3>
+			<p>Para abrir o perfil de um Pointer, clica sobre ele.<br/><br/>
+			Ao clicar na foto, irá abrir uma janela com a foto em tamanho maior. Pode variar de acordo com o modo retrato ou paisagem.<br/><br/>
+			Ao clicar no botão Favorito, o Pointer vai ficar listado em Favoritos.<br/><br/>
+			Ao clicar no botão Gostei, o Pointer vai ficar listado em Gostei.</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Mural</h3>
+			<p>Mensagens deixadas pelos Pointers que estão ou estavam, dentro de sua área de alcance.<br/><br/>
+			Você poderá remover as mensagens que deixou.<br/><br/>
+			Para alterar a área de alcance, vá em configurações e edite o valor da área em metros.<br/><br/>
+			Pode variar de acordo com a precisão do GPS.</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Favoritos</h3>
+			<p>Lista os Pointers que você adicionou como favorito.<br/><br/>
+			Permite que possa enviar mensagens, mesmo o Pointer estando offline.<br/><br/>
+			Para remover da lista, clica no (x).</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Gostei</h3>
+			<p>Lista os Pointers que você clicou no botão Gostei, do perfil.<br/><br/>
+			O Pointer vai receber uma notificação, sinalizando que você gostou.<br/><br/>
+			Para deixar de gostar, clica no (x) e você não mais aparecerá para o Pointer, na lista de quem gostou.</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Gostou de você</h3>
+			<p>Lista os Pointers que gostaram de você.<br/><br/>
+			Receberá uma notificação, sinalizando que alguém gostou de você.<br/><br/>
+			Para remover da lista, clica no (x).</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Afinidade</h3>
+			<p>Lista os Pointers que você gostou e que também gostou de você.<br/><br/>
+			Você e o Pointer vão receber uma notificação, sinalizando que houve uma afinidade.<br/><br/>
+			Para desistir da afinidade, clica no (x) e você não mais aparecerá para o Pointer, na lista de afinidade.</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Compartilhe</h3>
+			<p>Compartilhe que você está online no Point e deseja convidar os amigos a conhecer, através do Twitter, Facebook, Gmail, SMS, etc.</p>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Configurações</h3>
+			<div data-role="collapsible-set">
+				<div data-role="collapsible" data-content-theme="c">
+					<h3>Perfil</h3>
+					<p>Poderá editar seus dados e trocar a foto. Só não pode alterar o e-mail.</p>
+				</div>
+				<div data-role="collapsible" data-content-theme="c">
+					<h3>Geolocalização</h3>
+					<p>Ao escolher estar visível no mapa, poderá visualizar os Pointers e ser visualizado. Nem você, nem o Pointer, serão identificados.<br/>
+					Se escolher não estar vísivel, você não irá aparecer no mapa e não poderá visualizar ninguém.<br/><br/>
+					Você poderá escolher o alcance em metros, para encontrar Pointers online. Varia de 200 metros à 5 kilometros (5000m).</p>
+				</div>
+				<div data-role="collapsible" data-content-theme="c">
+					<h3>Notificação</h3>
+					<p>Ao chegarem novas mensagens, avisos de pessoas que gostaram de você e tiveram afinidade, poderá ser avisado por um som de alerta e por uma leve vibração.</p>
+				</div>
+				<div data-role="collapsible" data-content-theme="c">
+					<h3>Notificações por e-mail</h3>
+					<p>Ao chegarem novas mensagens, novas afinidades e se alguém gostar de você, será avisado por e-mail diariamente ou semanalmente. Selecione Nenhum, para não receber e-mails.</p>
+				</div>
+			</div>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Fale Conosco</h3>
+			<p><table border="0" width="100%" class="ui-body-d ui-corner-all ui-shadow" style="padding-left:10px;"><tr><td><input type="text" name="msgFale" id="msgFale" value="" /></td><td width="50"><a href="#" id="btEnviarMsgFale" data-role="button" data-icon="forward" data-theme="b">Enviar</a></td></tr></table><BR /></p>
+		</div>
+	</div>
+    </div>
+    </div>
+    <div data-role="page" data-theme="a" id="config">
+  	<div data-role="header" data-theme="a">
+  		<a href="javascript:voltar();" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Configurações</h1> 
+	</div>
+    <div data-role="content">
+	<p align="center">
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Perfil</h3>
+			<div data-role="collapsible-set">
+					<div data-role="collapsible" data-content-theme="a">
+						<h3>Como Excluir Cadastro</h3>
+						<p>
+						Para excluir seu cadastro, click no botão abaixo. Esta ação não pode ser revertida. Para retornar ao Point, terá que fazer um novo cadastro.
+						<BR>
+						<a href="javascript:excluirConta();" data-role="button" data-icon="delete" data-theme="c">Excluir</a>
+						</p>
+					</div>
+			</div>
+			<div data-role="fieldcontain">
+				<div class="ui-body ui-body-c ui-corner-all">
+					<label for="bio">Foto:</label>
+					<a href="#ftperfil"><img id="config_foto" height="80" src="img/no_picture.gif" /></a>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"><a href="javascript:getPicAlbum();" data-role="button" data-icon="search" data-theme="c" style="font-size:10px;">Procurar</a></div>
+						<div class="ui-block-b"><a href="javascript:getPicCam();" data-role="button" data-icon="minus" data-theme="c" style="font-size:10px;">Tirar</a></div>	   
+					</fieldset>
+				</div>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="email">E-mail:</label>
+				<input class="ui-disabled" type="text" name="email" id="email" value=""  />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="nome">Nome:</label>
+				<input type="text" name="nome" id="nome" value=""  />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="bio">Bio:</label>
+				<textarea cols="40" rows="8" name="bio" id="bio"></textarea>
+			</div>
+			<div data-role="fieldcontain">
+				<fieldset>
+		    		<legend>Sexo:</legend>
+		         	<input type="radio" name="sexo" id="sexom" value="M" />
+		         	<label for="sexom">Masculino</label>
+		         	<input type="radio" name="sexo" id="sexof" value="F"  />
+		         	<label for="sexof">Feminino</label>
+	         	</fieldset>
+			</div>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Geolocalização</h3>
+			<div data-role="fieldcontain">
+				<label for="geovisivel">Visível no mapa?</label>
+				<select name="geovisivel" id="geovisivel" data-role="slider">
+					<option value="N">Não</option>
+					<option value="S">Sim</option>
+				</select>
+			</div>
+			<div data-role="fieldcontain">
+			<label for="geoarea">Área p/ ver Pointers online (metros):</label>
+		 	<input type="range" name="geoarea" id="geoarea" value="200" min="200" max="5000"  />
+			</div>
+		</div>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Notificação</h3>
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<legend>Ao chegar notificações:</legend>
+					<input type="checkbox" name="notsom" id="notsom" class="custom" />
+					<label for="notsom">Som</label>
+					<input type="checkbox" name="notvib" id="notvib" class="custom" />
+					<label for="notvib">Vibrar</label>
+			    </fieldset>
+			</div>
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<legend>Notificações por e-mail:</legend>
+				    <select id="notemail" data-native-menu="false" data-theme="c" style="outline:none;">
+						<option value="N">Nenhum</option>
+						<option value="D">Diário</option>
+						<option value="S">Semanal</option>
+					</select>
+				</fieldset>
+			</div>
+		</div>
+		<a href="javascript:salvarConfig();" data-role="button" data-icon="check" data-theme="c">Salvar</a>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="perfilUser">
+  	<div data-role="header" data-theme="b">
+  		<a href="javascript:voltar();" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Perfil</h1> 
+    	<a href="#home" data-icon="home" data-iconpos="notext" class="ui-btn-right">Home</a>
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<fieldset class="ui-grid-a">
+		<div class="ui-block-a"><a id="btPerfilFav" href="#" data-role="button" data-theme="c" data-icon="star">Favoritos</a></div>
+		<div class="ui-block-b"><a id="btPerfilGos" href="#" data-role="button" data-theme="c" data-icon="check">Gostei</a></div>	   
+	</fieldset>
+	<ul data-role="listview" data-theme="d" data-inset="true" id="listPerfilUser">
+	</ul>
+	<div class="ui-body-d ui-corner-all ui-shadow ui-content texto" id="perfilBio"></div>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="a" id="ftperfil">
+  	<div data-role="header" data-theme="a">
+  		<a href="javascript:voltar();" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Foto</h1> 
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<img id="ftperfilzoom" width="100%" src="img/no_picture.gif" />
+	</p>
+    </div>
+    </div>
+  </body>
+</html>

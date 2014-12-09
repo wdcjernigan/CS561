@@ -1,0 +1,212 @@
+﻿<!--versiunea + link rate + include datepicker.js la android + input date-picker + placeholder(return/enter)-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        
+    	<meta name="apple-mobile-web-app-capable" content="yes" />
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" />                               
+        
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <link href="styles/main.css" rel="stylesheet" />
+      
+        <script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.mobile.min.js"></script>
+        <script src="scripts/rsh.js"></script>
+        
+         <!--only Android -->
+         <script src="scripts/datePickerPlugin.js"></script>        
+    </head>
+    <body>        
+        <!--PAGE 1 -->
+        <div data-role="view"  data-layout="mobile-tabstrip" id="tabstrip-home" data-title="Ready Set Holiday!" data-show="dataShow" >                                   
+            <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                    <a data-align="right" data-role="button" data-icon="settings" class="nav-button" href="#page-set" style="background-color: #4A1C06">Set</a>
+                </div>
+            </header>
+            <div class="help-box" id="help-box-ios" style="display:none;"> 
+                  <label> Tap set and enter your holiday info</label>                                                                  
+            </div> 
+            
+            <div id="holiday-box">
+                <div>
+                    <span id="remainingWeeks">?</span> <label id="labelWeeks">weeks</label>
+                </div>
+                	            	
+                <div class="line"></div>
+            	<div>
+                    <span id="remainingDays">?</span> <label id="labelDays">days</label> 
+                </div>                	
+            	
+                <div class="line"></div>
+                <div class="remaining">
+                    remaining until holiday to:                      
+                </div>                                                      
+            </div>                      
+            <div id="location-box">   
+                <div id="location-name">
+                     
+                </div>                                
+                <div class="temperature-box">    
+                    <div>                        
+                        Local weather
+                    </div>
+                    <div class="temperature2">
+                                            
+                    <label id="lblTemperatureValue">?</label>&deg;
+                    <label id="lblTemperatureDegree">C</label>
+                        </div>
+                </div>
+            </div>           
+            <div id="ios-space">    
+                <div id="error-box" style="display:none;"> 
+                  <label id="lblError"> no internet connection</label>                                                                  
+            	</div> 
+            </div>
+            <div class="help-box" id="help-box-android" style="display:none;"> 
+                  <label> Tap set and enter your holiday info</label>                                                                  
+            </div> 
+        </div>                             
+        
+        <!--PAGE 2 -->
+        <div data-role="view"  data-layout="mobile-tabstrip" id="tabstrip-list" data-title="Checklist">                                                                                    
+            
+            
+       <ul data-role="listview" data-style="inset" data-type="group">        
+        	<li>             
+            	<ul class="input-task">
+                	<li><input type="text" id="txtNewTask" placeholder="Add a new task and hit enter" onkeypress="return keyPressed(event)"/>&nbsp;</li>
+                </ul>
+            </li>
+       </ul>      
+            
+        <!-- <p class="text" style="text-align: left;">Swipe items to mark as done.</p>    
+        <div class="subtitle">
+           <img src="images/texts/swipe.png" width="70%" alt=""/>
+        </div> -->
+            
+        <ul data-role="listview" data-style="inset" data-type="group" id="swipeListView">        
+        <li>                 
+            <ul id="taskList">                              
+            </ul>
+        </li>
+        </ul>                  
+        </div>                         
+
+        <!--PAGE 3 -->
+        <div data-role="view"  data-layout="mobile-tabstrip" id="tabstrip-more" data-title="Info">                                            
+            <div id="div_more">
+            <br/> 
+            <div class="logo">
+                <img src="images/logo-android.png" width="100%" alt=""/>
+            </div>           
+            <div>
+                We’re Cobalt Sign, a startup focused on creating great mobile apps. Hope you enjoy using “Ready Set Holiday!”.
+            </div>
+            <br/>             
+            <br/>                                   
+            <div class="rate">                      
+                <a href="https://market.android.com/details?id=com.cobaltsign.readysetholiday" id="linkRate"></a>
+                <!--<a href="http://www.amazon.com/gp/mas/dl/android?p=com.cobaltsign.readysetholiday" id="linkRate"></a>-->
+            </div>
+            
+             version 1.7
+             <br/>
+             <br/> 
+                    <br/> 
+                For bugs, remarks and feedback send us an email at:
+                     <br/> 
+                    <a id="linkEmail" href="mailto:ready.set.holiday@cobaltsign.com">ready.set.holiday@cobaltsign.com</a>                         
+            <br/>
+            <br/>
+            <div>    
+               <br/>
+               Weather information provided by World Weather Online.
+           </div>  
+         </div>
+                        
+             <!-- <div class="subtitle">
+                <img src="images/texts/other_apps.PNG" width="50%" alt=""/>
+             </div>   -->                                                               
+                   
+        </div>
+                                 
+         <!--LAYOUT -->
+        <div data-role="layout" data-id="mobile-tabstrip">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>                    
+                </div>
+            </header>
+
+            <div data-role="footer">
+                <div data-role="tabstrip" id="custom-tabstrip">
+                    <a href="#tabstrip-home" data-icon="customHome">Countdown</a>
+                    <a href="#tabstrip-list" data-icon="customList">Checklist</a>
+                    <a href="#tabstrip-more" data-icon="customMore">Info</a>
+                </div>
+            </div>
+        </div>    
+                
+         <!--PAGE SET -->
+        <div data-role="view" id="page-set" data-title="Set"> 
+            <header data-role="header">
+        		<div data-role="navbar">                                                           
+            		<a id="back-button" class="nav-button" data-align="left" data-role="button" href="#tabstrip-home" style="background-color: #4A1C06">Done</a>
+            		<span data-role="view-title">Set</span>            	
+        		</div>
+   		    </header>
+            <br/>
+            <div class="subtitle">
+                <img src="images/texts/set_holiday.PNG" width="60%" alt=""/>
+            </div>                            
+      
+         <ul data-role="listview" data-style="inset" data-type="group">
+             <li>
+                 <ul>   
+                     <!--Android -->
+                    <li><label for="hDate">Date:</label> <input id="hDate" name="hDate" type="text" class="nativedatepicker" onblur='saveDate(this);'/></li>                                          
+            		<li><label for="hLocation">City:</label> <input type="text" id="hLocation" onblur='saveLocation(this);' /></li>      
+                 </ul>
+             </li>
+         </ul>    
+            
+            <br/>
+            <br/>      
+            <div class="subtitle">
+                <img src="images/texts/temperature_units.PNG" width="60%" alt=""/>
+            </div>  
+            
+            <ul data-role="listview" data-style="inset" data-type="group">
+        <li>            
+            <ul>
+                <li>
+                    <label>
+                        <input name="units" type="radio" id="chkCelsius" checked="checked" onclick='handleChange(this, "C");' />
+                        Celsius
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input name="units" type="radio" id="chkFahrenheit" onclick='handleChange(this, "F");' />
+                        Fahrenheit
+                    </label>
+                </li>
+               
+            </ul>
+        </li>
+    </ul>
+       
+        </div> 
+        
+        <script>
+            var app = new kendo.mobile.Application(document.body);
+        </script>
+    </body>
+</html>
+

@@ -1,83 +1,265 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-    <title>TouchTetris</title>
-    <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
-    <link rel="stylesheet" href="widgetTetris.css" type="text/css"/>
-  </head>
-  <body onload="init()">
-    <div id="rotation" class="display"></div>
-    <div id="moveLeft" class="display"></div>
-    <div id="moveRight" class="display"></div>
-    <div id="moveDown" class="display"></div>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Artiic</title>
 
-    <div id="_debug"></div>
-    <div id="board"></div>
-    <div id="background"></div>
+	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.0.1.min.css" />
+	<script type="text/javascript" src="jquery.mobile/jquery-1.6.4.min"></script>
+		
+	<!-- The following must be AFTER jquery core and BEFORE jquery mobile js -->
+    <script>
+		$(document).bind("mobileinit", function(){
+	  		$.mobile.touchOverflowEnabled = true;
+		});
+    </script>
+	
+	<script type="text/javascript" src="jquery.mobile/jquery.mobile-1.0.1.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova-1.8.0.js"></script>
+	<script type="text/javascript" src="js/jsOAuth-1.3.1.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/childbrowser.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/twitter.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/util.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/i18n.js"></script>
+	<script type="text/javascript" src="js/Artiic.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
 
-    <div id="score">
-      SCORE: <span id="score_value">0</span>
-    </div>
-    <div id="logo">Tetraminos v1.0</div>
-    <div id="next_label">Next:</div>
+	
+	<link rel="stylesheet" href="docs/assets/css/jqm-docs.css" />
+	<link rel="stylesheet" href="index.css" /> 
+	<link rel="stylesheet" href="style.css" />
+		
+<!-- 	margin-left y margin-right a auto para centrar el elemento en un div
+	 -->
+	 
+	<script "text/javascript">
+	
+		document.addEventListener("deviceready", onDeviceReady, false);
 
-    <div id="next">
-      <div id="n00"></div>
-      <div id="n01"></div>
-      <div id="n02"></div>
-      <div id="n03"></div>
-      <div id="n10"></div>
-      <div id="n11"></div>
-      <div id="n12"></div>
-      <div id="n13"></div>
-      <div id="n20"></div>
-      <div id="n21"></div>
-      <div id="n22"></div>
-      <div id="n23"></div>
-      <div id="n30"></div>
-      <div id="n31"></div>
-      <div id="n32"></div>
-      <div id="n33"></div>
-    </div>
+		function onDeviceReady() {
+   			 
+   			 push();
+   			 
+   			 if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+	 			$("#jornadas_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("jornadas_selected").removeClass("jornadas");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("jornadas").removeClass("jornadas_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("jornadas").removeClass("jornadas_selected");
+	 			});
+	 			
+	 			$("#noticias_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("noticias_selected").removeClass("noticias");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("noticias").removeClass("noticias_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("noticias").removeClass("noticias_selected");
+	 			});
+	 			
+	 			$("#clasificacion_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("clasificacion_selected").removeClass("clasificacion");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("clasificacion").removeClass("clasificacion_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("clasificacion").removeClass("clasificacion_selected");
+	 			});
+	 			
+	 			$("#equipos_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("equipos_selected").removeClass("equipos");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("equipos").removeClass("equipos_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("equipos").removeClass("equipos_selected");
+	 			});
+	 			
+	 			$("#miequipo_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("miequipo_selected").removeClass("miequipo");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("miequipo").removeClass("miequipo_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("miequipo").removeClass("miequipo_selected");
+	 			});
+	 			
+	 			$("#envivo_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("envivo_selected").removeClass("envivo");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("envivo").removeClass("envivo_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("envivo").removeClass("envivo_selected");
+	 			});
+	 			
+	 			$("#notificaciones_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("notificaciones_selected").removeClass("notificaciones");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("notificaciones").removeClass("notificaciones_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("notificaciones").removeClass("notificaciones_selected");
+	 			});
+	 			
+	 			$("#pichichi_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("pichichi_selected").removeClass("pichichi");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("pichichi").removeClass("pichichi_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("pichichi").removeClass("pichichi_selected");
+	 			});
+	 
+	  			$("#login_btn")
+					 .bind("touchstart", function () {
+					 	$(this).addClass("login_selected").removeClass("login");
+	 			})
+	 			.bind("touchend", function() {
+	     				$(this).addClass("login").removeClass("login_selected");
+	 			})
+	 			.bind("touchcancel", function() {
+	     				$(this).addClass("login").removeClass("login_selected");
+	 			});
+ 			
+			}
+   			 
+   			 //Recuperamos el idioma;
+   			 
+   			 if (readLocalStorage("idioma") == null) {
+   			 	window.plugins.artiic.getIdioma(function(r){
+   			 		writeLocalStorage("idioma", r);
+   			 		if (readLocalStorage("idioma") != null) {
+   			 				$.getScript("js/lang/lang-"+readLocalStorage("idioma")+".js", function(data, textStatus, jqxhr) {
+   			 					translate();
+   			 			   	});
+   			 			   									
+					}
+					else {
+						translate();
+					}
+						
+   			 		cordova.exec(null, null, 'CustomSplashScreen', 'hide', []);},function(e){console.log(e);});
+   			 }
+   			 else {
+   			 	if (readLocalStorage("idioma") != null) {
+   			 				$.getScript("js/lang/lang-"+readLocalStorage("idioma")+".js", function(data, textStatus, jqxhr) {
+   			 					translate();
+   			 			});
+   			 			   									
+				}
+				else {
+					translate();
+				}
+   			 	cordova.exec(null, null, 'CustomSplashScreen', 'hide', []);
+   			 }
+   			 
+   			 //checkConnection();
+		}
+		
+		function checkConnection() {
+	        var networkState = navigator.network.connection.type;
+	        if (networkState=='none') {
+		        alert('No ha sido posible realizar la conexión, verifique la configuración de red y vuelva a intentarlo.');
+			}
+	    }
 
-    <div id="game_over">Game Over</div>
+		/*$(document).ready(function() {
+ 	 
+ 	 	$("[id=idioma]").bind( "change", function(event, ui) {
+ 		 	if (readLocalStorage("idioma") != null && readLocalStorage("idioma") == "en") {
+ 		 		window.plugins.artiic.setIdioma("es", function(r){writeLocalStorage("idioma", r);},function(e){console.log(e);});
+ 		 	}
+ 		 	else {
+ 		 		window.plugins.artiic.setIdioma("en", function(r){writeLocalStorage("idioma", r);},function(e){console.log(e);});
+ 		 	}
+		});
 
-    <div id="menu">
-      <ul>
-        <li id="start">
-          <div onclick="start();">START</div>
-        </li>
-        <li id="restart">
-          <div onclick="hideMenu();restart();">RESTART</div>
-        </li>
-        <li id="resume">
-          <div onclick="hideMenu();resume();">RESUME</div>
-        </li>
-        <li id="_about">
-          <div onclick="about();">ABOUT</div>
-        </li>
-        <li id="_main">
-          <div onclick="_main();">EXIT</div>
-        </li>
-      </ul>
-    </div>
-    <div onclick="hideAbout();" id="about">
-        ABOUT<br/><br/><br/>
-        Tetraminos is a clone of tetris game created by Alexey Pajitnov, Dmitry Pavlovsky e Vadim Gerasimov in 1984.<br/><br/>
-        In this version you can use touch feature of your WindowsPhone to move the tetraminos.<br/><br/>
-        <br/><br/>
-        Enjoy yourself!
-        <br/><br/><br/><br/><br/>
-        Orange Marques dos Santos<br/>
-        orange@tagcity.com
-        www.tagcity.com.br
-    </div>
+		
+	});*/
+	
+	
+	</script>
 
-    <script src="cordova.js"></script>
-	<script src="hammer.min.js"></script>
-	<script src="Tetramino.js"></script>
-    <script src="widgetTetris.js"></script>
-  </body>
+	<style type="text/css">
+		.imgBox {
+			background-size:100%;
+			margin:0 auto;
+		}
+		.imgText {
+			text-align:left;
+			margin:0; 
+			padding:42px 0 0 10px;
+			font-family: Helvetica,Arial,sans-serif;
+			color: black;
+			font-size: 15px;
+		}
+		
+		.imgText260 {
+			text-align:left;
+			margin:0; 
+			padding:15px 0 0 22px;
+			font-family: Helvetica,Arial,sans-serif;
+			color: black;
+			font-size: 15px;
+		}
+	</style>
+	    <script type="text/javascript" charset="utf-8">
+	    document.addEventListener("backbutton", function(e){
+	            navigator.app.exitApp();
+	       	        
+	    }, false);
+
+        </script>
+</head> 
+<!-- <body onload="loginTwitter(); push()">  -->
+<body> 
+      <div data-role="page" id="page1" class="fondo">
+           <!-- <div data-theme="" data-role="header" data-position="fixed">
+                <h3>
+               Artiic-Goles 
+                </h3>
+            </div>-->
+
+            <div data-role="content">
+          
+                <div id="loginTwitter" style="text-align: center;">  <a class="login" style="text-decoration: none; color: black;"><div class="imgBox"></div></a>
+                <!--	<p id="textTwitter" class="imgText"></p> -->	
+                </div>
+                <div id="flags" class="ui-grid-a">
+					<!-- <div class="ui-block-a" style="text-align: center;"><a class="noticias" id="noticias_btn" href="pruebas.html" data-transition="slide" rel="external"></a></div> -->
+					<div class="colizq ui-block-a" style="text-align: center;"><a class="noticias" id="noticias_btn" href="noticias.html" data-transition="slide" rel="external"><div class="imgBox"><p id="textTwitter" class="imgText" key="Noticias"></p></div></a></div>
+					<div class="colder ui-block-b" style="text-align: center;"><a class="equipos" id="equipos_btn" href="equipos.html" data-transition="slide" rel="external"><div class="imgBox"><p id="textTwitter" class="imgText" key="Selecciones"></p></div></a></div>
+					<div class="colizq ui-block-a" style="text-align: center;"><a class="clasificacion" id="clasificacion_btn" href="clasificacion.html" data-transition="slide" rel="external"><div class="imgBox"><p id="textTwitter" class="imgText" key="Clasificación"></p></div></a></div>
+					<div class="colder ui-block-b" style="text-align: center;"><a href="partidos.html" class="jornadas" id="jornadas_btn" data-transition="slide" rel="external"><div class="imgBox"><p id="textTwitter" class="imgText" key="Calendario"></p></div></a></div>
+
+				</div><!-- /grid-a -->
+				<div style="text-align: center;height:50px;"><a href="calendarioLive.html" class="envivo" id="envivo_btn" data-transition="slide" rel="external"><div class="imgBox"><p id="textTwitter" class="imgText260" key="Partidos en vivo!"></p></div></a></div>
+				<div style="text-align: center;height:50px;"><a href="miEquipo.html" class="miequipo" id="miequipo_btn" data-transition="slide" rel="external"><div class="imgBox"><p id="textTwitter" class="imgText260" key="Mi selección"></p></div></a></div>
+				<div style="text-align: center;height:50px;"><a href="notificaciones.html" class="notificaciones" id="notificaciones_btn" data-transition="slide" rel="external"><div class="imgBox"><p id="textTwitter" class="imgText260" key="Notificaciones"></p></div></a></div>
+				<div style="text-align: center;height:50px;"><a href="goleadores.html" class="pichichi" id="pichichi_btn" data-transition="slide" rel="external"><div class="imgBox"><p id="textTwitter" class="imgText260" key="Goleadores"></p></div></a></div>
+				
+            </div>
+        </div>
+
+</body>
 </html>

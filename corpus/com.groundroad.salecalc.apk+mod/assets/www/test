@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8" />
+<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+<title>salecalc</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+<link rel="stylesheet" href="css/salecalc.css" />
+<script type="text/javascript" charset="utf-8" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function(){
+    $.mobile.defaultPageTransition = false;
+});
+$(function(){
+  $('#index' ).bind( 'pageinit',function(event){
+    History.get();
+    History.showList();
+    });
+  });
+if( typeof(console) !== 'undefined' ){
+//  console.log=function(d){};
+}
+</script>
+<script ="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0.1.min.js"></script>
+<script ="text/javascript" charset="utf-8" src="js/base.js"></script>
+<script ="text/javascript" charset="utf-8" src="js/salecalc.js"></script>
+</head>
+<body class="ui-mobile-viewport">
+<!-- index -->
+<div data-role="page" id="index" data-theme="d">
+<div data-role="header">
+<h1>salecalc</h1>
+</div>
+<div data-role="content" class="ui-content" role="main">
+<div id="saleprice">
+<div id="price" class="price_box" onclick="$('#numkey').fadeIn();$('#price_msg').html('表示金額');"></div>
+<div id="price_msg" class="price_msg">表示金額<br />タップすると入力キーが表示されます。</div>
+</div>
+<div class="clr"></div>
+<div id="numkey" style="display:none;">
+<ul class="numkeys" style="width:75%;">
+<li><a href="javascript:Numkey.addNum('7');">7</a></li>
+<li><a href="javascript:Numkey.addNum('8');">8</a></li>
+<li><a href="javascript:Numkey.addNum('9');">9</a></li>
+<li><a href="javascript:Numkey.addNum('4');">4</a></li>
+<li><a href="javascript:Numkey.addNum('5');">5</a></li>
+<li><a href="javascript:Numkey.addNum('6');">6</a></li>
+<li><a href="javascript:Numkey.addNum('1');">1</a></li>
+<li><a href="javascript:Numkey.addNum('2');">2</a></li>
+<li><a href="javascript:Numkey.addNum('3');">3</a></li>
+<li><a href="javascript:Numkey.addNum('.');">.</a></li>
+<li><a href="javascript:Numkey.addNum('0');">0</a></li>
+<li><a href="javascript:Numkey.addNum('00');">00</a></li>
+</ul>
+<ul class="numkeys" style="width:25%;">
+<li class="right"><a href="javascript:Numkey.addNum('x');"><span style="color:#994444;">×</span></a></li>
+<li class="right"><a href="javascript:Numkey.addNum('c');"><span style="color:#944;">clear</span></a></li>
+<li class="enter"><a href="javascript:Numkey.addNum('e');">enter<br />close</a></li>
+</ul>
+</div>
+<div id="persale">
+<span style="font-size:14px;font-weignt:bold;">% off</span>
+<span style="font-size:10px;color:#777;">割引率を選択</span>
+<br />
+<ul class="offkeys" style="width:100%;">
+<li><a href="javascript:Numkey.offNum('10');"><span>10</span></a></li>
+<li><a href="javascript:Numkey.offNum('20');"><span>20</span></a></li>
+<li><a href="javascript:Numkey.offNum('30');"><span>30</span></a></li>
+<li><a href="javascript:Numkey.offNum('40');"><span>40</span></a></li>
+<li><a href="javascript:Numkey.offNum('50');"><span>50</span></a></li>
+<li><a href="javascript:Numkey.offNum('60');"><span>60</span></a></li>
+<li><a href="javascript:Numkey.offNum('70');"><span>70</span></a></li>
+<li><a href="javascript:Numkey.offNum('80');"><span>80</span></a></li>
+<li class="right"><a href="javascript:Numkey.offNum('90');"><span>90</span></a></li>
+</ul>
+<input style="float:left;width:10%;margin-right:4px;text-align:center;" type="number" step="1" autocomplete="on" name="slider" id="slider" value="0" min="0" max="100" onchange="Persale.changeSlider();" /><div style="width:18px;float:left;padding-top:8px;font-size:12px;">%<br />off</div> 
+<ul class="offkeys" style="width:75%;float:left;">
+<li style="width:22%;"><a href="javascript:Numkey.offNum('-1');"><span style="color:#0000ff;">-1</span></a></li>
+<li style="width:22%;"><a href="javascript:Numkey.offNum('-5');"><span style="color:#0000ff;">-5</span></a></li>
+<li style="width:22%;"><a href="javascript:Numkey.offNum('+5');"><span style="color:#ff0000;">+5</span></a></li>
+<li style="width:22%;"><a href="javascript:Numkey.offNum('+1');"><span style="color:#ff0000;">+1</span></a></li>
+</ul>
+<div class="clr"></div>
+<div style="height:55px;">
+<div id="real_price" class="price_box"></div>
+<div class="price_msg">割引後</div>
+</div>
+<div style="height:55px;">
+<div id="discount_price" class="price_box"></div>
+<div class="price_msg">割引金額</div>
+</div>
+<div>
+<div style="float:left;margin-right:10px;"><select name="code" id="code" onchange="Numkey.changeCode();">
+<option value="0">¥ JPY</option>
+<option value="1">$ USD</option>
+</select>
+</div>
+<div id="save" style="float:left;"><a href="javascript:History.add();">save</a></div>
+</div>
+</div>
+<div class="clr"></div>
+<ul id="history" data-role="listview"  data-split-icon="delete" data-split-theme="b" >
+<li></li>
+</ul>
+<p></p>
+<ul id="top_info" data-role="listview" data-theme="b" class="ui-listview">
+<li data-role="list-divider">使い方 : 計算</li>
+<li style="font-weight:normal;font-size:14px;">
+1. 表示金額ボックスをタップして金額（割引前）を入力してください。<br /><br />
+2. % off以下から、割引率%を選択してください。<br /><br />
+3. 割引後ボックスに割引後金額が表示され、割引金額ボックスに割引される金額が表示されます。<br /><br />
+例：3割引(30%off)の計算を行う場合。金額を入力後、30をタップするだけです！<br />
+注：小数点第三位を四捨五入して金額を表示しております。
+<br />
+
+</li>
+<li data-role="list-divider">使い方 : 保存</li>
+<li style="font-weight:normal;font-size:14px;">
+1. 計算後、保存ボタンをタップすると履歴に保存されます。<br /><br />
+2. 履歴は、30件まで保存されます。<br /><br />
+3. 履歴、左部をタップすると金額、割引率をフォームへ取り込みます。<br /><br />
+4. 履歴、右×をタップすると履歴から削除されます。<br /><br />
+</li>
+</ul>
+<p></p>
+<ul id="top_info" data-role="listview" data-theme="a" class="ui-listview">
+<li data-role="list-divider">about salecalc</li>
+<li>salecalc は、割引計算を行う無料アプリです。セール・バーゲン・アウトレットなどお買い物に。GroundRoadTechnologyでは、ちょっと便利な無料アプリを提供させていただきます。普段の生活の中で、こんなアプリあったら便利!などの御意見をいただければ幸いです。</li>
+<li><a href="http://groundroad.com/">http://groundroad.com/</a></li>
+<li>&copy; Ground Road Technology, LLC</li>
+</ul>
+</div>
+</div><!-- page -->
+</body></html>

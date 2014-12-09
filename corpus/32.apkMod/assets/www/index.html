@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>festaMajor</title>
+<style type="text/css" media="screen">@import "jqtouch/jqtouch.css";</style>
+<style type="text/css" media="screen">@import "extensions/jqt.bars/jqt.bars.artspot.css";</style>
+<style type="text/css" media="screen">@import "extensions/jqt.bars/themes/artspot/theme.css";</style>
+<style type="text/css" media="screen">@import "extensions/jqt.listIndex/jqt.listIndex.css";</style>
+<script src="jqtouch/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="jqtouch/jqtouch.js" type="application/x-javascript" charset="utf-8"></script>
+<script src="extensions/jqt.autotitles.js" type="application/x-javascript" charset="utf-8"></script>
+<script src="extensions/jqt.bars/jqt.bars.js" type="application/x-javascript" charset="utf-8"></script>
+<script src="extensions/jqt.listIndex/jqt.listIndex.js" type="application/x-javascript" charset="utf-8"></script>
+    <style>
+    @-webkit-keyframes slideinfromright{
+	from{-webkit-transform: translate3d(100%,0px,100px);}
+	to{-webkit-transform: translate3d(0,0px,0px);}
+	}
+	
+	@-webkit-keyframes slideinfromleft{
+	from{-webkit-transform: translate3d(-100%,0px,-100px);}
+	to{-webkit-transform: translate3d(0,0px,0px);}
+	}
+    </style>
+     
+        
+    <script type="text/javascript" charset="utf-8" src="phonegapJS/phonegap.0.9.5.min.js"></script>
+    
+    
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
+    <script src="jqtouch/map.js" type="application/x-javascript" charset="utf-8"></script> 
+    <script type="text/javascript" src="phonegapJS/jQuery.fastClick.js"></script>  
+    
+    <script>
+        function geolocalitFitxa(lati, longi){
+			localitzaFitxa = new google.maps.LatLng(lati, longi);
+			update_marker(localitzaFitxa);
+			map.setCenter(localitzaFitxa);
+		}
+     </script>    
+
+
+	<style type="text/css" media="screen">@import "css/festamajor.css";</style>
+    <style type="text/css" media="screen">@import "css/highdpi.css";</style>
+    
+    
+    <script type="text/javascript" charset="utf-8">
+        function onBodyLoad()
+        {
+            document.addEventListener("deviceready",onDeviceReady,false);
+        }
+        
+        /* When this function is called, PhoneGap has been initialized and is ready to roll */
+        function onDeviceReady()
+        {
+            var connexio = window.navigator.onLine;
+            if (!connexio)
+            {
+                navigator.notification.alert(
+                    'És necessari disposar de connexió a Internet. Certes funcionalitats no estaran disponibles.',
+                    alertDismissed,         
+                    'Connexió',          
+                    'Ok'                  
+                    );
+            }
+        }
+        
+		
+		
+        function alertDismissed() {
+            // do something
+        }
+		
+		function netejaLlista(){
+			$('#dies_previs_load').css('visibility', 'hidden');
+			$('#dies_29_load').css('visibility', 'hidden');
+			$('#dies_30_load').css('visibility', 'hidden');
+			$('#dies_31_load').css('visibility', 'hidden');
+			$('#dies_1_load').css('visibility', 'hidden');
+			$('#dies_2_load').css('visibility', 'hidden');
+		}
+        </script>
+    
+    
+    
+    
+    
+    
+    
+<script type="text/javascript" charset="utf-8">
+var jQT = new $.jQTouch({
+  addGlossToIcon: false, 
+  slideleftSelector: '#jqt > ul > li > a, #jqt > ol > li > a',
+  icon: 'imatges/icon.png',
+  startupScreen: 'imatges/jqt_startup.png',
+  statusBar: 'black',
+  preloadImages: [
+    'imatges/portada.png',
+    'extensions/jqt.bars/themes/artspot/img/fons_actes.png',	 	
+    'extensions/jqt.bars/themes/artspot/img/fons_dies.png',	 	
+    'extensions/jqt.bars/themes/artspot/img/fons_footer.png',	 	
+    'extensions/jqt.bars/themes/artspot/img/fons_mapa.png',	 	
+    'extensions/jqt.bars/themes/artspot/img/fons_serveis.png',	 	
+    'imatges/home.png',
+    'imatges/credits.png',
+    'imatges/dies_previs.png',
+    'imatges/dies_29.png',
+    'imatges/dies_30.png',
+    'imatges/dies_31.png',
+    'imatges/dies_1.png',
+    'imatges/dies_2.png',
+    'imatges/pum.png',
+    'themes/jqt/img/loading.gif',
+  ],
+  useFastTouch: true
+});
+// Some sample Javascript functions:
+$(function(){
+// Show a swipe event on swipe test
+  $('#swipeme').swipe(function(evt, data){
+	$(this).html('You swiped <strong>' + data.direction + '/' + data.deltaX + ':' + data.deltaY + '</strong>!');
+    $(this).parent().after('<li>swiped!</li>')
+//iScroll integration
+    jQT.setPageHeight();
+  });
+  $('#tapme').tap(function(){
+    $(this).parent().after('<li>tapped!</li>');
+//iScroll integration
+    jQT.setPageHeight();
+  })
+  
+  
+  // Page animation callback events
+  $('#pageevents').
+  bind('pageAnimationStart', function(e, info){
+    $(this).find('.info').append('Started animating ' + info.direction + '&hellip; ');
+  }).
+  bind('pageAnimationEnd', function(e, info){
+    $(this).find('.info').append(' finished animating ' + info.direction + '.<br /><br />');
+  });
+
+
+// Page animations end with AJAX callback event, example 1 (load remote HTML only first time)
+  $('#callback').bind('pageAnimationEnd', function(e, info){
+// Make sure the data hasn't already been loaded (we'll set 'loaded' to true a couple lines further down)
+    if(!$(this).data('loaded')){
+// Append a placeholder in case the remote HTML takes its sweet time making it back
+// Then, overwrite the "Loading" placeholder text with the remote HTML
+      $(this).append($('<div>carregant...</div>').load('ajax.html .info', function(){
+// Set the 'loaded' var to true so we know not to reload
+// the HTML next time the #callback div animation ends
+        $(this).parent().data('loaded', true);
+      }));
+    }
+  });
+// Orientation callback event
+  $('#jqt').bind('turn', function(e, data){
+    $('#orient').html('Orientation: ' + data.orientation);
+  });
+  
+  
+  $('#dies_previs_click').bind('tap', function(e, data){
+	 $('#dies_previs_load').css('visibility', 'visible');
+	 $('#dies_29_load').css('visibility', 'hidden');
+	 $('#dies_30_load').css('visibility', 'hidden');
+	 $('#dies_31_load').css('visibility', 'hidden');
+	 $('#dies_1_load').css('visibility', 'hidden');
+	 $('#dies_2_load').css('visibility', 'hidden');
+  });
+  
+   $('#dies_29_click').bind('tap', function(e, data){
+	 $('#dies_previs_load').css('visibility', 'hidden');
+	 $('#dies_29_load').css('visibility', 'visible');
+	 $('#dies_30_load').css('visibility', 'hidden');
+	 $('#dies_31_load').css('visibility', 'hidden');
+	 $('#dies_1_load').css('visibility', 'hidden');
+	 $('#dies_2_load').css('visibility', 'hidden');
+  });
+  
+   $('#dies_30_click').bind('tap', function(e, data){
+	 $('#dies_previs_load').css('visibility', 'hidden');
+	 $('#dies_29_load').css('visibility', 'hidden');
+	 $('#dies_30_load').css('visibility', 'visible');
+	 $('#dies_31_load').css('visibility', 'hidden');
+	 $('#dies_1_load').css('visibility', 'hidden');
+	 $('#dies_2_load').css('visibility', 'hidden');
+  });
+  
+   $('#dies_31_click').bind('tap', function(e, data){
+	 $('#dies_previs_load').css('visibility', 'hidden');
+	 $('#dies_29_load').css('visibility', 'hidden');
+	 $('#dies_30_load').css('visibility', 'hidden');
+	 $('#dies_31_load').css('visibility', 'visible');
+	 $('#dies_1_load').css('visibility', 'hidden');
+	 $('#dies_2_load').css('visibility', 'hidden');
+  });
+  
+   $('#dies_1_click').bind('tap', function(e, data){
+	 $('#dies_previs_load').css('visibility', 'hidden');
+	 $('#dies_29_load').css('visibility', 'hidden');
+	 $('#dies_30_load').css('visibility', 'hidden');
+	 $('#dies_31_load').css('visibility', 'hidden');
+	 $('#dies_1_load').css('visibility', 'visible');
+	 $('#dies_2_load').css('visibility', 'hidden');
+  });
+  
+   $('#dies_2_click').bind('tap', function(e, data){
+	 $('#dies_previs_load').css('visibility', 'hidden');
+	 $('#dies_29_load').css('visibility', 'hidden');
+	 $('#dies_30_load').css('visibility', 'hidden');
+	 $('#dies_31_load').css('visibility', 'hidden');
+	 $('#dies_1_load').css('visibility', 'hidden');
+	 $('#dies_2_load').css('visibility', 'visible');
+  });
+
+
+  $('#dies').bind('pageAnimationEnd', function(e, info){
+	netejaLlista();return (false);
+  });
+  
+
+  
+  $('#mapa').bind('pageAnimationStart', function(event, info){
+                 if (info.direction == 'in') {
+                 if (first_run == true) {
+                 initialize();
+                 } else {
+                 get_position();
+                 }
+                 } else if (info.direction == 'out') {
+                 navigator.geolocation.clearWatch(wpid);
+                 wpid = null;
+                 }
+                 });
+				 
+	
+	
+	
+		//$('#rapid_publi').fastClick(function() {
+	   $('#rapid_publi').bind('tap', function(e, data){
+			jQT.goTo('#publi', 'slideup');
+		});
+		
+		//$('#rapid_about').fastClick(function() {
+	   $('#rapid_about').bind('tap', function(e, data){
+			jQT.goTo('#about', 'dissolve');
+		});
+		
+		//$('#tanca_publi').fastClick(function() {
+	   $('#tanca_publi').bind('tap', function(e, data){
+			jQT.goTo('#ui', 'dissolve');
+		});
+		
+		//$('#tanca_about').fastClick(function() {
+	   $('#tanca_about').bind('tap', function(e, data){
+			jQT.goTo('#ui', 'dissolve');
+		});
+		
+		//$('#mail_publi').fastClick(function() {
+	   $('#mail_publi').bind('tap', function(e, data){
+			window.location='mailto:info@festamajor.net'; return false;
+		});
+	
+	
+	
+				 
+});
+</script>
+    
+    
+    
+
+</head>
+<body bgcolor="#ffffff" onload="onBodyLoad();">
+
+<!-- tabbar -->
+<div id="tabbar" style="z-index:1000;">
+	<div>
+    <ul>
+<!--       <li>
+        <a href="#about" mask="bar_img/jqt.png" mask2x="bar_img/jqt@2x.png" animation="slidedown">
+          <strong></strong>
+        </a>
+      </li> -->
+      <li style="border-left:solid 0px #FFF;">
+        <a href="#dies" mask="bar_img/serveis.png" mask2x="bar_img/serveis@2x.png" class="dies">
+          <strong>Dies</strong>
+        </a>
+      </li>
+      <li>
+        <a href="#actes" mask="bar_img/serveis.png" mask2x="bar_img/serveis@2x.png" class="actes">
+         <strong>Actes</strong>
+        </a>
+      </li>
+      <li>
+        <a href="#serveis" mask="bar_img/serveis.png" mask2x="bar_img/serveis@2x.png" class="serveis">
+          <strong>Serveis</strong>
+        </a>
+      </li>
+      <li style="border-right:solid 0px #FFF;">
+        <a href="#mapa" mask="bar_img/serveis.png" mask2x="bar_img/serveis@2x.png" class="mapa" onClick="$('#canviEstil').removeClass('toolbar').addClass('toolbar_mapa');$('#canviEstil2').removeClass('back').addClass('back_mapa');">
+          <strong>Mapa</strong>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div id="jqt">
+
+
+
+
+    <div id="about" class="selectable" style="background-color:#F5F5F5;">
+        <!--div class="s-scrollwrapper" momentum="false" vScrollbar="false"-->
+	    <div>
+            <div>
+			
+            
+            <img src="imatges/credits.png" border="0" usemap="#Map3"/>
+	              <map name="Map3">
+    	            <area shape="circle" coords="292,92,13" id="tanca_about">
+        	      </map>
+                  
+                  
+                  <div id="credits2">
+	                 <div id="bildi">
+	                   <span class="tit_credits2">Disseny gr&agrave;fica Festa Major 2012:</span><br/><span class="text_credits2">Judith Antolín Studio</span>
+                     </div>
+                  </div>
+                  
+                
+					<div id="credits">
+                                <div id="bildi">
+                                <span class="tit_credits">Programaci&oacute;:</span><br/><a href="http://www.fpmweb.net" target="_blank" class="text_credits">fpmWEB</a><br/><a href="http://www.twitter.com/fpmweb" target="_blank"><img src="imatges/twitter.gif" border="0"></a>&nbsp;&nbsp;<a href="http://www.facebook.com/fpmweb" target="_blank"><img src="imatges/facebook.gif" border="0"></a>
+                                <br/><br/>
+                                <span class="tit_credits">Disseny:</span><br/><a href="http://www.bildi.net" target="_blank" class="text_credits">bildi grafiks</a><br/><a href="http://www.twitter.com/bildigrafiks" target="_blank"><img src="imatges/twitter.gif" border="0"></a>&nbsp;&nbsp;<a href="http://www.facebook.com/bildigrafiks" target="_blank"><img src="imatges/facebook.gif" border="0"></a>
+                                </div>
+          			<img src="imatges/home2.png" width="320" height="81" style="margin-top:20px;" class="home2 replace-2x"/>
+		          </div>
+        
+          
+            </div>
+        </div>
+    </div>
+    
+	
+    
+    
+         <div id="publi" class="selectable" style="background-color:#F5F5F5;">
+        <!--div class="s-scrollwrapper" momentum="false" vScrollbar="false"-->
+	    <div>
+            <div>
+              	<img src="imatges/publi.png" border="0" usemap="#Map2"/>
+                <map name="Map2">
+                  <area shape="circle" coords="300,50,15" id="tanca_publi">
+                  <area shape="rect" coords="193,352,263,374" id="mail_publi">
+                </map>
+            </div>
+        </div>
+    </div>
+    
+	
+<!-- 
+  <div id="ui" class="current" style="background-color:#F5F5F5;">
+	<div>
+      <div>
+         <a href="#about" class="fade"><img src="imatges/home.png" border="0"/></a>
+      </div>
+    </div>
+  </div>
+  -->
+  
+ <!-- UI -->
+  <div id="ui" class="current" style="background-color:#F5F5F5;">
+    <!--div class="s-scrollwrapper" momentum="false" vScrollbar="false"-->
+	<div  momentum="false" vScrollbar="false"> 
+      <div>
+           <img src="imatges/home.png" border="0" usemap="#Map"/>
+            <map name="Map">
+                <area shape="circle" coords="296,95,17"  id="rapid_publi">
+                <area shape="circle" coords="261,95,17"  id="rapid_about">
+            </map>
+      </div>
+    </div>
+  </div>
+    
+
+<!-- dies -->
+  <div id="dies">
+    <div class="s-scrollwrapper">
+      <div class="edgetoedge_dies">
+          <a href="http://www.festamajor.net/v3/llista.asp?apartat=dies&llista=Dies%20Previs" class="dies_actiu" id="dies_previs_click">
+          	<div style="display: table; height: 125px; width: 320px; background-image: url('imatges/dies_previs.png'); _position: relative; overflow: hidden;"> 
+					<div style="_position: absolute; _top: 50%; display: table-cell; vertical-align: middle; visibility:hidden;" class="estilDiesLlista" id="dies_previs_load"> 
+						<p style="_position: relative; _top: -50%; width:320px;font-weight: bold;color:#666666;margin-left:160px;"><img src="extensions/jqt.bars/themes/artspot/img/loading.gif"></p> 
+					</div> 
+			</div>
+          </a>
+          <a href="http://www.festamajor.net/v3/llista.asp?apartat=dies&llista=Dimecres%2029" class="dies_actiu" id="dies_29_click">
+                 	<div style="display: table; height: 125px; width: 320px; background-image: url('imatges/dies_29.png'); _position: relative; overflow: hidden;"> 
+					<div style="_position: absolute; _top: 50%; display: table-cell; vertical-align: middle; visibility:hidden;" class="estilDiesLlista" id="dies_29_load"> 
+						<p style="_position: relative; _top: -50%; width:285px;font-weight: bold;color:#666666;margin-left:160px;"><img src="extensions/jqt.bars/themes/artspot/img/loading.gif"></p> 
+					</div> 
+			</div>
+          </a>
+          <a href="http://www.festamajor.net/v3/llista.asp?apartat=dies&llista=Dijous%2030" class="dies_actiu" id="dies_30_click">
+          	<div style="display: table; height: 125px; width: 320px; background-image: url('imatges/dies_30.png'); _position: relative; overflow: hidden;"> 
+					<div style="_position: absolute; _top: 50%; display: table-cell; vertical-align: middle; visibility:hidden;" class="estilDiesLlista" id="dies_30_load"> 
+						<p style="_position: relative; _top: -50%; width:320px;font-weight: bold;color:#666666;margin-left:160px;"><img src="extensions/jqt.bars/themes/artspot/img/loading.gif"></p> 
+					</div> 
+			</div>
+		  </a>
+          <a href="http://www.festamajor.net/v3/llista.asp?apartat=dies&llista=Divendres%2031" class="dies_actiu" id="dies_31_click">
+          	<div style="display: table; height: 125px; width: 320px; background-image: url('imatges/dies_31.png'); _position: relative; overflow: hidden;"> 
+					<div style="_position: absolute; _top: 50%; display: table-cell; vertical-align: middle; visibility:hidden;" class="estilDiesLlista" id="dies_31_load"> 
+						<p style="_position: relative; _top: -50%; width:320px;font-weight: bold;color:#666666;margin-left:160px;"><img src="extensions/jqt.bars/themes/artspot/img/loading.gif"></p> 
+					</div> 
+			</div>
+		  </a>
+          <a href="http://www.festamajor.net/v3/llista.asp?apartat=dies&llista=Dissabte%201" class="dies_actiu" id="dies_1_click">
+          	<div style="display: table; height: 125px; width: 320px; background-image: url('imatges/dies_1.png'); _position: relative; overflow: hidden;"> 
+					<div style="_position: absolute; _top: 50%; display: table-cell; vertical-align: middle; visibility:hidden;" class="estilDiesLlista" id="dies_1_load"> 
+						<p style="_position: relative; _top: -50%; width:320px;font-weight: bold;color:#666666;margin-left:160px;"><img src="extensions/jqt.bars/themes/artspot/img/loading.gif"></p> 
+					</div> 
+			</div>
+		  </a>
+          <a href="http://www.festamajor.net/v3/llista.asp?apartat=dies&llista=Diumenge%202" class="dies_actiu" id="dies_2_click">
+          	<div style="display: table; height: 125px; width: 320px; background-image: url('imatges/dies_2.png'); _position: relative; overflow: hidden;"> 
+					<div style="_position: absolute; _top: 50%; display: table-cell; vertical-align: middle; visibility:hidden;" class="estilDiesLlista" id="dies_2_load"> 
+						<p style="_position: relative; _top: -50%; width:320px;font-weight: bold;color:#666666;margin-left:160px;"><img src="extensions/jqt.bars/themes/artspot/img/loading.gif"></p> 
+					</div> 
+			</div>
+		  </a>
+      </div>
+    </div>
+  </div>
+  
+  
+
+    <!-- Actes -->
+    <div id="actes"  style="background-color:#FFFFFF;">
+        <div class="s-scrollwrapper">
+            <div>
+                <ul class="plastic_actes">
+                    <li class="arrow"><a href="http://www.festamajor.net/v3/actes.asp?apartat=actes&llista=Horaris"><img src="imatges/horaris.png" border="0" align="absmiddle" width="36" height="36"><em>Horaris</em></a></li>
+                    <li class="arrow"><a href="http://www.festamajor.net/v3/actes.asp?apartat=actes&llista=Espectacles"><img src="imatges/espectacles.png" border="0" align="absmiddle" width="36" height="36"><em>Espectacles</em></a></li>
+                    <li class="arrow"><a href="http://www.festamajor.net/v3/actes.asp?apartat=actes&llista=M&uacute;sica"><img src="imatges/musica.png" border="0" align="absmiddle" width="36" height="36"><em>M&uacute;sica</em></a></li>
+                    <li class="arrow"><a href="http://www.festamajor.net/v3/actes.asp?apartat=actes&llista=Folklore"><img src="imatges/folklore.png" border="0" align="absmiddle" width="36" height="36"><em>Folklore</em></a></li>
+                </ul>	
+            </div>
+        </div>
+    </div>
+	
+
+<!-- Serveis -->
+    <div id="serveis" style="background-color:#FFFFFF;">
+        <div class="s-scrollwrapper">
+            <div>
+                <ul class="plastic_serveis">
+                    <li class="arrow"><a href="#serveis1"><img src="imatges/emergencies.png" border="0" align="absmiddle" width="36" height="36"><em>Emerg&egrave;ncies</em></a></li>
+                    <li class="arrow"><a href="#serveis3"><img src="imatges/transport.png" border="0" align="absmiddle" width="36" height="36"><em>Transport</em></a></li>
+                    <!--li class="noarrow"><a><img src="imatges/parking.svg" border="0" align="absmiddle" width="36" height="36"><em>P&agrave;rquing</em></a></li-->
+                    <li class="arrow"><a href="#serveis2"><img src="imatges/farmacies.png" border="0" align="absmiddle" width="36" height="36"><em>Farm&agrave;cies</em></a></li>
+                    <!--li class="noarrow"><a><img src="imatges/serveis.svg" border="0" align="absmiddle" width="36" height="36"><em>Serveis P&uacute;blics</em></a></li-->
+                </ul>
+            </div>
+        </div>
+    </div>
+	
+	
+    <div id="serveis1"   style="background-color:#FFFFFF;"> 
+        <div class="toolbar_serveis">
+	      <h1>Emerg&egrave;ncies</h1>
+    	  <a href="#" class="back_serveis">tornar</a>
+		  <a class="button2_serveis" href="#">Agost 2012</a> 
+        </div>
+        <div class="s-scrollwrapper">
+            <div>
+                <ul class="plastic_serveis plastic_serveis2">
+                    <li class="arrow_tel"><a href="tel:938920358"><em>Ajuntament Vilafranca del Pd&egrave;s.</em></a></li>
+                    <li class="arrow_tel"><a href="tel:938902929"><em>Ambul&agrave;ncies M.A.</em></a></li>
+                    <li class="arrow_tel"><a href="tel:938915400"><em>Ambulatori</em></a></li>
+                    <li class="arrow_tel"><a href="tel:938922080"><em>Bombers</em></a></li>
+                    <li class="arrow_tel"><a href="tel:112"><em>Centre Emerg&egrave;ncies de Catalunya</em></a></li>
+                    <li class="arrow_tel"><a href="tel:938915300"><em>Creu Roja</em></a></li>
+                    <li class="arrow_tel"><a href="tel:088"><em>Emerg&egrave;ncies de tr&agrave;nsit</em></a></li>
+                    <li class="arrow_tel"><a href="tel:061"><em>Urg&egrave;ncies Sanit&agrave;ries</em></a></li>
+                    <li class="arrow_tel"><a href="tel:938180440"><em>Hospital Comarcal de l&rsquo;Alt Pened&egrave;s</em></a></li>
+                    <li class="arrow_tel"><a href="tel:112"><em>Mossos d&rsquo;Esquadra</em></a></li>
+                    <li class="arrow_tel"><a href="tel:938923838"><em>Servei Policia Local</em></a></li>
+                </ul>
+            </div>
+        </div>
+	</div>
+
+    
+    <div id="serveis2"   style="background-color:#FFFFFF;"> 
+        <div class="toolbar_serveis">
+	      <h1>Farm&agrave;cies</h1>
+    	  <a href="#" class="back_serveis">tornar</a>
+		  <a class="button2_serveis" href="#">Agost 2012</a> 
+        </div>
+        <div class="s-scrollwrapper">
+            <div>
+                <ul class="plastic_serveis plastic_serveis2">
+                    <li class="arrow_tel"><a href="tel:938901239"><em>AMAD&Oacute;<br><div style="font-size:11px;color:#CCC;">Sant Pere, 2</div></em></a></li>
+                    <li class="arrow_tel"><a href="tel:938920173"><em>BOSCH <br><div style="font-size:11px;color:#CCC;">Parellada, 25</div></em><font style="font-size:11px;color:#80BAD0;">de torn el 19 i 27</font></a></li>
+                    <li class="arrow_tel"><a href="tel:938181581"><em>CUADRAS<br><div style="font-size:11px;color:#CCC;">Igualada, 48</div></em><font style="font-size:11px;color:#80BAD0;">de torn el 20, 25 i 30</font></a></li>
+                    <li class="arrow_tel"><a href="tel:938901796"><em>JONCH<br><div style="font-size:11px;color:#CCC;">Eugeni d&rsquo;Ors, s/n</div></em><font style="font-size:11px;color:#80BAD0;">de torn el 22 i 28</font></a></li>
+                    <li class="arrow_tel"><a href="tel:938920123"><em>MIRALLES<br><div style="font-size:11px;color:#CCC;">Parellada, 2 / Cort, 1</div></em></a></li>
+                    <li class="arrow_tel"><a href="tel:938922144"><em>OLIV&Eacute;<br><div style="font-size:11px;color:#CCC;">Espirall, 23</div></em></a></li>
+                    <li class="arrow_tel"><a href="tel:938920591"><em>PEDREROL<br><div style="font-size:11px;color:#CCC;">Parellada, 39</div></em><font style="font-size:11px;color:#80BAD0;">de torn el 23 i 31</font></a></li>
+                    <li class="arrow_tel"><a href="tel:938906258"><em>PLANAS<br><div style="font-size:11px;color:#CCC;">Rbla. La Girada, 15</div></em></a></li>
+                    <li class="arrow_tel"><a href="tel:938903026"><em>PUERTO<br><div style="font-size:11px;color:#CCC;">Tossa de Mar, 20</div></em><font style="font-size:11px;color:#80BAD0;">de torn el 24 i 29</font></a></li>
+                    <li class="arrow_tel"><a href="tel:938920176"><em>VI&Ntilde;ALS<br><div style="font-size:11px;color:#CCC;">Cort, 37</div></em><font style="font-size:11px;color:#80BAD0;">de torn el 21 i 26</font></a></li>
+                </ul>
+            </div>
+        </div>
+	</div>
+	
+	
+    <div id="serveis3"   style="background-color:#FFFFFF;"> 
+        <div class="toolbar_serveis">
+	      <h1>Transport</h1>
+    	  <a href="#" class="back_serveis">tornar</a>
+		  <a class="button2_serveis" href="#">Agost 2012</a> 
+        </div>
+        <div class="s-scrollwrapper">
+            <div>
+                <ul class="plastic_serveis plastic_serveis2">
+                    <li class="arrow"><a href="#serveis3a"><em>Rodalies Renfe</em></a></li>
+                    <li class="arrow"><a href="#serveis3b"><em>Bus urb&agrave;</em></a></li>
+                    <li class="arrow"><a href="#serveis3c"><em>Hispano Igualadina</em></a></li>
+                    <li class="arrow"><a href="#serveis3d"><em>Autocars Plana</em></a></li>
+                    <li class="arrow"><a href="#serveis_taxi"><em>Taxis</em></a></li>
+                </ul>
+            </div>
+        </div>
+	</div>
+	
+	
+    <div id="serveis3a"   style="background-color:#FFFFFF;"> 
+        <div class="toolbar_serveis">
+	      <h1>Rodalies Renfe</h1>
+    	  <a href="#" class="back_serveis">tornar</a>
+        </div>
+        <div class="s-scrollwrapper">
+   
+   <div>
+			    <img src="imatges/renfe.jpg" border="0"/> 
+ 
+                <div id="text_fitxa"> 
+								
+
+					<div style="display: table; height: 62px; width: 320px; background: #fff; _position: relative; overflow: hidden;"> 
+					<div style=" _position: absolute; _top: 50%; display: table-cell; vertical-align: middle;"> 
+
+					<p style=" _position: relative; _top: -50%; width:285px;font-weight: bold;color:#666666;margin-left:10px;">Rodalies Renfe</p> 
+					</div> 
+					</div>
+					<div id="fons_fitxa"></div>
+					
+                </div> 
+				<br/>
+				<div id="contingut_fitxa">L'estaci&oacute; de Rodalies Renfe de Vilafranca del Pened&egrave;s est&agrave; situada a la pla&ccedil;a de l'Estaci&oacute;. 
+<br/>Forma part de la l&iacute;nia C4 de Rodalies Renfe, entre Manresa i Sant Vicen&ccedil; de Calders.</div> 
+ 
+    
+</div> 
+   
+        </div>
+	</div>
+	
+	
+
+    <div id="serveis3b"   style="background-color:#FFFFFF;"> 
+        <div class="toolbar_serveis">
+	      <h1>Bus urb&agrave;</h1>
+    	  <a href="#" class="back_serveis">tornar</a>
+        </div>
+        <div class="s-scrollwrapper">
+   
+   <div>
+			    <img src="imatges/bus.jpg" border="0"/> 
+ 
+                <div id="text_fitxa"> 
+								
+
+					<div style="display: table; height: 62px; width: 320px; background: #fff; _position: relative; overflow: hidden;"> 
+					<div style=" _position: absolute; _top: 50%; display: table-cell; vertical-align: middle;"> 
+
+					<p style=" _position: relative; _top: -50%; width:285px;font-weight: bold;color:#666666;margin-left:10px;">Bus urb&agrave;</p> 
+					</div> 
+					</div>
+					<div id="fons_fitxa"></div>
+					
+                </div> 
+				<br/>
+				<div id="contingut_fitxa">
+Vilafranca del Pened&egrave;s disposa de tres l&iacute;nies de bus urb&agrave;.<br><br>
+
+La L&iacute;nia 1, identificada en el pl&agrave;nol i als horaris de m&agrave; amb color vermell, connecta l'Hospital Comarcal amb l'estaci&oacute; de bus i amb altres punts de Vilafranca, com el centre sociosanitari Ricard Fortuny. 
+<br>
+Funciona de dilluns a dissabte de les 6,50h a les 21,41h. <br>
+&Uacute;ltima sortida a les 20,50h. 
+<br>
+Els diumenges i festius funciona des de les 6,50h a les 15,41h.<br> 
+&Uacute;ltima sortida a les 14,50h. 
+<br>
+<br>
+La L&iacute;nia 2, identificada en el pl&agrave;nol i als horaris de m&agrave; amb color verd, connecta l'Hospital Comarcal amb l'estaci&oacute; de tren, amb la Zona esportiva i amb altres punts de Vilafranca. 
+<br>
+Funciona de dilluns a divendres de les 8,10h a les 21,54h. <br>
+&Uacute;ltima sortida a les 21,10h.
+<br>
+El cap de setmana i festius no d&oacute;na servei. <br>
+<br>
+La L&iacute;nia 3, identificada en el pl&agrave;nol i als horaris de m&agrave; amb color blau, connecta l'Hospital Comarcal amb el centre de la vila, amb les estacions de bus i tren, i amb altres punts de Vilafranca. 
+<br>
+Funciona de dilluns a divendres de les 6,58h a les 19,58h. <br>
+&Uacute;ltima sortida a les 19,28h. Interval aproximat de pas en cada parada de 30 min. 
+<br>
+Els cap de setmana i festius no d&oacute;na servei.
+
+				</div> 
+ 
+    
+</div> 
+   
+        </div>
+	</div>
+	
+	
+
+    <div id="serveis3c"   style="background-color:#FFFFFF;"> 
+        <div class="toolbar_serveis">
+	      <h1>Hispano Igualadina</h1>
+    	  <a href="#" class="back_serveis">tornar</a>
+        </div>
+        <div class="s-scrollwrapper">
+   
+   <div>
+			    <img src="imatges/hispano.jpg" border="0"/> 
+ 
+                <div id="text_fitxa"> 
+								
+
+					<div style="display: table; height: 62px; width: 320px; background: #fff; _position: relative; overflow: hidden;"> 
+					<div style=" _position: absolute; _top: 50%; display: table-cell; vertical-align: middle;"> 
+
+					<p style=" _position: relative; _top: -50%; width:285px;font-weight: bold;color:#666666;margin-left:10px;">Hispano Igualadina</p> 
+					</div> 
+					</div>
+					<div id="fons_fitxa"></div>
+					
+                </div> 
+				<br/>
+				<div id="contingut_fitxa">
+La companyia la Hispano Igualadina opera des de l'estaci&oacute; d'autobusos de Vilafranca del Pened&egrave;s, situada a la carretera de Vilanova i la Geltr&uacute;.
+
+				</div> 
+ 
+    
+</div> 
+   
+        </div>
+	</div>
+	
+	
+	<div id="serveis3d"   style="background-color:#FFFFFF;"> 
+        <div class="toolbar_serveis">
+	      <h1>Autocars Plana</h1>
+    	  <a href="#" class="back_serveis">tornar</a>
+        </div>
+        <div class="s-scrollwrapper">
+   
+   <div>
+			    <img src="imatges/plana.jpg" border="0"/> 
+ 
+                <div id="text_fitxa"> 
+								
+
+					<div style="display: table; height: 62px; width: 320px; background: #fff; _position: relative; overflow: hidden;"> 
+					<div style=" _position: absolute; _top: 50%; display: table-cell; vertical-align: middle;"> 
+
+					<p style=" _position: relative; _top: -50%; width:285px;font-weight: bold;color:#666666;margin-left:10px;">Autocars Plana</p> 
+					</div> 
+					</div>
+					<div id="fons_fitxa"></div>
+					
+                </div> 
+				<br/>
+				<div id="contingut_fitxa">
+	Les parades de la companyia Autocars Plana a Vilafranca del Pened&egrave;s s&oacute;n a l'estaci&oacute; d'autobusos, situada a la carretera de Vilanova i la Geltr&uacute;. Autocars Plana ofereix el servei de transport entre Vilafranca i diferents poblacions del Garraf.
+				</div> 
+ 
+    
+</div> 
+   
+        </div>
+	</div>
+    
+    
+    
+    
+    <div id="serveis_taxi"   style="background-color:#FFFFFF;"> 
+        <div class="toolbar_serveis">
+            <h1>Taxis</h1>
+            <a href="#" class="back_serveis">tornar</a>
+        </div>
+        <div class="s-scrollwrapper">
+            
+            <div>
+			    <img src="imatges/taxis.jpg" border="0"/> 
+                
+                <div id="text_fitxa"> 
+                    
+                    
+					<div style="display: table; height: 62px; width: 320px; background: #fff; _position: relative; overflow: hidden;"> 
+                        <div style=" _position: absolute; _top: 50%; display: table-cell; vertical-align: middle;"> 
+                            
+                            <p style=" _position: relative; _top: -50%; width:285px;font-weight: bold;color:#666666;margin-left:10px;">Taxis</p> 
+                        </div> 
+					</div>
+					<div id="fons_fitxa"></div>
+					
+                </div> 
+				<br/>
+				<div id="contingut_fitxa">
+                                        Des de la Parada de Taxi ubicada a la PL. Estació de Vilafranca del Penedès li donem la benvinguda i esperem que els nostres serveis s'adaptin a les seves necessitats. Som un equip de professionals amb una dilatada experiència oferint un servei de qualitat.<br>
+                    Telèfons: <a href="tel:938903627" style="color:#000;text-decoration:none;">938 903 627</a> | <a href="tel:938175739" style="color:#000;text-decoration:none;">938 175 739</a>
+                    
+				</div> 
+                
+                
+            </div> 
+            
+        </div>
+	</div>
+    
+    
+   
+    <div id="mapa"> 
+		<div class="toolbar" id="canviEstil"> 
+	      <a href="#" class="back_dies" id="canviEstil2">tornar</a>
+			<h1>Mapa</h1>
+        </div> 
+		<div style="background-color:#F5F5F5;"> 
+			<div style="background-color:#F5F5F5;"> 
+				<div id="map_canvas"></div> 
+			</div> 
+		</div> 
+	</div>  
+   
+   
+   
+</div>   
+  
+  
+</div>
+
+ <!-- fico l'swipe pq s'ha d'iniciliatizar per la fitxa --> 
+
+<script type="text/javascript" charset="utf-8" src="http://www.festamajor.net/v2/swipe.js"></script>
+
+<script  type="text/javascript" charset="utf-8" > 
+
+// slider
+
+var slider = new Swipe(document.getElementById('slider2'), {
+
+      callback: function(e, pos) {
+
+        
+
+        var i = bullets.length;
+
+        while (i--) {
+
+          bullets[i].className = ' ';
+
+        }
+
+        bullets[pos].className = 'on';
+
+ 
+
+      }
+
+    }),
+
+    bullets = document.getElementById('position').getElementsByTagName('em'),
+
+ 
+
+// tabs
+
+    tabs = new Swipe(document.getElementById('tabs'), {
+
+      callback: function(event,index,elem) {
+
+        setTab(selectors[index]);
+
+      }
+
+    }),
+
+    selectors = document.getElementById('tabSelector').children;
+
+ 
+
+for (var i = 0; i < selectors.length; i++) {
+
+  var elem = selectors[i];
+
+  elem.setAttribute('data-tab', i);
+
+  elem.onclick = function(e) {
+
+    e.preventDefault();
+
+    setTab(this);
+
+    tabs.slide(parseInt(this.getAttribute('data-tab'),10),300);
+
+  }
+
+}
+
+ 
+
+function setTab(elem) {
+
+  for (var i = 0; i < selectors.length; i++) {
+
+    selectors[i].className = selectors[i].className.replace('on',' ');
+
+  }
+
+  elem.className += ' on';
+
+}
+
+ 
+
+// url bar hiding
+
+(function() {
+
+    
+
+  var win = window,
+
+      doc = win.document;
+
+ 
+
+  // If there's a hash, or addEventListener is undefined, stop here
+
+  if ( !location.hash || !win.addEventListener ) {
+
+ 
+
+    //scroll to 1
+
+    window.scrollTo( 0, 1 );
+
+    var scrollTop = 1,
+
+ 
+
+    //reset to 0 on bodyready, if needed
+
+    bodycheck = setInterval(function(){
+
+      if( doc.body ){
+
+        clearInterval( bodycheck );
+
+        scrollTop = "scrollTop" in doc.body ? doc.body.scrollTop : 1;
+
+        win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
+
+      } 
+
+    }, 15 );
+
+ 
+
+    if (win.addEventListener) {
+
+      win.addEventListener("load", function(){
+
+        setTimeout(function(){
+
+          //reset to hide addr bar at onload
+
+          win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
+
+        }, 0);
+
+      }, false );
+
+    }
+
+  }
+
+ 
+
+})();
+
+
+
+</script> 
+
+   
+</body>
+</html>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ga_trackingId">UA-37450865-2</string>
+    <string name="hello">Hello World, PointActivity!</string>
+    <string name="app_name">Point</string>
+</resources>

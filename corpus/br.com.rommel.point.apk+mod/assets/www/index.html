@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1">
+    <title>Point</title>
+      <link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.0.1.min.css" type="text/css"/>
+	  <link rel="stylesheet" href="pgandjqm-style-override.css" type="text/css"/>
+	  <link rel="stylesheet" href="mapapp.css" type="text/css">
+	  
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery-1.7.1.min"></script>
+	  <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+	  <script type="text/javascript">
+        $(document).bind("mobileinit", function(){
+            $.extend($.mobile, {
+                loadingMessage: "Carregando...",
+				pageLoadErrorMessage: 'Erro ao carregar'
+            });
+            $.mobile.allowCrossDomainPages = true;
+        });
+      </script>
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery.mobile-1.0.1.min.js"></script>
+      <script type="text/javascript" charset="iso-8859-1" src="main.js"></script>
+
+
+	</head>
+  <body onload="init();" class="ui-body-b">
+    <div data-role="page" data-theme="b" id="entrada">
+    <div data-role="content">
+    <div id="btsair" style="display:none;"><a href="javascript:sairSplash();" data-role="button" data-theme="c" data-icon="delete">Sair</a></div>
+    <div id="centro" style="width:100%">
+    <BR><BR><BR>
+	<p align="center">
+	<img src="img/point_100.png" />
+	<br/>
+	<img src="img/nome.png" />
+	</div>
+	</p>
+	</div>
+    </div>
+  </body>
+</html>

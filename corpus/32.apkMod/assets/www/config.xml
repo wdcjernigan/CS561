@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.fpmweb.festamajor"
+        versionCode="11" 
+        version   = "2.0.0">
+
+    <name>Festa Major Vila</name>
+
+	<description>
+		Aplicació oficial de la Festa Major de Vilafranca del Penedès 2012. 
+	</description>
+
+    <author href="https://www.fpmweb.net" email="franc@fpmweb.net">
+        Francesc Puig
+    </author>
+	
+	<gap:splash src="splash.png" gap:platform="android" gap:density="ldpi" />
+	<gap:splash src="splash.png" gap:platform="android" gap:density="mdpi" />
+	<gap:splash src="splash.png" gap:platform="android" gap:density="hdpi" />
+
+	<preference name="orientation" value="portrait" />
+	
+	<icon src="icon.png" gap:role="default" />
+	
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+
+</widget>

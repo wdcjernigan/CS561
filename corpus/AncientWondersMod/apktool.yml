@@ -1,0 +1,11 @@
+version: 1.5.1
+apkFileName: org.meshtek.wonders7.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '2'
+packageInfo:
+  cur_package: org.meshtek.wonders7
+  orig_package: org.meshtek.wonders7

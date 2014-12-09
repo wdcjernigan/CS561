@@ -1,0 +1,11 @@
+version: 1.5.1
+apkFileName: com.groundroad.salecalc.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '8'
+packageInfo:
+  cur_package: com.groundroad.salecalc
+  orig_package: com.groundroad.salecalc

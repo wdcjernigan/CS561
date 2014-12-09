@@ -10,20 +10,20 @@ require 'timeout'
 
 # puts Dir["test/*"]
 
-@log = File.open("results.log", 'w')
+@log = File.open("results.log", 'a')
 
 def logAndOutput s
 	@log.write(s)
 	puts s
 end
 
-repos = Dir.entries('PhonGapApps/').select {|entry| File.directory? File.join('PhonGapApps/',entry) and !(entry =='.' || entry == '..') }
+# repos = Dir.entries('PhonGapApps/').select {|entry| File.directory? File.join('PhonGapApps/',entry) and !(entry =='.' || entry == '..') }
 
-File.open("repoList.txt", 'w') { |file| 
-	repos.each {|repo| 
-		file.write(repo+"\n") 
-	}
-}
+# File.open("repoList.txt", 'w') { |file| 
+# 	repos.each {|repo| 
+# 		file.write(repo+"\n") 
+# 	}
+# }
 
 repos = []
 
@@ -49,7 +49,7 @@ repos.each {|repo|
 				# puts htmlName
 				f = File.open(htmlName)
 				count = 0
-				doc = Nokogiri::XML(f)
+				doc = Nokogiri::HTML(f)
 				doc.css("script").each do |node|
 					# if node.key?("src") && node["src"] != "cordova.js" && node["src"] != "phonegap.js" then
 					if node.key?("src") && ! node["src"].start_with?("http:") then

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Android Shim</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+<script type="text/javascript" src="phonegap-1.4.1.js"></script>
+<script type="text/javascript" src="clipboardmanager.js"></script>
+<script type="text/javascript" src="share.js"></script>
+<link rel="stylesheet" type="text/css" href="fonts/fonts.css"/>
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.touchSwipe-1.2.5.js"></script>
+<script type="text/javascript" src="scripts/iScroll.js"></script>
+<script type="text/javascript" src="scripts/jScroll.js"></script>
+<script type="text/javascript" src="scripts/jquery.touchSwipe.event.js"></script>
+<script type="text/javascript" src="scripts/processimage.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.0.1.min.css"/>
+<link rel="stylesheet" type="text/css" href="scripts/jquery.touchSwipe.css"/>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<div id="spinwrap"><div id="spinner"></div></div>
+<nav> <a href="#Home">clrpickr</a> <a href="#About">about</a> <a href="#Output">output</a><em></em> </nav>
+    <div rel="settings" id="settings">
+      <div class="innercontent">
+        <div class="actions" style="position:inherit">
+          <h1>Color Sensitivity (Image segments)</h1>
+          <input type="radio" value="10" name="colorSensitivity" id="col-low">
+          <label for="col-low">Low</label><br>
+          <input type="radio" checked="checked" value="20" name="colorSensitivity" id="col-med">
+          <label for="col-med">Medium</label><br>
+          <input type="radio" value="30" name="colorSensitivity" id="col-hig">
+          <label for="col-hig">High</label>
+          <h1>Color Format</h1>
+          <input type="radio" value="hex" checked="checked" name="colorFormat" id="col-hex">
+          <label for="col-hex">HEX e.g #FF0000</label><br>
+          <input type="radio"value="rgb" name="colorFormat" id="col-rgb">
+          <label for="col-rgb">RGB e.g rgb(255,0,0)</label><br>
+          <input type="radio"value="cmyk" name="colorFormat" id="col-cmyk">
+          <label for="col-cmyk">CMYK* e.g C:0 M:99 Y:99 K:0</label><br>          
+        </div>
+        <p style="width:90%;margin:10px 5%;"> NOTE:<br/>Settings are not updated until a new color palette is generated.<br/>*CMYK Values are calculated from RGB values and are to be used as a guide only.</p>
+      </div>
+    </div>
+<div id="slidewrapper">
+  <div id="wdw">
+    <div class="window" rel="home">
+      <div id="logo"> <img src="images/logo.png"/>
+        <div id="rainbow"></div>
+      </div>
+      <div class="actions" id="homeact">
+        <h1>Capture Image</h1>
+        <a href="#camera" onclick="capturePhoto();">Camera<em class="ico"><img src="images/ic_action_photo.png"/></em><span>Take a photo</span></a>
+        <hr/>
+        <a href="#gallery" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">Image Gallery<em class="ico"><img src="images/4-collections-collection.png"/></em><span>Pick an existing image from gallery</span></a>
+        <hr/>
+      </div>
+    </div>
+    <div class="window" rel="about">
+      <div class="innercontent about">
+        <p style="width:90%;margin:10px 5%;"> <em><strong>clrpickr</strong></em> automatically generates color palettes by averaging the colors within an image, either from the camera, or by picking a pre-existing image from your gallery.<br/>
+            <br/>These color palettes are then returned as HEX, RGB and CMYK color values, which can be :<ul><li>copied to your clipboard</li><li>Shared as plain text</li><li>Emailed as palette via Gmail</li></ul>
+        </p><p style="width:90%;margin:10px 5%;">The colors generated should be used as a guide or for inspiration and may not exactly represent colors in image</p>
+        
+      </div>
+    </div>
+    <div class="window" rel="output" id="imgoutputwrap">
+      <div class="innercontent" id="imgoutput">
+        <div id="drop" >
+          <p>No ouput avaliable, please select an image via the "clrpickr" screen</p>
+        </div>
+        <div class="actions" id="outputact">        
+        </div>
+        <img style="display:none;width:60px;height:60px;" id="smallImage" src="" /> <img style="display:none;width:60px;height:60px;" id="largeImage" src="" /> </div>
+    </div>      
+  </div>
+</div>
+</body>
+</html>

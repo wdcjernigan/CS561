@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1">
+    <title>Point</title>
+      <link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.0.1.min.css" type="text/css"/>
+	  <link rel="stylesheet" href="pgandjqm-style-override.css" type="text/css"/>
+	  <link rel="stylesheet" href="mapapp.css" type="text/css">
+	  
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery-1.7.1.min"></script>
+	  <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery.centralize.min.js"></script>
+	  <script type="text/javascript">
+        $(document).bind("mobileinit", function(){
+            $.extend($.mobile, {
+                loadingMessage: "Carregando...",
+				pageLoadErrorMessage: 'Erro ao carregar'
+            });
+            $.mobile.allowCrossDomainPages = true;
+        });
+      </script>
+	  <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery.mobile-1.0.1.min.js"></script>
+	  
+	  <script type="text/javascript" charset="iso-8859-1" src="registro.js"></script>
+
+	</head>
+  <body onload="init();" class="ui-body-b">
+    <div data-role="page" data-theme="b" id="registro">
+  	<div data-role="header" data-theme="b">
+    	<h1>Registro</h1>
+    	<a href="javascript:sairRegistro();" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Sair</a> 
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<img src="img/logo_48.png">
+	<img src="img/nome.png">
+	<ul data-role="listview" data-theme="c" data-inset="true" data-count-theme="e">
+		<li data-role="list-divider"></li>
+		<li><a href="#cadastro">Cadastro</a></li>
+		<li><a href="#login">Login</a></li>
+		<li><a href="#reenviar">Reenviar</a></li>
+		<li data-role="list-divider"></li>
+	</ul>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="cadastro">
+  	<div data-role="header" data-theme="b">
+  		<a href="#registro" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Cadastro</h1> 
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<ul data-role="listview" data-inset="true" data-theme="d">
+		<li data-role="fieldcontain">
+			<div class="ui-body ui-body-c ui-corner-all">
+				<label for="bio">Foto:</label>
+				<img id="foto" height="80" src="img/no_picture.gif" />
+				
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><a href="javascript:getPicAlbum();" data-role="button" data-icon="search" data-theme="c" style="font-size:10px;">Procurar</a></div>
+					<div class="ui-block-b"><a href="javascript:getPicCam();" data-role="button" data-icon="minus" data-theme="c" style="font-size:10px;">Tirar</a></div>	   
+				</fieldset>
+			</div>
+		</li>
+		<li data-role="fieldcontain">
+			<label for="email">E-mail:</label>
+			<input type="text" name="email" id="email" value=""  />
+		</li>
+		<li data-role="fieldcontain">
+			<label for="nome">Nome:</label>
+			<input type="text" name="nome" id="nome" value=""  />
+		</li>
+		<li data-role="fieldcontain">
+			<label for="bio">Bio:</label>
+			<textarea cols="40" rows="8" name="bio" id="bio"></textarea>
+		</li>
+		<li data-role="fieldcontain" data-theme="d">
+			<fieldset>
+	    		<legend>Sexo:</legend>
+	         	<input type="radio" name="sexo" id="sexom" value="M" checked="checked" />
+	         	<label for="sexom">Masculino</label>
+	         	<input type="radio" name="sexo" id="sexof" value="F"  />
+	         	<label for="sexof">Feminino</label>
+         	</fieldset>
+		</li>
+	</ul>
+		<a href="javascript:salvarRegistro();" id="btSalvar" data-role="button" data-icon="check" data-theme="b">Salvar</a>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="login">
+  	<div data-role="header" data-theme="b">
+  		<a href="#registro" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Login</h1> 
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<ul data-role="listview" data-inset="true" data-theme="d">
+		<li data-role="fieldcontain">
+			<label for="login_email">E-mail:</label>
+			<input type="text" name="login_email" id="login_email" value=""  />
+		</li>
+		<li data-role="fieldcontain">
+			<label for="login_codigo">Senha:</label>
+			<input type="number" name="login_codigo" id="login_codigo" value=""  />
+		</li>
+	</ul>
+		<a href="javascript:logar();" data-role="button" data-icon="arrow-r" data-theme="b">Entrar</a>
+	</p>
+    </div>
+    </div>
+    <div data-role="page" data-theme="b" id="reenviar">
+  	<div data-role="header" data-theme="b">
+  		<a href="#registro" data-icon="arrow-l" data-iconpos="notext">Voltar</a>
+    	<h1>Reenviar Senha</h1> 
+	</div>
+    <div data-role="content">
+	<p align="center">
+	<ul data-role="listview" data-inset="true" data-theme="d">
+		<li data-role="fieldcontain">
+			<label for="login_email">E-mail:</label>
+			<input type="text" name="reenv_email" id="reenv_email" value=""  />
+		</li>
+	</ul>
+		<a href="javascript:reenviarCodigo();" data-role="button" data-icon="arrow-r" data-theme="b">Reenviar</a>
+	</p>
+    </div>
+    </div>
+  </body>
+</html>
