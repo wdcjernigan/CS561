@@ -1,10 +1,1 @@
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-	only screen and (-o-min-device-pixel-ratio: 3/2),
-	only screen and (min--moz-device-pixel-ratio: 1.5),
-	only screen and (min-device-pixel-ratio: 1.5) {
-
-.replace-2x {
-	font-size: 1px;
-}
-
-	}
+@mediaonlyscreenand(-webkit-min-device-pixel-ratio:1.5),onlyscreenand(-o-min-device-pixel-ratio:3/2),onlyscreenand(min--moz-device-pixel-ratio:1.5),onlyscreenand(min-device-pixel-ratio:1.5){.replace-2x{font-size:1px;}}
