@@ -31,8 +31,8 @@
 \usepackage[Russian]{babel}
 \begin{document}
 
-\title{Mobile JavaScript Library Minimization}
-\subtitle{Milestone Two}
+\title{Improving mobile hybrid applications: Do current tools provide a benefit?}
+\subtitle{Final Submission}
 %
 % You need the command \numberofauthors to handle the 'placement
 % and alignment' of the authors beneath the title.
@@ -105,9 +105,9 @@ William Leslie\\
 % number that will appear in the \additionalauthors section.
 
 \maketitle
-% \begin{abstract}
-% Abstract here...
-% \end{abstract}
+\begin{abstract}
+Abstract here...
+\end{abstract}
 
 % A category with the (minimum) three required fields
 % \category{H.4}{Information Systems Applications}{Miscellaneous}
@@ -118,7 +118,7 @@ William Leslie\\
 
 % \keywords{ACM proceedings, \LaTeX, text tagging} % NOT required for Proceedings
 
-\section{Research overview}
+\section{Introduction}
 Mobile devices load entire JavaScript libraries when users browse the web.
 This can make the mobile device slow or unresponsive if the library is large and/or if the mobile device’s resources are limited, which may lead users to look for another website to use or download an app instead of using the mobile browser.
 Traditional guidelines were made to improve load times and usability of these websites.
@@ -126,12 +126,15 @@ JavaScript libraries are often minified to create smaller files allowing for fas
 80\% of web page loading time is attributed to loading page resources and only 20\% is from back-end computations \cite{souders2008high}, so loading is a large concern for websites.
 Another approach to counter download times is hybrid applications; these store most of the JavaScript files on the device to avoid delays due to server communication.
 This means that the traditional guidelines for websites do not apply to hybrid applications.
- To provide new guidelines, we propose the following research questions:
+\subsection{Research Questions}
+% Make sure you explicitly list the research questions. Have specific questions, rather than generic questions. For example, if you built an amazing tool, Eradicator, a question such as "Is Eradicator useful?" is too vague. Instead, you should design some specific questions that answer the usefulness from different angles: how does Eradicator improve programmer productivity, software quality, what is its running time, is it scalable, etc.
+To provide new guidelines, we propose the following research questions:
 
 RQ1: Do guidelines for the loading of websites on mobile devices apply to hybrid applications?\\
 RQ2: If not, what new guidelines can be provided to improve the performance of hybrid applications?
 
-\section{Motivating Example}
+\section{Motivating Example} 
+%a motivating example section. Typically this section contains some realistic code which presents the heart of the problem. You want to chose some example which is realistic (e.g., a simplified version of some real code from an app), but it is also complex enough to illustrate the main challenges that your problem is trying to solve. This section illustrates the what part of your solution, not the how part.
 A web application designer, John, made an app, but decided that he wanted it to be mobile compatible.
 He decided the best way to do this was to make a hybrid app, which would make the application run more natively than on a browser.
 This makes the application faster on mobile devices, since not as much data has to be downloaded over a slow mobile network.
@@ -160,12 +163,13 @@ Then we must change the references in all the HTML files to include just this ne
 If we run the Closure Compiler on each of the application's JavaScript files separately, the HTML modification is not required, but then the Closure Compiler cannot make gains in combining sections of code from across files, reducing its effectiveness. 
 So, it may be necessary to either try both approaches or find the best way to modify the HTML so the Closure Compiler is given an honest shot at making a difference.
 
-\section{Proposed Solution}
+\section{Empirical Methodology}
+% Here you present the setup of your experiment, the corpus of the data that you used to answer the research questions, any procedures that you followed, etc.
 In order to show that the traditional web page guidelines do not apply to hybrid applications, we will first use the Google Closure Compiler to create a version of the hybrid application which is minified.
 Then we will test its speed with Android Device Monitor with the expectation that there will be miniscule improvements.
 Below is a discussion of the current challenges with each required technology.
 
-\subsection{Retrieving applications}
+\subsection{The Corpus}
 First, we will build a corpus of applications to test our process. 
 We target PhoneGap applications, but need to determine which apps are open source. 
 Doing this manually requires searching for the applications in repositories hosted at sites like Github or Google Code.
@@ -194,7 +198,6 @@ The traditional guidelines are used to create an optimized javascript files that
 Unlike mobile web apps, hybrid apps have the JavaScript files on the device on execution.
 This means that file size and other minification guidelines might not affect performance as much as they would for web apps.
 
-
 \subsection{New Guidelines}
 After proving that traditional guidelines are ineffective, we will test and validate that new guidelines are more effective for hybrid apps.
 Aharon has suggested some new guidelines that will be more effective on hybrid apps:
@@ -216,9 +219,17 @@ We also did some research and found some performance techniques used by Phonegap
 	\item limit libraries and frameworks
 \end{enumerate}
 
+\section{Results}
+%Here you present the results using graphs, charts, etc. You also interpret the results, highlight some of the scenarios where Eradicator did very well, but also those where Eradicator did not do well. You can show examples of corner cases where Eradicator did not do well and possible explanations. 
+TODO: Here is a table showing the scores for the apps for each measurement. The proposed set of changes had a big impact on PageSpeed Insights speed scores, significant impact on MobileOK and load times, and no impact on PageSpeed Insights User Experience scores. Explain the takeaway for each of these. 
+%When you present the results, in addition to simply showing graphs and charts, you need to address these questions:
+%What are the surprising/unexpected results?
+%What are the outliers?
+%What did you learn?
 
-\section{Related Works}
-
+TODO: Outlier: MobileOK marked apps down for "invalid CSS" but this is because they don't know about the new CSS3 @keyframes rule.
+\section{Related Work}
+% We require at least 10 references. You need to compare and contrast your work to previous work.
 \subsection{Digua: Minifier and Obfuscator for Web Resources\cite{ciminiandigua} }
 Ciminian and Dobre discuss their minifier tool Digua in \cite{ciminiandigua}. 
 Digua is a minifier which works for CSS, HTML, and JavaScript.  
@@ -227,8 +238,6 @@ The paper states that 80\% of web page loading time is attributed to loading pag
 This does not apply to hybrid mobile apps.
 This is because the web code for the application is already stored in the device.
 The method presented in the paper would only apply to applications which need to be downloaded every time the website is hit. 
-
-
 
 \subsection{Semi-Automatic Rename Refactoring for JavaScript\cite{feldthaus2013semi}}
 % cut this one?
@@ -281,3 +290,6 @@ It also lists best practices and shows why they are important.
 
 
 \end{document}
+\section{Conclusion}
+% This is a brief summary, but also contains the most surprising findings, implications, directions for future research.
+By combining the described changes into an automated refactoring tool, these improvements could be made in many applications.
