@@ -201,13 +201,14 @@ This means that file size and other minification guidelines might not affect per
 \subsection{New Guidelines}
 After proving that traditional guidelines are ineffective, we will test and validate that new guidelines are more effective for hybrid apps.
 Aharon has suggested some new guidelines that will be more effective on hybrid apps:
-\begin{enumerate}
+\vspace{-1.0em}
+\begin{enumerate}\itemsep1pt \parskip0pt \parsep0pt
 	\item Creating smaller files using minification
 	\item Load only functions needed for that page
 \end{enumerate}
-
 We also did some research and found some performance techniques used by Phonegap developers:
-\begin{enumerate}
+\vspace{-1.0em}
+\begin{enumerate}\itemsep1pt \parskip0pt \parsep0pt
 	\item Avoid Network access
 	\item Don't wait for data to display
 	\item Use CSS Transitions
@@ -218,7 +219,6 @@ We also did some research and found some performance techniques used by Phonegap
 	\item Limit access to DOM
 	\item limit libraries and frameworks
 \end{enumerate}
-
 \section{Results}
 %Here you present the results using graphs, charts, etc. You also interpret the results, highlight some of the scenarios where Eradicator did very well, but also those where Eradicator did not do well. You can show examples of corner cases where Eradicator did not do well and possible explanations. 
 TODO: Here is a table showing the scores for the apps for each measurement. The proposed set of changes had a big impact on PageSpeed Insights speed scores, significant impact on MobileOK and load times, and no impact on PageSpeed Insights User Experience scores. Explain the takeaway for each of these. 
@@ -277,11 +277,26 @@ Hybrid and interpreted apps avoid this deployment issue because the code for the
 \cite{Xanthopoulos:2013:CAC:2490257.2490292} also reports that generated apps give a great alternative to native apps but there is little support for this paradigm without commercial purchases. 
 These results discuss the pros and cons of a high level design decision, where our reported code changes focus on lower level code changes and their pros and cons.
 
+\subsection{Discovering Refactoring Opportunities in Cascading Style Sheets \cite{Mazinanian:2014:DRO:2635868.2635879}}
+Mazinanian et. al. explore ways to improve CSS, primarily for maintainability in \cite{Mazinanian:2014:DRO:2635868.2635879}. 
+That paper provides description of CSS duplications, refactoring improvements, ranking of those refactorings for prioritization, and preconditions for preservation of styling after refactoring.
+Our paper could have suggested following what was presented in \cite{Mazinanian:2014:DRO:2635868.2635879}, but there is not a strong indication our metrics would have improved.
+Their technique reduced file size by 8% which may have sped file parsing and improved loading time, but just minifying the CSS may have similar effects at a reduced cost.
+
+\subsection{MobiTran: Tool Support for Refactoring PC Websites to Smart Phones \cite{Ma:2013:MTS:2541614.2541621}}
+In \cite{Ma:2013:MTS:2541614.2541621}, Ma et. al. present MobiTran which helps developers create a smart phone ready website from a desktop website. 
+Their approach highlights some differences between websites on PC and smart phones but does not address differences for hybrid applications. 
+Their paper does explain how transformations of certain portions of websites may be generalized to streamline their process, but these transformations do not necessarily improve loading times or help with the other metrics highlighted in our paper. 
+It may be that the touch-centric transformations improve scores on MobileOK because of its recommendation of using links on entire images instead of click boxes that do not cover the entire image.
+
+\subsection{How Do Code Refactorings Affect Energy Usage? \cite{Sahin:2014:CRA:2652524.2652538}}
+TODO
+
 \subsection{High Performance Web Sites\cite{souders2008high}}
 The paper discussed the importance of front-end performance.
 It also lists best practices and shows why they are important.
-
-\begin{enumerate}
+\vspace{-1.0em}
+\begin{enumerate}\itemsep1pt \parskip0pt \parsep0pt
 	\item Make fewer HTTP requests
 	\item Use a content delivery network
 	\item Add an Expires header
@@ -297,15 +312,14 @@ It also lists best practices and shows why they are important.
 	\item Configure ETags
 	\item Make Ajax cacheable
 \end{enumerate}
-
-\bibliographystyle{plain}
-\bibliography{sigproc-sp}
-
-
-\end{document}
 \section{Conclusion}
 % This is a brief summary, but also contains the most surprising findings, implications, directions for future research.
 By combining the described changes into an automated refactoring tool, these improvements could be made in many applications.
 
 \section{Acknowledgements}
 This paper was possible because of Dr. Danny Dig; Aharon Abadi of IBM; the makers of Google Closure Compiler, MobileOK, PageSpeed Insights; and the writers of all the apps we used for the experiment.
+
+\bibliographystyle{plain}
+\bibliography{sigproc-sp}
+
+\end{document}
