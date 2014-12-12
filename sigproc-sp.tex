@@ -230,7 +230,7 @@ TODO: Here is a table showing the scores for the apps for each measurement. The 
 TODO: Outlier: MobileOK marked apps down for "invalid CSS" but this is because they don't know about the new CSS3 @keyframes rule.
 \section{Related Work}
 % We require at least 10 references. You need to compare and contrast your work to previous work.
-\subsection{Digua: Minifier and Obfuscator for Web Resources\cite{ciminiandigua} }
+\subsection{Digua: Minifier and Obfuscator for Web Resources \cite{ciminiandigua}}
 Ciminian and Dobre discuss their minifier tool Digua in \cite{ciminiandigua}. 
 Digua is a minifier which works for CSS, HTML, and JavaScript.  
 It will find correlations between these different languages to further reduce the size of these files.
@@ -239,7 +239,7 @@ This does not apply to hybrid mobile apps.
 This is because the web code for the application is already stored in the device.
 The method presented in the paper would only apply to applications which need to be downloaded every time the website is hit. 
 
-\subsection{Semi-Automatic Rename Refactoring for JavaScript\cite{feldthaus2013semi}}
+\subsection{Semi-Automatic Rename Refactoring for JavaScript \cite{feldthaus2013semi}}
 % cut this one?
 Feldthaus and Moller discuss a method for renaming functions using a combination of static analysis and programmer input in \cite{feldthaus2013semi}.
 While this does not apply directly to our project, it does bring up issues involved with renaming in JavaScript.
@@ -247,25 +247,39 @@ For instance, similarly named features of the code may be renamed when they shou
 This will lead to a lot of errors in the code.
 This is a limitation to minification methods as well, since, in order to maintain functionality, certain features such as functions cannot be renamed.
 
-\subsection{Modern JavaScript Project Optimizers\cite{zolotareva2014modern} }
+\subsection{Modern JavaScript Project Optimizers \cite{zolotareva2014modern}}
 Zolotareva et. al. in \cite{zolotareva2014modern} discuss the state of the art of JavaScript optimizers.
 Tools discussed included JSMin, YUI Compressor, UglifierJS, Google Closure Compiler, and KJSCompiler and their respective benefits and drawbacks.
 For instance, KJSCompiler is an extension to Google Closure Compiler where the users can annotate dependencies between files.
-This is a useful tool to research, due to the fact that it may further reduce the size of JavaScript files and combine them into a single library.
+This is a useful tool to research due to the fact that it may further reduce the size of JavaScript files and combine them into a single library.
 These tools could all fit in our process to determine if old guidelines do not create improvements for hybrid applications.
 With regard to scale of work for the term, we are currently considering just the Google Closure compiler.
 
-\subsection{Characterizing and Detecting Performance Bugs for Smartphone Applications\cite{liu2014characterizing} }
+\subsection{Characterizing and Detecting Performance Bugs for Smartphone Applications \cite{liu2014characterizing} }
 This paper begins by presenting common patterns among performance bugs among popular, large scale Android applications.
 Then, the paper presents PerfChecker, a static analysis tool that looks for those performance bugs (20 of which were fixed by developers).
 This paper focuses on bugs relating to a native application’s local code and potentially very specific causes for those bugs, such as activating multiple features in a specific sequence.
 So, the guidelines presented here do not directly address hybrid mobile applications, although the approach or results could in some cases be adapted for hybrids.
 For instance, the general recommendation of recycling resources on a page instead of creating memory bloat by adding and deleting constantly can be derived from the memory bloat bug type in this paper.
 
+\subsection{AppMobiCloud \cite{Wang:2013:AIM:2532443.2532445}}
+Wang et. al. in \cite{Wang:2013:AIM:2532443.2532445} look to improve the performance of mobile web applications by partitioning computation-intensive portions of code and offloading it to servers for remote execution. 
+AppMobiCloud is the tool that does this, ensuring that an app's functionality remains the same but it performs faster and saves energy on the mobile device.
+The tool uses a code analyzer to find the computations to offload. 
+AppMobiCloud technique of offloading computation to servers is different our technique of finding code changes that run on the device that will improve performance.
+Also, although they target mobile web applications and this paper targets mobile hybrid applications, both types could likely benefit from computational offloading.
+This is a potential future work because, to the best of our knowledge, this avenue has not been explored in the current literature.
+
+\subsection{A Comparative Analysis of Cross-platform Development Approaches for Mobile Applications \cite{Xanthopoulos:2013:CAC:2490257.2490292}}
+\cite{Xanthopoulos:2013:CAC:2490257.2490292} compares the use of four types of mobile applications: web, hybrid, interpreted, and generated. 
+This survey of current technologies highlights that native apps provide a great experience but have a high development cost due to requiring device-specific implementations.
+Hybrid and interpreted apps avoid this deployment issue because the code for these apps is written once and interpreted in the required way by the devices. 
+\cite{Xanthopoulos:2013:CAC:2490257.2490292} also reports that generated apps give a great alternative to native apps but there is little support for this paradigm without commercial purchases. 
+These results discuss the pros and cons of a high level design decision, where our reported code changes focus on lower level code changes and their pros and cons.
+
 \subsection{High Performance Web Sites\cite{souders2008high}}
 The paper discussed the importance of front-end performance.
 It also lists best practices and shows why they are important.
-
 
 \begin{enumerate}
 	\item Make fewer HTTP requests
@@ -284,7 +298,6 @@ It also lists best practices and shows why they are important.
 	\item Make Ajax cacheable
 \end{enumerate}
 
-
 \bibliographystyle{plain}
 \bibliography{sigproc-sp}
 
@@ -293,3 +306,6 @@ It also lists best practices and shows why they are important.
 \section{Conclusion}
 % This is a brief summary, but also contains the most surprising findings, implications, directions for future research.
 By combining the described changes into an automated refactoring tool, these improvements could be made in many applications.
+
+\section{Acknowledgements}
+This paper was possible because of Dr. Danny Dig; Aharon Abadi of IBM; the makers of Google Closure Compiler, MobileOK, PageSpeed Insights; and the writers of all the apps we used for the experiment.
