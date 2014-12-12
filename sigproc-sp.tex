@@ -128,11 +128,16 @@ Traditional guidelines were made to improve load times and usability of these we
 JavaScript libraries are often minified to create smaller files allowing for faster download times for the files.
 80\% of web page loading time is attributed to loading page resources and only 20\% is from back-end computations \cite{souders2008high}, so loading is a large concern for websites.
 Another approach to counter download times is hybrid applications; these store most of the JavaScript files on the device to avoid delays due to server communication.
-This means that the traditional guidelines for websites do not apply to hybrid applications.
+This means that the traditional guidelines for websites do not apply to hybrid applications.\\
+Guidelines for hybrid applications are few and far between. Research literature also has not explored the effects of following web application guidelines when developing hybrid applications. 
+The web application guidelines include using the following: Google Closure Compiler, a code transformation tool designed to make JavaScript smaller; MobileOK, which rates websites on their friendliness on mobile devices; and Google PageSpeed Insights, which rates a website on loading speed and user experience. 
+This paper begins by exploring those old guidelines and then provides new guidelines for hybrid apps.\\
+First, we create a baseline by recording the app load times, MobileOK scores, and Google PageSpeed Insights scores for 9 PhoneGap applications (original). 
+Then, we run Google Closure Compiler on the apps and record the same scores (optimized). 
+Finally, we measure the same benchmarks for apps we improved with our recommendations (improved).
 \subsection{Research Questions}
 % Make sure you explicitly list the research questions. Have specific questions, rather than generic questions. For example, if you built an amazing tool, Eradicator, a question such as "Is Eradicator useful?" is too vague. Instead, you should design some specific questions that answer the usefulness from different angles: how does Eradicator improve programmer productivity, software quality, what is its running time, is it scalable, etc.
 To provide new guidelines, we propose the following research questions:
-
 RQ1: Do guidelines for the loading of websites on mobile devices apply to hybrid applications?\\
 RQ2: If not, what new guidelines can be provided to improve the performance of hybrid applications?
 
