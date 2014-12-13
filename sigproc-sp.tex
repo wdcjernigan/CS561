@@ -175,46 +175,38 @@ So, it may be necessary to either try both approaches or find the best way to mo
 % Here you present the setup of your experiment, the corpus of the data that you used to answer the research questions, any procedures that you followed, etc.
 In order to show that the traditional web page guidelines do not apply to hybrid applications, we will first use the Google Closure Compiler to create a version of the hybrid application which is minified.
 Then we will test its speed with Android Device Monitor with the expectation that there will be miniscule improvements.
-Below is a discussion of the current challenges with each required technology.
+Below is a discussion of the process in more detail.
 
 \subsection{The Corpus}
-First, we will build a corpus of applications to test our process. 
-We target PhoneGap applications, but need to determine which apps are open source. 
-Doing this manually requires searching for the applications in repositories hosted at sites like Github or Google Code.
-Determining that the correct application has been found potentially requires human intelligence (or is hard to automate) because one or more factors may confirm that the correct application has been found, including author name, images of the application, release dates, etc.
-Automating this process appears to be potentially possible, but using a simple automated process and just using the applications we can get is likely the best approach.
+First, we obtained a corpus of applications from another experiment which required PhoneGap applications. 
+These various applications were reverse engineered to obtain the source code. 
+This allowed us to use Google Closure Compiler and do transformations ourselves.
+The applications used included those for which Google Closure Compiler successfully ran. 
+We use 115 applications for answering RQ1.
+The transformations described below were done on 8 apps by the authors.
 
 \subsection{Google Closure Compiler}
-After obtaining the applications, we will measure performance (loading speed, etc.) before and after modifying the application with the Google Closure Compiler. 
+After obtaining the applications, we will measure performance (loading speed, MobileOK score, PageSpeedInsights Speed score) before and after modifying the application with the Google Closure Compiler. 
+Google Closure Compiler minifies the JavaScript files, shortens variable names, and removes whitespace, among other things. 
 Using this tool creates the challenges described in section Answering RQ1, including requiring modification of all HTML files to refer to the compiled JavaScript file(s), or compiling one JavaScript file at a time, reducing the Closure Compiler's effectiveness. 
-
-\subsection{KJSCompiler}
-KJSCompiler is a wrapper for Google Closure Compiler that allows the user to provide annotations with information about dependencies to be used.
-When KJSCompiler is run, it compiles the JavaScript files in the order that the dependency annotations dictate.
-This allows for the correct ordering of function and value declarations when compiling over multiple files.
-The downside to this software is that the user needs to have dependence information in each file. 
-This is worsened if the user does not understand the dependence structure of the target system very well. 
-Using the KJSCompiler in our case would require automating the determination of dependencies between files of an arbitrary file structure, which may be too complex considering the limited gains to be had.
-
-
-\subsection{Ineffective traditional guidelines}
-We will use Google Closure Compiler to turn a hybrid app into a minified hybrid app.
-The closure compiler uses traditional guidelines for optimizing mobile web apps.
-Then we will test both the normal and minified versions of the hybrid apps.
 Our hypothesis is that the performance of normal and minified versions will be very similar.
-The traditional guidelines are used to create an optimized javascript files that are transferred over the internet to the user device.
+The traditional guidelines are used to create an optimized JavaScript file that are transferred over the internet to the user device.
 Unlike mobile web apps, hybrid apps have the JavaScript files on the device on execution.
 This means that file size and other minification guidelines might not affect performance as much as they would for web apps.
 
 \subsection{New Guidelines}
-After proving that traditional guidelines are ineffective, we will test and validate that new guidelines are more effective for hybrid apps.
-Aharon has suggested some new guidelines that will be more effective on hybrid apps:
+After showing evidence that traditional guidelines are ineffective, we will test and validate that new guidelines are more effective for hybrid apps.
+Our new guidelines are as follows:
 \vspace{-1.0em}
 \begin{enumerate}\itemsep1pt \parskip0pt \parsep0pt
 	\item Creating smaller files using minification
-	\item Load only functions needed for that page
+	\item Downloading external resources (such as JavaScript files) not in the file directory 
+    \item Moving script tags to the bottom of the HTML to avoid render-blocking
+    \item Including short CSS in the HTML files
+    \item Moving large CSS to their own files
 \end{enumerate}
-We also did some research and found some performance techniques used by Phonegap developers:
+We made these modifications to the 9 applications and measured performance once again. The results section presents comparisons of measurements between treatments.
+We also performance techniques used by Phonegap developers. We do not evaluate them in this paper but list them here:
 \vspace{-1.0em}
 \begin{enumerate}\itemsep1pt \parskip0pt \parsep0pt
 	\item Avoid Network access
@@ -225,7 +217,7 @@ We also did some research and found some performance techniques used by Phonegap
 	\item Use CSS Sprite Sheets
 	\item Limit some UI functions
 	\item Limit access to DOM
-	\item limit libraries and frameworks
+	\item Limit libraries and frameworks
 \end{enumerate}
 \section{Results}
 %Here you present the results using graphs, charts, etc. You also interpret the results, highlight some of the scenarios where Eradicator did very well, but also those where Eradicator did not do well. You can show examples of corner cases where Eradicator did not do well and possible explanations.
@@ -362,7 +354,16 @@ It also lists best practices and shows why they are important.
 
 \section{Project Experience}
 \subsection{Corpus}
-We had a rough time obtaining a corpus. We first started by scanning the internet and Github for open source phonegap applications, and found small applications that would not have been great for our research. Many of the repositories were just examples, and tutorials. The phonegap website had a list of 720 phonegap applications with links to their apks. Apks were not useful to use because they were packaged up and didn't have the source code. So we decided to pull the list of phonegap applications and associated developers. We used this list of search for open source projects on github, but many repositories were links to download the apks, small example libraries, or applications with incomplete source. 
+We had a rough time obtaining a corpus. 
+We first started by scanning the internet and Github for open source phonegap applications, and found small applications that would not have been great for our research. 
+Many of the repositories were just examples, and tutorials. 
+The phonegap website had a list of 720 phonegap applications with links to their apks. 
+Apks were not useful to use because they were packaged up and didn't have the source code. 
+So we decided to pull the list of phonegap applications and associated developers. 
+We used this list of search for open source projects on github, but many repositories were links to download the apks, small example libraries, or applications with incomplete source. 
+
+\subsection{Collaboration}
+We admit that as a group we have little research experience
 
 \section{Conclusion}
 % This is a brief summary, but also contains the most surprising findings, implications, directions for future research.
