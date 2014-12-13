@@ -234,6 +234,13 @@ TODO: Here is a table showing the scores for the apps for each measurement. The 
 %What are the surprising/unexpected results?
 %What are the outliers?
 %What did you learn?
+From the nine applications that we manually refactored with the improved guidelines, we have consistently improved speed-ups over the respective original applicatons.
+One outlier from our results was an application which did not load after the improvements were implemented.
+While the load speed increased on this application, it stopped working correctly.
+This is due to an issue with aggregating the JavaScript into a single, minified file.
+There are references within this while to other JS files that have been removed by the afore mentioned minification process.
+Since these files no longer existed the page would throw an error and terminate before the HTML loads on the page, resulting a blank page.
+This shows that while our refactoring methods may improve performance, some functionality may be lost in certain applications.
 
 TODO: Outlier: MobileOK marked apps down for "invalid CSS" but this is because they don't know about the new CSS3 @keyframes rule.
 \section{Related Work}
